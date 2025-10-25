@@ -3,14 +3,27 @@ import Layout from '../../layouts/Layout.astro';
 import LeadFormPanel from '../../components/LeadFormPanel.tsx';
 import { getCollection } from 'astro:content';
 
-const locations = await getCollection('locations');
+const locationsCollection = await getCollection('locations');
 const services = await getCollection('services');
 
-const grouped = locations.reduce<Record<string, typeof locations>>( (acc, location) => {
-  const state = location.data.state;
-  acc[state] = acc[state] ? [...acc[state], location] : [location];
-  return acc;
-}, {});
+const prioritySlugs = [
+  'texas/austin',
+  'texas/cedar-park',
+  'texas/round-rock',
+  'texas/georgetown',
+  'texas/leander',
+  'texas/dripping-springs',
+  'texas/bee-caves',
+];
+
+const priorityIndex = new Map(prioritySlugs.map((slug, index) => [slug, index]));
+
+const orderedLocations = [...locationsCollection].sort((a, b) => {
+  const aIndex = priorityIndex.has(a.data.slug) ? priorityIndex.get(a.data.slug)! : prioritySlugs.length;
+  const bIndex = priorityIndex.has(b.data.slug) ? priorityIndex.get(b.data.slug)! : prioritySlugs.length;
+  if (aIndex !== bIndex) return aIndex - bIndex;
+  return a.data.city.localeCompare(b.data.city);
+});
 
 const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
 const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
@@ -33,10 +46,10 @@ const structuredData = {
   <section class="border-b border-neutral-200 bg-neutral-50/70">
     <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
       <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Service markets</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">High-intent metros launching first</h1>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Service areas</p>
+        <h1 class="font-heading text-4xl font-semibold text-neutral-900">Service areas we currently serve</h1>
         <p class="max-w-2xl text-sm text-neutral-600">
-          We focus on metros with strong demand for sustainable landscaping and premium interior storage upgrades. Submit your city to accelerate our rollout.
+          Greater Austin is our home base. Explore the cities below to see how we help homeowners connect with trusted specialists. Don’t see your town? Share your zip in the form and we’ll notify you when we expand.
         </p>
       </div>
       <LeadFormPanel
@@ -51,31 +64,26 @@ const structuredData = {
       />
     </div>
   </section>
-
-  <section class="container space-y-10 py-16">
-    {Object.entries(grouped).map(([state, entries]) => (
-      <div class="space-y-4" id={state.toLowerCase().replace(/\s+/g, '-') }>
-        <h2 class="font-heading text-2xl font-semibold text-neutral-900">{state}</h2>
-        <div class="grid gap-5 md:grid-cols-3">
-          {entries.map((entry) => (
-            <article class="rounded-2xl border border-neutral-200 bg-white/90 p-5 shadow-card">
-              <h3 class="font-heading text-xl font-semibold text-neutral-900">{entry.data.city}</h3>
-              <p class="mt-2 text-sm text-neutral-600">{entry.data.intro}</p>
-              {entry.data.neighborhoods?.length ? (
-                <p class="mt-4 text-xs uppercase tracking-wide text-neutral-500">
-                  Key neighborhoods: {entry.data.neighborhoods.join(', ')}
-                </p>
-              ) : null}
-              <a class="mt-4 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/locations/${entry.data.slug}`}>
-                Explore {entry.data.city}
-                <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
-                  <path d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
-                </svg>
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    ))}
+  <section class="container space-y-8 py-16">
+    <div class="grid gap-5 md:grid-cols-3 lg:grid-cols-4">
+      {orderedLocations.map((entry) => (
+        <article class="rounded-2xl border border-neutral-200 bg-white/90 p-5 shadow-card">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">{entry.data.state}</p>
+          <h2 class="mt-1 font-heading text-xl font-semibold text-neutral-900">{entry.data.city}</h2>
+          <p class="mt-2 text-sm text-neutral-600">{entry.data.intro}</p>
+          {entry.data.neighborhoods?.length ? (
+            <p class="mt-4 text-xs uppercase tracking-wide text-neutral-500">
+              Key neighborhoods: {entry.data.neighborhoods.join(', ')}
+            </p>
+          ) : null}
+          <a class="mt-4 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/locations/${entry.data.slug}`}>
+            Explore {entry.data.city}
+            <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
+              <path d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
   </section>
 </Layout>
