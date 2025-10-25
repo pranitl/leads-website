@@ -1,0 +1,25 @@
+{
+  "name": "Hardscaping & Outdoor Living",
+  "slug": "hardscaping",
+  "icon": "stone",
+  "summary": "Engineered patios, retaining walls, outdoor kitchens, and fire features built to elevate daily living.",
+  "heroTitle": "Build the outdoor room your home deserves",
+  "heroCopy": "From paver installs to structural retaining walls, we match you with crews who blend craftsmanship, drainage planning, and lighting for year-round use.",
+  "benefits": [
+    "Specialists in patios, seat walls, steps, and structural retaining walls",
+    "Permeable and traditional paver systems with drainage planning",
+    "Introductions to vetted crews within 24 hours so projects move fast"
+  ],
+  "subservices": [
+    { "name": "Hardscaping Specialists", "slug": "hardscaping", "summary": "Retaining walls, paver patios, and custom steps engineered to last." },
+    { "name": "Outdoor Kitchens & Fire Features", "slug": "outdoor-kitchens", "summary": "Chef-grade cooking zones, pizza ovens, and fire pits." },
+    { "name": "Permeable Pavers & Drainage", "slug": "permeable-hardscaping", "summary": "Stormwater-conscious solutions that keep patios dry." },
+    { "name": "Hardscape Maintenance & Power Washing", "slug": "hardscape-maintenance", "summary": "Seasonal refresh programs for stone, pavers, and concrete." }
+  ],
+  "faqs": [
+    {
+      "q": "Do you coordinate permits or HOA approvals?",
+      "a": "Yes. We prep submittal packages with structural notes, product cut sheets, and finish samples so your project clears reviews faster."
+    }
+  ]
+}

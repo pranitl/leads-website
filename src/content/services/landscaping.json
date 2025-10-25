@@ -1,33 +1,25 @@
 {
-  "name": "Landscaping & Outdoor Living",
+  "name": "Landscaping",
   "slug": "landscaping",
   "icon": "sprout",
-  "summary": "Drought-ready, design-forward landscapes built around water-wise planting, premium hardscaping, and year-round outdoor living upgrades.",
+  "summary": "Climate-smart planting plans, irrigation tuning, and outdoor environments that thrive year-round.",
   "heroTitle": "Transform your outdoor spaces with sustainable landscaping pros",
-  "heroCopy": "From xeriscaping to luxury outdoor kitchens, we deliver vetted specialists who blend aesthetics with ecological performance.",
+  "heroCopy": "From xeriscaping to native planting refreshes, we connect you with specialists who balance aesthetics, ecology, and maintenance needs.",
   "benefits": [
-    "Curated network of native plant designers, irrigation engineers, and master hardscapers",
+    "Curated network of native plant designers and irrigation engineers",
     "Sustainable material sourcing with transparent pricing guidance",
-    "Rapid quote turnaround with site-ready crews in under 72 hours"
+    "Personalized matches delivered within 24 hours so you can compare quotes quickly"
   ],
   "subservices": [
     { "name": "Xeriscaping & Drought-Resistant Design", "slug": "xeriscaping", "summary": "Low-water landscapes optimized for the Southwest climate." },
     { "name": "Irrigation Installation & Repair", "slug": "irrigation", "summary": "Smart irrigation systems tuned for efficiency and compliance." },
-    { "name": "Hardscaping Specialists", "slug": "hardscaping", "summary": "Retaining walls, paver patios, and custom steps engineered to last." },
     { "name": "Organic & Native Planting", "slug": "native-planting", "summary": "Pollinator-friendly palettes with seasonal color and soil health." },
-    { "name": "Outdoor Kitchens & Fire Features", "slug": "outdoor-kitchens", "summary": "Chef-grade cooking zones, pizza ovens, and fire pits." },
-    { "name": "Permeable Pavers & Drainage", "slug": "permeable-hardscaping", "summary": "Stormwater-conscious solutions that keep patios dry." },
-    { "name": "Sustainable Landscape Design", "slug": "sustainable-design", "summary": "Master plans balancing aesthetics, biodiversity, and budgets." },
-    { "name": "Hardscape Maintenance & Power Washing", "slug": "hardscape-maintenance", "summary": "Seasonal refresh programs for stone, pavers, and concrete." }
+    { "name": "Sustainable Landscape Design", "slug": "sustainable-design", "summary": "Master plans balancing aesthetics, biodiversity, and budgets." }
   ],
   "faqs": [
     {
       "q": "How fast can I get matched with a landscaping specialist?",
       "a": "Most projects receive introductions to 2-3 vetted landscape teams within 24 hours. Larger design-build scopes may include a discovery call first to align budgets and timelines."
-    },
-    {
-      "q": "Do you support NGBS or LEED-aligned outdoor projects?",
-      "a": "Yes. We maintain a roster of certified sustainable designers and installers experienced with LEED for Homes, SITES, and National Green Building Standard requirements."
     }
   ]
 }
