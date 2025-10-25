@@ -1,0 +1,71 @@
+---
+type Service = {
+  name: string;
+  slug: string;
+  summary: string;
+  icon?: string;
+  subservices?: { name: string; slug: string; summary?: string }[];
+};
+
+const { services = [] } = Astro.props as { services: Service[] };
+
+const iconMap: Record<string, string> = {
+  sprout:
+    'M12 2c4.418 0 8 3.582 8 8 0 3.523-2.292 6.5-5.5 7.567L14 22h-4l-.5-4.433C6.292 16.5 4 13.523 4 10c0-4.418 3.582-8 8-8Zm0 4a4 4 0 0 0-1 7.874V18h2v-4.126A4 4 0 0 0 12 6Z',
+  layout:
+    'M4 4h16a2 2 0 0 1 2 2v3H2V6a2 2 0 0 1 2-2Zm-2 7h9v9H4a2 2 0 0 1-2-2v-7Zm11 0h9v7a2 2 0 0 1-2 2h-7v-9Z',
+};
+
+const getIconPath = (identifier?: string) => {
+  if (!identifier) return iconMap.sprout;
+  return iconMap[identifier] ?? iconMap.sprout;
+};
+---
+
+<section class="space-y-6">
+  <div class="flex flex-col gap-3">
+    <h2 class="font-heading text-3xl font-semibold text-neutral-900">Specialized services we offer</h2>
+    <p class="max-w-2xl text-sm text-neutral-600">
+      Built for homeowners who want boutique craftsmanship without the guesswork. Start with a category and we will pinpoint the exact sub-specialist your project needs.
+    </p>
+  </div>
+  <div class="grid gap-5 md:grid-cols-2">
+    {services.map((service) => (
+      <article class="group flex h-full flex-col justify-between rounded-2xl border border-transparent bg-white/90 p-6 shadow-card transition hover:-translate-y-1 hover:border-brand-200">
+        <div class="flex items-center gap-3">
+          <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-current">
+              <path d={getIconPath(service.icon)} />
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-heading text-xl font-semibold text-neutral-900">{service.name}</h3>
+            <p class="text-sm text-neutral-600">{service.summary}</p>
+          </div>
+        </div>
+        {service.subservices?.length ? (
+          <ul class="mt-4 space-y-2 text-sm text-neutral-600">
+            {service.subservices.slice(0, 4).map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+                <div>
+                  <p class="font-medium text-neutral-700">{item.name}</p>
+                  {item.summary && <p class="text-xs text-neutral-500">{item.summary}</p>}
+                </div>
+              </li>
+            ))}
+            {service.subservices.length > 4 && (
+              <li class="text-xs font-semibold uppercase tracking-wide text-brand-600">+ {service.subservices.length - 4} more specialties</li>
+            )}
+          </ul>
+        ) : null}
+        <a class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/services/${service.slug}`}>
+          Explore service
+          <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
+            <path d="M13 5a1 1 0 1 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L13 13.586V5Z" />
+          </svg>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

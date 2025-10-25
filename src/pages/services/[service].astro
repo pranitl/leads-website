@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import FAQList from '../../components/FAQList.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  const subservices = await getCollection('subservices');
+
+  return services.map((service) => ({
+    params: { service: service.data.slug },
+    props: {
+      service,
+      subserviceEntries: subservices.filter((entry) => entry.data.service === service.data.slug),
+      allServices: services.map((entry) => ({
+        slug: entry.data.slug,
+        name: entry.data.name,
+        subservices: entry.data.subservices ?? [],
+      })),
+    },
+  }));
+}
+
+const { service, subserviceEntries, allServices } = Astro.props;
+const data = service.data;
+
+const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
+const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
+const siteKey =
+  captchaProvider === 'turnstile'
+    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+    : captchaProvider === 'recaptcha'
+      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
+      : undefined;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: data.name,
+  serviceType: data.name,
+  description: data.summary,
+  areaServed: 'United States',
+};
+---
+
+<Layout title={`${data.name} | Crafted Niche Leads`} description={data.summary} structuredData={structuredData}>
+  <section class="border-b border-neutral-200 bg-neutral-50/70">
+    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
+      <div class="space-y-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{data.name}</p>
+        <h1 class="font-heading text-4xl font-semibold text-neutral-900">{data.heroTitle ?? data.name}</h1>
+        <p class="max-w-2xl text-sm text-neutral-600">{data.heroCopy ?? data.summary}</p>
+        {data.benefits?.length ? (
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {data.benefits.map((benefit) => (
+              <li class="rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
+                {benefit}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+      <LeadFormPanel
+        services={allServices}
+        submitMode={submitMode}
+        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
+        className="shadow-card"
+      />
+    </div>
+  </section>
+
+  <section class="container space-y-12 py-16">
+    {data.subservices?.length ? (
+      <div class="space-y-4">
+        <h2 class="font-heading text-3xl font-semibold text-neutral-900">Featured specialties</h2>
+        <div class="grid gap-5 md:grid-cols-2">
+          {data.subservices.map((sub) => {
+            const detail = subserviceEntries.find((entry) => entry.data.slug === sub.slug);
+            return (
+              <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+                <h3 class="font-heading text-xl font-semibold text-neutral-900">{sub.name}</h3>
+                <p class="mt-2 text-sm text-neutral-600">{detail?.data.intro ?? sub.summary}</p>
+                {detail?.data.highlights?.length ? (
+                  <ul class="mt-4 space-y-2 text-sm text-neutral-600">
+                    {detail.data.highlights.map((point) => (
+                      <li class="flex items-start gap-2">
+                        <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {detail?.data.avgCost ? (
+                  <p class="mt-4 inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">
+                    Typical: ${detail.data.avgCost.min.toLocaleString()} - ${detail.data.avgCost.max.toLocaleString()}
+                  </p>
+                ) : null}
+                <a class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/services/${data.slug}/${sub.slug}`}>
+                  Deep dive into {sub.name}
+                  <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
+                    <path d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
+                  </svg>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    ) : null}
+
+    <FAQList items={data.faqs ?? []} />
+  </section>
+</Layout>

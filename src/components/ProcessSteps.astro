@@ -1,0 +1,46 @@
+---
+const {
+  steps = [
+    {
+      title: 'Share your project goals',
+      copy: 'Tell us about your space, style, and timeline. We tailor every match to your priorities.',
+    },
+    {
+      title: 'Get curated introductions',
+      copy: 'Within 24 hours you will meet 2-3 vetted specialists ready to quote and visit your site.',
+    },
+    {
+      title: 'Launch with confidence',
+      copy: 'We stay in touch for scheduling, scope clarifications, and post-project support.',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="rounded-3xl bg-brand-900 text-white">
+  <div class="grid gap-10 lg:grid-cols-2">
+    <div class="space-y-4 p-8 lg:p-12">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">Our process</p>
+      <h2 class="font-heading text-3xl font-semibold">From form to install without the chaos</h2>
+      <p class="text-sm text-white/80">
+        Your concierge team manages every handoff so you can focus on the creative decisions. No more endless bidding or ghosted contractors.
+      </p>
+    </div>
+    <div class="space-y-6 bg-white/10 p-8 lg:p-12">
+      {steps.map((step, index) => (
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent-gold text-brand-800 font-heading text-base font-semibold">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            {index !== steps.length - 1 && <span class="mt-1 h-16 w-px bg-white/30"></span>}
+          </div>
+          <div>
+            <h3 class="font-heading text-xl font-semibold">{step.title}</h3>
+            <p class="text-sm text-white/80">{step.copy}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadFormPanel from '../components/LeadFormPanel.tsx';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+
+const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
+const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
+const siteKey =
+  captchaProvider === 'turnstile'
+    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+    : captchaProvider === 'recaptcha'
+      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
+      : undefined;
+---
+
+<Layout title="Contact | Crafted Niche Leads" description="Reach our concierge team for partnerships, press, or project support.">
+  <section class="border-b border-neutral-200 bg-neutral-50/70">
+    <div class="container space-y-6 py-16">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Contact</p>
+      <h1 class="font-heading text-4xl font-semibold text-neutral-900">Let’s talk about your next project</h1>
+      <p class="max-w-2xl text-sm text-neutral-600">
+        Whether you’re a homeowner, service pro, or partner, we’re here to guide you through the process. Expect a response within one business day.
+      </p>
+    </div>
+  </section>
+
+  <section class="container grid gap-12 py-16 lg:grid-cols-[1.1fr,0.9fr]">
+    <div class="space-y-8">
+      <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">General inquiries</h2>
+        <p class="mt-2 text-sm text-neutral-600">Email <a class="text-brand-600 hover:text-brand-700" href="mailto:hello@craftedniche.com">hello@craftedniche.com</a> or call <a class="text-brand-600 hover:text-brand-700" href="tel:+18885550199">(888) 555-0199</a>.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Partnerships & media</h2>
+        <p class="mt-2 text-sm text-neutral-600">For suppliers, agencies, or press, email <a class="text-brand-600 hover:text-brand-700" href="mailto:partners@craftedniche.com">partners@craftedniche.com</a>.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Office</h2>
+        <p class="mt-2 text-sm text-neutral-600">By appointment only. 500 Market St, Suite 1200, Austin, TX 78701.</p>
+      </div>
+    </div>
+    <LeadFormPanel
+      services={services.map((svc) => ({
+        slug: svc.data.slug,
+        name: svc.data.name,
+        subservices: svc.data.subservices ?? [],
+      }))}
+      submitMode={submitMode}
+      captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
+      className="shadow-card"
+    />
+  </section>
+</Layout>

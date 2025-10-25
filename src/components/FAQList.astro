@@ -1,0 +1,18 @@
+---
+type FAQ = { q: string; a: string };
+const { items = [] } = Astro.props as { items: FAQ[] };
+---
+
+{items.length ? (
+  <div class="space-y-4">
+    <h3 class="font-heading text-2xl font-semibold text-neutral-900">Frequently asked questions</h3>
+    <ul class="space-y-3">
+      {items.map((faq) => (
+        <li class="rounded-2xl border border-neutral-200 bg-white/90 p-5 shadow-card">
+          <h4 class="font-heading text-lg font-semibold text-neutral-900">{faq.q}</h4>
+          <p class="mt-2 text-sm text-neutral-600">{faq.a}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+) : null}

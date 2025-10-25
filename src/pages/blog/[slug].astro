@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.publishedAt.toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'Crafted Niche Leads',
+  },
+};
+---
+
+<Layout title={`${post.data.title} | Crafted Niche Leads`} description={post.data.excerpt} structuredData={structuredData}>
+  <article class="prose prose-slate mx-auto max-w-3xl py-16">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Insights</p>
+    <h1 class="font-heading text-4xl font-semibold text-neutral-900">{post.data.title}</h1>
+    <p class="text-sm text-neutral-500">Published {new Date(post.data.publishedAt).toLocaleDateString()}</p>
+    <div class="mt-8">
+      <Content />
+    </div>
+  </article>
+</Layout>

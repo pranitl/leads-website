@@ -1,11 +1,127 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import LeadFormPanel from '../components/LeadFormPanel.tsx';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import TrustSignals from '../components/TrustSignals.astro';
+import InsightsPreview from '../components/InsightsPreview.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const servicesCollection = await getCollection('services');
+const services = servicesCollection.map((entry) => ({
+  slug: entry.data.slug,
+  name: entry.data.name,
+  summary: entry.data.summary,
+  icon: entry.data.icon,
+  subservices: entry.data.subservices ?? [],
+}));
+
+const latestPosts = (await getCollection('posts'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 3);
+
+const locations = (await getCollection('locations')).slice(0, 3);
+
+const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
+const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
+const siteKey =
+  captchaProvider === 'turnstile'
+    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+    : captchaProvider === 'recaptcha'
+      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
+      : undefined;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Crafted Niche Leads',
+  url: Astro.site?.href ?? 'https://example.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${Astro.site?.href ?? 'https://example.com'}/services?query={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Crafted Niche Leads | Premium Landscaping & Closet Specialists" structuredData={structuredData}>
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white">
+    <div class="absolute right-0 top-0 h-full w-full bg-[url('/assets/background.svg')] bg-cover bg-right opacity-20"></div>
+    <div class="container relative grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
+      <div class="space-y-6">
+        <p class="rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
+          Lead funnel ready
+        </p>
+        <h1 class="font-heading text-4xl font-semibold leading-tight md:text-5xl">
+          Your concierge for niche landscaping and bespoke interior installs
+        </h1>
+        <p class="max-w-2xl text-base text-white/90">
+          Crafted Niche Leads connects homeowners with vetted specialists in xeriscaping, irrigation, outdoor kitchens, custom closets, and beyond. Tell us what you need—our team sends curated matches within 24 hours.
+        </p>
+        <ul class="grid gap-4 sm:grid-cols-2">
+          <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
+            <p class="font-heading text-2xl font-semibold">150+</p>
+            <p class="text-sm text-white/80">Verified artisans across landscaping and interior build-outs.</p>
+          </li>
+          <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
+            <p class="font-heading text-2xl font-semibold">4.9 / 5</p>
+            <p class="text-sm text-white/80">Average homeowner satisfaction rating.</p>
+          </li>
+        </ul>
+        <div class="flex flex-wrap items-center gap-6 text-sm text-white/80">
+          <a class="inline-flex items-center gap-2 font-semibold text-white hover:text-accent-gold" href="tel:+18885550199">
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent-gold text-xs font-bold text-brand-800">24/7</span>
+            (888) 555-0199
+          </a>
+          <span>or submit the project form to start the matches.</span>
+        </div>
+      </div>
+      <LeadFormPanel
+        services={services}
+        submitMode={submitMode}
+        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
+      />
+    </div>
+  </section>
+
+  <section class="container space-y-16 py-16">
+    <ServiceGrid services={services} />
+    <ProcessSteps />
+    <TrustSignals />
+
+    <section class="space-y-6">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Service areas</p>
+          <h2 class="font-heading text-3xl font-semibold text-neutral-900">High-intent markets we serve first</h2>
+        </div>
+        <a class="btn-outline" href="/locations">View all locations</a>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        {locations.map((location) => (
+          <article class="rounded-2xl border border-neutral-200 bg-white/90 p-5 shadow-card">
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">{location.data.state}</p>
+            <h3 class="mt-1 font-heading text-xl font-semibold text-neutral-900">{location.data.city}</h3>
+            <p class="mt-3 text-sm text-neutral-600">{location.data.intro}</p>
+            {location.data.neighborhoods?.length ? (
+              <div class="mt-4 text-xs uppercase tracking-wide text-neutral-500">
+                Key areas: {location.data.neighborhoods.slice(0, 3).join(', ')}
+              </div>
+            ) : null}
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/locations/${location.data.slug}`}>
+              Explore {location.data.city}
+              <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
+                <path d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <InsightsPreview posts={latestPosts} />
+  </section>
+
+  <StickyCTA />
 </Layout>

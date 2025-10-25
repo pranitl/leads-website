@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import { getCollection } from 'astro:content';
+
+const servicesCollection = await getCollection('services');
+const services = servicesCollection.map((entry) => ({
+  ...entry.data,
+}));
+
+const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
+const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
+const siteKey =
+  captchaProvider === 'turnstile'
+    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+    : captchaProvider === 'recaptcha'
+      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
+      : undefined;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Niche home services',
+  url: `${Astro.url.origin}/services`,
+};
+---
+
+<Layout title="Services | Crafted Niche Leads" description="Explore landscaping and interior installation services, then request curated specialists for your project." structuredData={structuredData}>
+  <section class="border-b border-neutral-200 bg-neutral-50/70">
+    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
+      <div class="space-y-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Our roster</p>
+        <h1 class="font-heading text-4xl font-semibold text-neutral-900">Specialists curated for modern outdoor and interior projects</h1>
+        <p class="max-w-2xl text-sm text-neutral-600">
+          From drought-ready landscapes to space-saving closet builds, our network pairs you with artisans who understand sustainability, aesthetics, and precision installation.
+        </p>
+      </div>
+      <LeadFormPanel
+        services={services.map((svc) => ({
+          slug: svc.slug,
+          name: svc.name,
+          summary: svc.summary,
+          subservices: svc.subservices ?? [],
+        }))}
+        submitMode={submitMode}
+        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
+        className="shadow-card"
+      />
+    </div>
+  </section>
+
+  <section class="container space-y-10 py-16">
+    <div class="grid gap-6 md:grid-cols-2">
+      {services.map((service) => (
+        <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+          <h2 class="font-heading text-2xl font-semibold text-neutral-900">{service.name}</h2>
+          <p class="mt-2 text-sm text-neutral-600">{service.summary}</p>
+          {service.benefits?.length ? (
+            <ul class="mt-4 space-y-2 text-sm text-neutral-600">
+              {service.benefits.map((benefit) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+                  <span>{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {service.subservices?.length ? (
+            <div class="mt-5 space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Included specialties</p>
+              <div class="flex flex-wrap gap-2">
+                {service.subservices.map((item) => (
+                  <a class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700 hover:bg-brand-50 hover:text-brand-700" href={`/services/${service.slug}/${item.slug}`}>
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
+          <a class="mt-6 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/services/${service.slug}`}>
+            View service details
+            <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
+              <path d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

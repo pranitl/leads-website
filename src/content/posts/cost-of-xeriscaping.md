@@ -1,6 +1,5 @@
 ---
 title: "2025 Xeriscaping Cost Guide"
-slug: "xeriscaping-cost-guide-2025"
 excerpt: "Understand budgets, material choices, and ROI for drought-ready landscapes in 2025."
 publishedAt: 2025-01-05
 heroImage: "/images/xeriscape-cost-guide.jpg"

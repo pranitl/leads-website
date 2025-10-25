@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Crafted Niche Leads',
+  description: 'Lead generation concierge for niche home services.',
+};
+---
+
+<Layout title="About | Crafted Niche Leads" description="Meet the team building thoughtful lead funnels for niche home services." structuredData={structuredData}>
+  <section class="border-b border-neutral-200 bg-neutral-50/70">
+    <div class="container space-y-6 py-16">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Our story</p>
+      <h1 class="font-heading text-4xl font-semibold text-neutral-900">Design-first lead funnels for specialized home projects</h1>
+      <p class="max-w-2xl text-sm text-neutral-600">
+        Crafted Niche Leads was born from agency teams who scaled paid media for national home brands and saw a gap: niche homeowners were stuck with generic landing pages and unvetted contractors. We designed a concierge model that respects aesthetics, sustainability, and urgency.
+      </p>
+    </div>
+  </section>
+
+  <section class="container space-y-16 py-16">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Concierge vetting</h2>
+        <p class="mt-3 text-sm text-neutral-600">
+          Every specialist we onboard submits license proofs, insurance, portfolio references, and sustainability commitments. Less than 18% of applicants make it into the network.
+        </p>
+      </article>
+      <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Design-forward experience</h2>
+        <p class="mt-3 text-sm text-neutral-600">
+          We pair performance-focused funnels with editorial storytelling, ensuring your paid and organic traffic lands on pages that feel premium and personalized.
+        </p>
+      </article>
+      <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Growth roadmap</h2>
+        <p class="mt-3 text-sm text-neutral-600">
+          Landscaping and closet interiors are our MVP. Next up: exterior lighting, smart home retrofits, and wellness spaces. Our data model makes expanding into new niches fast.
+        </p>
+      </article>
+      <article class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Partnerships</h2>
+        <p class="mt-3 text-sm text-neutral-600">
+          We collaborate with material suppliers, architects, and interior designers to keep the ecosystem connected and ensure every homeowner experiences a cohesive build.
+        </p>
+      </article>
+    </div>
+
+    <div class="rounded-3xl bg-brand-900 p-10 text-white">
+      <h2 class="font-heading text-3xl font-semibold">Ready to co-create something exceptional?</h2>
+      <p class="mt-3 text-sm text-white/80">We partner with agencies, contractors, and investors who share our obsession with detail and customer trust.</p>
+      <a class="btn-cta mt-6 inline-flex" href="/contact">Talk to our founders</a>
+    </div>
+  </section>
+</Layout>
