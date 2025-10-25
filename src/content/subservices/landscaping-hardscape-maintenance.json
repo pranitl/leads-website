@@ -1,0 +1,17 @@
+{
+  "service": "landscaping",
+  "slug": "hardscape-maintenance",
+  "title": "Hardscape Maintenance & Power Washing",
+  "intro": "Seasonal cleaning, joint resetting, and sealing to extend the life of stone, concrete, and composite hardscapes.",
+  "avgCost": { "min": 450, "max": 2500, "notes": "Service bundles priced per square foot and soil condition." },
+  "highlights": [
+    "Soft-wash and steam cleaning options",
+    "Joint sand reconditioning and polymeric sealing",
+    "Annual inspection reports with repair recommendations"
+  ],
+  "faqs": [
+    {
+      "q": "Can you repair failing retaining walls?",
+      "a": "Yes. We inspect structural integrity and coordinate reinforcement or rebuilds when needed."}
+  ]
+}

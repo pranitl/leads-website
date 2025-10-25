@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Austin",
+  "slug": "texas/austin",
+  "intro": "Austin homeowners lean into climate-smart xeriscapes, modern hill country patios, and custom closet conversions for rapid-growth neighborhoods like Mueller and Circle C.",
+  "neighborhoods": ["Westlake", "Mueller", "Circle C Ranch", "Steiner Ranch"],
+  "popularServices": [
+    "landscaping/xeriscaping",
+    "landscaping/outdoor-kitchens",
+    "closet-interior/custom-closets"
+  ]
+}

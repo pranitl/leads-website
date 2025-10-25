@@ -1,0 +1,17 @@
+{
+  "service": "landscaping",
+  "slug": "permeable-hardscaping",
+  "title": "Permeable & Sustainable Hardscaping",
+  "intro": "Stormwater-conscious walkways, patios, and drive lanes using permeable pavers, grid systems, and bioswales.",
+  "avgCost": { "min": 9000, "max": 42000, "notes": "Cost varies with excavation depth, base prep, and material selection." },
+  "highlights": [
+    "Designs that meet local LID and stormwater requirements",
+    "Geo-grid systems, rain gardens, and french drains",
+    "Maintenance plans to keep infiltration rates high"
+  ],
+  "faqs": [
+    {
+      "q": "Can permeable pavers handle vehicle loads?",
+      "a": "Yes, when engineered with the correct base and grid structure. We design to the load requirements of passenger vehicles and light trucks."}
+  ]
+}

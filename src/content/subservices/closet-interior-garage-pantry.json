@@ -1,0 +1,17 @@
+{
+  "service": "closet-interior",
+  "slug": "garage-pantry",
+  "title": "Garage & Pantry Organization",
+  "intro": "Robust storage zones tailored for gear, appliances, and bulk inventory with durable finishes and climate-aware planning.",
+  "avgCost": { "min": 2800, "max": 12000, "notes": "Dependent on square footage, specialty racks, and epoxy flooring." },
+  "highlights": [
+    "High-load shelving and slat walls",
+    "Pull-out pantries and appliance garages",
+    "Floor coatings and dehumidification recommendations"
+  ],
+  "faqs": [
+    {
+      "q": "Can you integrate EV charging or air systems?",
+      "a": "We coordinate with licensed electricians and HVAC techs to route power and ventilation as part of the installation."}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "service": "closet-interior",
+  "slug": "custom-closets",
+  "title": "Custom Closet Design & Installation",
+  "intro": "Premium millwork, lighting, and hardware that turns wardrobes into curated experiences.",
+  "avgCost": { "min": 3500, "max": 22000, "notes": "Variables include linear footage, finishes, lighting, and accessories." },
+  "highlights": [
+    "3D visualizations with finish boards",
+    "Integrated lighting, glass displays, and shoe walls",
+    "White-glove install teams that protect existing finishes"
+  ],
+  "faqs": [
+    {
+      "q": "Do you work with interior designers?",
+      "a": "Yes. We can collaborate with your designer or provide our own design lead to ensure cohesive styling."}
+  ]
+}

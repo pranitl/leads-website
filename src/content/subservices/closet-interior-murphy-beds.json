@@ -1,0 +1,17 @@
+{
+  "service": "closet-interior",
+  "slug": "murphy-beds",
+  "title": "Murphy Bed Integration Services",
+  "intro": "Space-saving wall beds that transition seamlessly between guest-ready suites and day-to-day living.",
+  "avgCost": { "min": 4200, "max": 16000, "notes": "Higher tiers include custom cabinetry, desks, and integrated lighting." },
+  "highlights": [
+    "Counterbalanced systems for effortless lifting",
+    "Cabinetry that conceals bedding and lighting",
+    "UL-listed hardware with extended warranties"
+  ],
+  "faqs": [
+    {
+      "q": "Can Murphy beds be installed in condos?",
+      "a": "Yes. We assess wall structure, coordinate elevator bookings, and handle HOA requirements common to mid/high-rise properties."}
+  ]
+}

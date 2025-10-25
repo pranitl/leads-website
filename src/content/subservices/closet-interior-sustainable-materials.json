@@ -1,0 +1,16 @@
+{
+  "service": "closet-interior",
+  "slug": "sustainable-materials",
+  "title": "Eco-Friendly Closet & Built-In Materials",
+  "intro": "Design packages prioritizing recycled content, FSC woods, low-VOC finishes, and verified supply chains.",
+  "highlights": [
+    "Material transparency reports for every component",
+    "Options for rapidly renewable veneers and bamboo",
+    "Formaldehyde-free substrates and Greenguard-certified finishes"
+  ],
+  "faqs": [
+    {
+      "q": "Will sustainable materials increase lead time?",
+      "a": "Lead times can extend by 2-3 weeks depending on supplier stock, but we plan schedules upfront and provide alternates if timing is critical."}
+  ]
+}
