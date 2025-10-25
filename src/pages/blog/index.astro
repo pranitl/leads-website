@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('posts')).sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 ---
 
-<Layout title="Insights | Crafted Niche Leads" description="Guides on cost planning, sustainable materials, and lead gen tactics for niche home services.">
+<Layout title="Insights | Austin Home Renovation Hub" description="Guides on cost planning, sustainable materials, and lead gen tactics for home renovation services.">
   <section class="border-b border-neutral-200 bg-neutral-50/70">
     <div class="container space-y-6 py-16">
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Insights</p>
