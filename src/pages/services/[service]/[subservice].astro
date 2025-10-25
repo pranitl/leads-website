@@ -28,6 +28,7 @@ export async function getStaticPaths() {
 const { parent, sub, allServices } = Astro.props;
 const subData = sub.data;
 const serviceName = parent?.data.name ?? 'Service';
+const parentSlug = parent?.data.slug ?? 'service';
 
 const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
 const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
@@ -49,6 +50,14 @@ const structuredData = {
   areaServed: 'United States',
   description: subData.intro,
 };
+
+const illustrationMap: Record<string, string> = {
+  landscaping: '/images/placeholders/home-hero-1.svg',
+  hardscaping: '/images/placeholders/service-card.svg',
+  'closet-interior': '/images/placeholders/home-hero-2.svg',
+};
+
+const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/service-card.svg';
 ---
 
 <Layout title={`${subData.title} | ${serviceName}`} description={subData.intro ?? `${subData.title} specialists`} structuredData={structuredData}>
@@ -58,6 +67,9 @@ const structuredData = {
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{serviceName}</p>
         <h1 class="font-heading text-4xl font-semibold text-neutral-900">{subData.title}</h1>
         <p class="max-w-2xl text-sm text-neutral-600">{subData.intro}</p>
+        <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+          <img src={illustration} alt={`${subData.title} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
+        </div>
         {subData.avgCost ? (
           <div class="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
             <span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-700">Typical investment</span>

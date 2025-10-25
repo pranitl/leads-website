@@ -42,6 +42,14 @@ const structuredData = {
   description: data.summary,
   areaServed: 'United States',
 };
+
+const illustrationMap: Record<string, string> = {
+  landscaping: '/images/placeholders/home-hero-1.svg',
+  hardscaping: '/images/placeholders/service-card.svg',
+  'closet-interior': '/images/placeholders/home-hero-2.svg',
+};
+
+const illustration = illustrationMap[data.slug] ?? '/images/placeholders/service-card.svg';
 ---
 
 <Layout title={`${data.name} | Crafted Niche Leads`} description={data.summary} structuredData={structuredData}>
@@ -51,6 +59,9 @@ const structuredData = {
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{data.name}</p>
         <h1 class="font-heading text-4xl font-semibold text-neutral-900">{data.heroTitle ?? data.name}</h1>
         <p class="max-w-2xl text-sm text-neutral-600">{data.heroCopy ?? data.summary}</p>
+        <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+          <img src={illustration} alt={`${data.name} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
+        </div>
         {data.benefits?.length ? (
           <ul class="grid gap-3 sm:grid-cols-2">
             {data.benefits.map((benefit) => (
