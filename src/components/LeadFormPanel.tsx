@@ -232,7 +232,12 @@ export default function LeadFormPanel({
 
   const handleChange = (field: keyof LeadFormValues) => (event: Event) => {
     const target = event.target as HTMLInputElement | HTMLTextAreaElement;
-    let value: string | boolean = target.type === 'checkbox' ? target.checked : target.value;
+    let value: string | boolean;
+    if (target.type === 'checkbox') {
+      value = (target as HTMLInputElement).checked;
+    } else {
+      value = target.value;
+    }
 
     if (field === 'phone' && typeof value === 'string') {
       const numeric = value.replace(/\D/g, '').slice(0, 10);
