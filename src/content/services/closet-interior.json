@@ -1,0 +1,29 @@
+{
+  "name": "Closet & Interior Installations",
+  "slug": "closet-interior",
+  "icon": "layout",
+  "summary": "Space-making custom storage, murphy beds, and eco-forward built-ins tailored to city condos and modern subdivisions.",
+  "heroTitle": "Smart interiors that maximize every cubic inch",
+  "heroCopy": "Designers and installers who prioritize craftsmanship, healthy materials, and seamless project timelines.",
+  "benefits": [
+    "Concept-to-install support with 3D renderings and finish samples",
+    "Specialists in eco-certified boards, hardware, and low-VOC finishes",
+    "Installation crews experienced with condos, high-rise logistics, and HOA coordination"
+  ],
+  "subservices": [
+    { "name": "Custom Closet Systems", "slug": "custom-closets", "summary": "Walk-in, reach-in, and boutique closets built to your wardrobe." },
+    { "name": "Integrated Murphy Beds", "slug": "murphy-beds", "summary": "Guest-ready wall beds with desks, shelves, and lighting." },
+    { "name": "Garage & Pantry Organization", "slug": "garage-pantry", "summary": "High-load shelving, slat walls, and climate-aware storage." },
+    { "name": "Sustainable Material Packages", "slug": "sustainable-materials", "summary": "FSC, recycled, and formaldehyde-free millwork with traceability." }
+  ],
+  "faqs": [
+    {
+      "q": "Can you integrate with existing builder closets?",
+      "a": "Yes. Our network includes retrofit specialists who demo builder-grade wire systems and replace them with custom millwork while protecting flooring and finishes."
+    },
+    {
+      "q": "Do you offer design-only packages?",
+      "a": "We provide design-only engagements with annotated plans, material schedules, and installer handoff kits if you already have a preferred contractor."
+    }
+  ]
+}

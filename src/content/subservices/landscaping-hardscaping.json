@@ -1,0 +1,17 @@
+{
+  "service": "landscaping",
+  "slug": "hardscaping",
+  "title": "Hardscaping Specialists",
+  "intro": "Engineered patios, retaining walls, and stepping systems built with premium stone, concrete, and composite materials.",
+  "avgCost": { "min": 12000, "max": 55000, "notes": "Higher ranges include structural walls, drainage, and lighting." },
+  "highlights": [
+    "3D renderings with material swatches and grading plans",
+    "Permeable or traditional paver systems with hidden drainage",
+    "Integrated lighting, seating, and fire features"
+  ],
+  "faqs": [
+    {
+      "q": "Can you help with HOA approvals?",
+      "a": "We prepare detailed submittal packages including structural notes, product cut sheets, and finish samples for HOA review."}
+  ]
+}

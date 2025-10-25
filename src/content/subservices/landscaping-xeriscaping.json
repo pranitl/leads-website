@@ -1,0 +1,18 @@
+{
+  "service": "landscaping",
+  "slug": "xeriscaping",
+  "title": "Xeriscaping & Drought-Resistant Landscaping",
+  "intro": "Design water-resilient yards using native plants, hydrozones, and modern drip systems that keep landscapes thriving through long dry spells.",
+  "avgCost": { "min": 8000, "max": 35000, "notes": "Ranges based on lot size, grading, and irrigation retrofits." },
+  "highlights": [
+    "Site audits that map sun, soil, and slope for plant placement",
+    "Plant palettes curated for pollinators, texture, and minimal maintenance",
+    "Rainwater harvesting integrations and soil moisture sensors"
+  ],
+  "faqs": [
+    {
+      "q": "Will xeriscaping hurt my curb appeal?",
+      "a": "No. Our designers balance sculptural plantings, boulders, and permeable materials to create high-impact visuals that stay lush with minimal water usage."
+    }
+  ]
+}

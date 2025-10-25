@@ -1,0 +1,17 @@
+{
+  "service": "landscaping",
+  "slug": "native-planting",
+  "title": "Organic & Native Plant Landscaping",
+  "intro": "Layered planting schemes using native species, soil amendments, and organic maintenance plans that thrive without chemicals.",
+  "avgCost": { "min": 6000, "max": 28000, "notes": "Includes soil prep, planting, mulch, and seasonal follow-up visits." },
+  "highlights": [
+    "Locally sourced natives and adaptive species",
+    "Organic fertilizers and integrated pest management",
+    "Seasonal refresh plans and pollinator habitat design"
+  ],
+  "faqs": [
+    {
+      "q": "Do you offer maintenance services?",
+      "a": "Yes. Our organic care teams handle pruning, soil health, and seasonal color updates to keep native landscapes thriving."}
+  ]
+}

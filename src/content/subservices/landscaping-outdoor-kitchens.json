@@ -1,0 +1,17 @@
+{
+  "service": "landscaping",
+  "slug": "outdoor-kitchens",
+  "title": "Outdoor Kitchens & Fire Features",
+  "intro": "Signature cooking suites, pizza ovens, and custom fire lounges built to withstand the elements.",
+  "avgCost": { "min": 15000, "max": 78000, "notes": "Pricing reflects utilities, appliances, masonry, and custom millwork." },
+  "highlights": [
+    "Appliance packages from Lynx, Wolf, and Blaze",
+    "Code-compliant gas, electric, and water routing",
+    "Integrated seating, lighting, and storage"
+  ],
+  "faqs": [
+    {
+      "q": "Will you coordinate permits and inspections?",
+      "a": "Absolutely. We manage permit drawings, utility coordination, and final inspections for gas and electrical scopes."}
+  ]
+}
