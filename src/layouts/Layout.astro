@@ -1,22 +1,130 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'Crafted Niche Home Services | Lead Hub',
+  description = 'Connect with curated specialists for landscaping and custom interior build-outs. Tell us what you need and we will match you with the right pros.',
+  canonical,
+  structuredData,
+  pageClass,
+} = Astro.props;
+
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const phoneDisplay = '(888) 555-0199';
+const phoneHref = 'tel:+18885550199';
+const navLinks = [
+  { href: '/services', label: 'Services' },
+  { href: '/locations', label: 'Locations' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {canonical ? (
+      <link rel="canonical" href={canonical} />
+    ) : (
+      <link rel="canonical" href={Astro.url.href} />
+    )}
+    {ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline>
+          {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ga4Id}');`}
+        </script>
+      </>
+    )}
+    {structuredData && (
+      <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+    )}
+  </head>
+  <body class:list={[pageClass]}>
+    <div class="flex min-h-screen flex-col">
+      <header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
+        <div class="bg-brand-600 text-sm text-white">
+          <div class="container flex flex-col gap-2 py-2 sm:flex-row sm:items-center sm:justify-between">
+            <p class="font-medium">Need help choosing the right specialist?</p>
+            <a class="inline-flex items-center gap-2 font-semibold hover:text-accent-gold" href={phoneHref}>
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent-gold text-brand-700 text-xs font-bold">24/7</span>
+              <span>{phoneDisplay}</span>
+            </a>
+          </div>
+        </div>
+        <div class="container flex items-center justify-between gap-6 py-4">
+          <a href="/" class="flex items-center gap-2 font-heading text-xl font-semibold text-brand-700">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700 shadow-card">CN</span>
+            Crafted Niche Leads
+          </a>
+          <nav class="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <a
+                class="rounded-lg px-4 py-2 text-sm font-medium text-neutral-700 transition hover:text-brand-600"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div class="flex items-center gap-3">
+            <a class="hidden text-sm font-semibold text-brand-600 hover:text-brand-700 lg:inline-block" href={phoneHref}>
+              Call {phoneDisplay}
+            </a>
+            <a class="btn-cta" href="#lead-form">
+              Get My Quote
+            </a>
+          </div>
+        </div>
+      </header>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <footer class="border-t border-neutral-200 bg-white py-12">
+        <div class="container grid gap-10 md:grid-cols-[2fr,1fr,1fr]">
+          <div class="space-y-4">
+            <a href="/" class="flex items-center gap-3 font-heading text-lg font-semibold text-brand-700">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700 shadow-card">CN</span>
+              Crafted Niche Leads
+            </a>
+            <p class="max-w-md text-sm text-neutral-600">
+              We match homeowners with specialized landscaping and interior buildout pros who understand modern, sustainable design. Submit your project and our team connects you within minutes.
+            </p>
+            <a class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={phoneHref}>
+              {phoneDisplay}
+            </a>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-500">Company</h3>
+            <ul class="space-y-2 text-sm text-neutral-600">
+              <li><a class="hover:text-brand-600" href="/about">About</a></li>
+              <li><a class="hover:text-brand-600" href="/contact">Contact</a></li>
+              <li><a class="hover:text-brand-600" href="/privacy">Privacy</a></li>
+              <li><a class="hover:text-brand-600" href="/terms">Terms</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-500">Services</h3>
+            <ul class="space-y-2 text-sm text-neutral-600">
+              <li><a class="hover:text-brand-600" href="/services/landscaping">Landscaping</a></li>
+              <li><a class="hover:text-brand-600" href="/services/landscaping/hardscaping">Hardscaping</a></li>
+              <li><a class="hover:text-brand-600" href="/services/closet-interior">Custom Closets</a></li>
+              <li><a class="hover:text-brand-600" href="/locations">Service Areas</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="container mt-10 border-t border-neutral-200 pt-6 text-xs text-neutral-500">
+          © {new Date().getFullYear()} Crafted Niche Leads. All rights reserved.
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
