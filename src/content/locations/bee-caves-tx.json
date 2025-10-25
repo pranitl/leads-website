@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Bee Caves",
+  "slug": "texas/bee-caves",
+  "intro": "Luxury properties blend sculpted hardscapes, lush plant palettes, and boutique closets to keep spaces polished year-round.",
+  "neighborhoods": ["Spanish Oaks", "Falconhead", "The Galleria"],
+  "popularServices": [
+    "hardscaping/outdoor-kitchens",
+    "landscaping/sustainable-design",
+    "closet-interior/custom-closets"
+  ]
+}

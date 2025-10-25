@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Leander",
+  "slug": "texas/leander",
+  "intro": "Newer communities in Leander want family-friendly backyards, shade structures, and custom mudroom storage to handle daily life.",
+  "neighborhoods": ["Crystal Falls", "Bryson", "Mason Hills"],
+  "popularServices": [
+    "hardscaping/hardscaping",
+    "landscaping/irrigation",
+    "closet-interior/murphy-beds"
+  ]
+}

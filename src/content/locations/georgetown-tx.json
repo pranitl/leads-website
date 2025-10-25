@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Georgetown",
+  "slug": "texas/georgetown",
+  "intro": "Historic homes and new builds alike lean on artisan stonework, drought-conscious plantings, and built-in storage to stay timeless.",
+  "neighborhoods": ["Sun City", "Berry Creek", "Wolf Ranch"],
+  "popularServices": [
+    "hardscaping/permeable-hardscaping",
+    "landscaping/native-planting",
+    "closet-interior/sustainable-materials"
+  ]
+}

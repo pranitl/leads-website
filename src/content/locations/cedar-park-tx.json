@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Cedar Park",
+  "slug": "texas/cedar-park",
+  "intro": "Growing families invest in xeriscaped front yards, patio covers, and custom closets to make suburban homes work harder.",
+  "neighborhoods": ["Brushy Creek", "Twin Creeks", "Buttercup Creek"],
+  "popularServices": [
+    "landscaping/xeriscaping",
+    "hardscaping/hardscaping",
+    "closet-interior/custom-closets"
+  ]
+}

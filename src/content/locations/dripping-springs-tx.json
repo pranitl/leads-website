@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Dripping Springs",
+  "slug": "texas/dripping-springs",
+  "intro": "Acreage lots call for rainwater-wise landscaping, outdoor entertaining zones, and storage that keeps gear organized between hill country adventures.",
+  "neighborhoods": ["Belterra", "Headwaters", "Caliterra"],
+  "popularServices": [
+    "landscaping/xeriscaping",
+    "hardscaping/outdoor-kitchens",
+    "closet-interior/garage-pantry"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "state": "Texas",
+  "city": "Round Rock",
+  "slug": "texas/round-rock",
+  "intro": "Round Rock homeowners prioritize low-maintenance landscapes, outdoor kitchens, and storage solutions that keep pace with busy households.",
+  "neighborhoods": ["Forest Creek", "Teravista", "Paloma Lake"],
+  "popularServices": [
+    "landscaping/sustainable-design",
+    "hardscaping/outdoor-kitchens",
+    "closet-interior/garage-pantry"
+  ]
+}
