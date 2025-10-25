@@ -6,3 +6,7 @@ node_modules
 dist
 .vercel
 examples/
+.claude/*
+.DS_Store
+*.DS_Store
+.DS_Store*
