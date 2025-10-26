@@ -10,15 +10,16 @@ Author: System Architecture Team
 ## Table of Contents
 
 1. [Executive Summary](#executive-summary)
-2. [System Architecture](#system-architecture)
-3. [Authentication](#authentication)
-4. [API Endpoint Design](#api-endpoint-design)
-5. [Payload Structures](#payload-structures)
-6. [Environment Configuration](#environment-configuration)
-7. [n8n Workflow Setup](#n8n-workflow-setup)
-8. [Error Handling](#error-handling)
-9. [Manual Testing Checklist](#manual-testing-checklist)
-10. [Implementation Steps](#implementation-steps)
+2. [Assumptions & Prerequisites](#assumptions--prerequisites)
+3. [System Architecture](#system-architecture)
+4. [Authentication](#authentication)
+5. [API Endpoint Design](#api-endpoint-design)
+6. [Payload Structures](#payload-structures)
+7. [Environment Configuration](#environment-configuration)
+8. [n8n Workflow Setup](#n8n-workflow-setup)
+9. [Error Handling](#error-handling)
+10. [Manual Testing Checklist](#manual-testing-checklist)
+11. [Implementation Steps](#implementation-steps)
 
 ---
 
@@ -34,7 +35,7 @@ Implement a simple webhook integration to forward validated lead form submission
 - **Security**: CAPTCHA (Turnstile) implemented client-side, needs server verification
 
 ### Target State (MVP)
-- Astro API endpoint at `/api/leads` receives form submissions
+- Cloudflare Pages Function at `/api/leads` receives form submissions
 - Verifies CAPTCHA token server-side
 - Forwards to n8n webhook with Bearer token authentication
 - n8n saves lead to NocoDB "Leads" base
@@ -47,6 +48,100 @@ Implement a simple webhook integration to forward validated lead form submission
 - **Authentication**: Bearer token (high-entropy secret)
 - **Target**: n8n Webhook → NocoDB
 - **Protection**: Cloudflare WAF/Bot protection + edge rate limiting
+
+---
+
+## Assumptions & Prerequisites
+
+### Cloudflare Infrastructure
+- **Domain**: Website is hosted on Cloudflare with DNS and proxy enabled
+- **WAF/Bot Protection**: Cloudflare WAF is configured and active
+- **Edge Rate Limiting**: Rate limiting rules can be created for `/api/leads` endpoint
+- **Turnstile**: Cloudflare Turnstile is configured with site key and secret key
+- **SSL/TLS**: HTTPS is enforced with valid certificates
+
+### NocoDB Setup
+- **Instance**: NocoDB is running at https://nocodb.pranitlab.com/
+- **Base Access**: "Leads" base exists and is accessible
+- **API Token**: NocoDB API token is generated with write permissions for "Leads" base
+- **Field Schema**: NocoDB "Leads" table has fields matching the payload mapping:
+  - `Lead ID` (text/varchar)
+  - `Name` (text/varchar)
+  - `Email` (text/varchar)
+  - `Phone` (text/varchar)
+  - `Address` (text/varchar)
+  - `Service` (text/varchar)
+  - `Subservice` (text/varchar, nullable)
+  - `Timeline` (text/varchar)
+  - `Budget` (text/varchar)
+  - `Details` (text/varchar, nullable)
+  - `Source` (text/varchar)
+  - `Submitted At` (datetime/timestamp)
+
+### n8n Configuration
+- **Instance**: n8n is accessible (cloud or self-hosted)
+- **Workflow Creation**: User can create and activate workflows
+- **Environment Variables**: n8n supports setting environment variables
+- **HTTP Requests**: n8n can make outbound HTTP requests to external APIs
+- **Webhook URLs**: n8n provides stable webhook URLs for production use
+
+### Development Environment
+- **Node.js**: Version 18+ is available for development and deployment
+- **Astro CLI**: Project can be built and deployed using standard Astro commands
+- **Environment Variables**: Development and production environments support `.env` files
+- **API Routes**: Astro API routes are enabled and functional
+- **TypeScript**: TypeScript support is configured and working
+
+### Secret Management
+- **Secure Generation**: Secrets are generated using cryptographically secure methods
+- **Environment Storage**: Secrets are stored in environment variables, not in code
+- **Production Secrets**: Production secrets are managed securely (Cloudflare Secrets, GitHub Secrets, or equivalent)
+- **Secret Rotation**: Process exists for rotating secrets without downtime
+- **No Hardcoding**: No secrets are committed to version control
+
+### Network & Connectivity
+- **Internet Access**: Astro deployment can reach external APIs (Cloudflare Turnstile, n8n)
+- **n8n Connectivity**: n8n can reach NocoDB API endpoint
+- **Firewall Rules**: No firewall blocks outbound connections from Astro to n8n or n8n to NocoDB
+- **DNS Resolution**: All domain names resolve correctly from deployment environment
+
+### Security Assumptions
+- **Trusted Environment**: n8n webhook endpoint is considered trusted and secure
+- **Bearer Token Security**: 32+ character high-entropy secret provides sufficient authentication
+- **Cloudflare Protection**: WAF and bot protection mitigate common attack vectors
+- **CAPTCHA Effectiveness**: Turnstile effectively prevents automated bot submissions
+- **HTTPS Only**: All communications occur over encrypted HTTPS connections
+
+### Data Privacy & Compliance
+- **Consent Collection**: Form includes explicit consent checkbox for data collection
+- **Data Minimization**: Only necessary lead data is collected and stored
+- **Privacy Policy**: Privacy policy exists and is accessible to users
+- **Data Retention**: Policy exists for data retention and deletion if needed
+
+### Monitoring & Observability
+- **Console Access**: Application logs are accessible in production environment
+- **Error Tracking**: Failed requests are logged with sufficient detail for debugging
+- **NocoDB Access**: Direct access to NocoDB for verifying lead records
+- **n8n Logs**: n8n workflow execution logs are available for troubleshooting
+
+### Deployment & Operations
+- **CI/CD**: Process exists for deploying Astro site changes
+- **Environment Promotion**: Process exists for promoting changes through environments
+- **Rollback**: Ability to quickly rollback if issues arise
+- **Backup**: NocoDB data is backed up regularly
+
+### Dependencies & Versions
+- **Astro**: Version 5.15.1+ with API routes support
+- **Node.js**: Version 18+ for crypto.randomUUID() support
+- **Fetch API**: Available in runtime environment for HTTP requests
+- **TypeScript**: Configured and working for type safety
+
+### Failure Scenarios Handled
+- **Cloudflare Outage**: Turnstile verification fails gracefully
+- **n8n Downtime**: API returns 503 and logs appropriately
+- **NocoDB Unavailable**: n8n workflow logs errors for manual intervention
+- **Invalid Requests**: API validates and rejects malformed requests
+- **Network Timeouts**: Requests have reasonable timeouts and error handling
 
 ---
 
