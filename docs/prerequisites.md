@@ -173,7 +173,7 @@ Ensure these fields exist in the Leads table (adjust mapping in n8n if different
 
 | Field Name | Type | Required | Notes |
 |-------------|------|---------|-------|
-| `Lead ID` | Text/VarChar | Yes | UUID from submission |
+| `LeadID` | Text/VarChar | Yes | UUID from submission |
 | `Name` | Text/VarChar | Yes | Full name |
 | `Email` | Text/VarChar | Yes | Email address |
 | `Phone` | Text/VarChar | Yes | 10-digit phone |
@@ -184,7 +184,7 @@ Ensure these fields exist in the Leads table (adjust mapping in n8n if different
 | `Budget` | Text/VarChar | Yes | Budget range |
 | `Details` | Text/VarChar | No | Project description |
 | `Source` | Text/VarChar | Yes | Form origin |
-| `Submitted At` | DateTime/Timestamp | Yes | ISO 8601 timestamp |
+| `SubmittedAt` | DateTime/Timestamp | Yes | ISO 8601 timestamp |
 
 ---
 

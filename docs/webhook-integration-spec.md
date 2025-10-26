@@ -336,34 +336,50 @@ Content-Type: application/json
 | 503 | n8n unreachable | `{ "error": "Service temporarily unavailable" }` |
 | 500 | Server error | `{ "error": "Internal server error" }` |
 
-#### Processing Steps (Simplified)
+#### Processing Steps (Cloudflare Pages Function)
 
 ```typescript
-// Pseudocode for /api/leads endpoint
-export async function POST({ request }) {
+// functions/api/leads.ts - Cloudflare Pages Function (Workers runtime)
+interface Env {
+  TURNSTILE_SECRET_KEY: string;
+  N8N_BEARER_SECRET: string;
+  N8N_WEBHOOK_URL: string;
+  CF_ACCESS_CLIENT_ID?: string;
+  CF_ACCESS_CLIENT_SECRET?: string;
+}
+
+export const onRequestPost: PagesFunction = async ({ request, env }) => {
   try {
     // STEP 1: Parse and validate request
     const body = await request.json();
     
     // Minimal validation
-    if (!body.service || !body.zip || !body.name || !body.email || !body.phone || !body.consent || !body.captchaToken) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400 }
-      );
+    if (!body?.service || !body?.zip || !body?.name || !body?.email || !body?.phone || body?.consent !== true || !body?.captchaToken) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { 
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    // STEP 2: Verify CAPTCHA token
-    const captchaResult = await verifyCaptcha(
-      body.captchaToken,
-      request.headers.get('cf-connecting-ip')
-    );
+    // STEP 2: Verify CAPTCHA token using Cloudflare Turnstile API
+    const ip = request.headers.get('cf-connecting-ip') || undefined;
+    const form = new URLSearchParams();
+    form.set('secret', env.TURNSTILE_SECRET_KEY);
+    form.set('response', body.captchaToken);
+    if (ip) form.set('remoteip', ip);
 
-    if (!captchaResult.success) {
-      return new Response(
-        JSON.stringify({ error: 'CAPTCHA verification failed' }),
-        { status: 401 }
-      );
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: form,
+    });
+
+    const verifyData = await verifyRes.json();
+    
+    if (!verifyData.success) {
+      return new Response(JSON.stringify({ error: 'CAPTCHA verification failed' }), { 
+        status: 401,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // STEP 3: Build payload
@@ -386,36 +402,49 @@ export async function POST({ request }) {
       },
     };
 
-    // STEP 4: Send to n8n webhook
-    const response = await fetch(import.meta.env.N8N_WEBHOOK_URL, {
+    // STEP 4: Prepare headers for n8n webhook
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${env.N8N_BEARER_SECRET}`,
+    };
+
+    // Add Cloudflare Access headers if n8n is behind Access
+    if (env.CF_ACCESS_CLIENT_ID && env.CF_ACCESS_CLIENT_SECRET) {
+      headers['CF-Access-Client-Id'] = env.CF_ACCESS_CLIENT_ID;
+      headers['CF-Access-Client-Secret'] = env.CF_ACCESS_CLIENT_SECRET;
+    }
+
+    // STEP 5: Send to n8n webhook
+    const n8nRes = await fetch(env.N8N_WEBHOOK_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.N8N_BEARER_SECRET}`,
-      },
+      headers,
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      throw new Error(`n8n webhook failed: ${response.status}`);
+    if (!n8nRes.ok) {
+      return new Response(JSON.stringify({ error: 'Service temporarily unavailable' }), { 
+        status: 503,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    // STEP 5: Return success
-    return new Response(
-      JSON.stringify({
-        success: true,
-        leadId: payload.id,
-        message: 'Lead submitted successfully'
-      }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
+    // STEP 6: Return success
+    return new Response(JSON.stringify({
+      success: true,
+      leadId: payload.id,
+      message: 'Lead submitted successfully'
+    }), { 
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
 
   } catch (error) {
-    console.error('Lead submission error:', error.message);
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('Lead submission error:', errorMessage);
+    return new Response(JSON.stringify({ error: 'Internal server error' }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
 ```
