@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LeadFormPanel from '../components/LeadFormPanel.tsx';
+import LeadFormIsland from '../components/LeadFormIsland.astro';
 import { getCollection } from 'astro:content';
 
 const services = await getCollection('services');
@@ -37,7 +37,7 @@ const siteKey =
         <p class="mt-2 text-sm text-neutral-600">For suppliers, agencies, or press, email <a class="text-brand-600 hover:text-brand-700" href="mailto:partners@craftedniche.com">partners@craftedniche.com</a>.</p>
       </div>
     </div>
-    <LeadFormPanel
+    <LeadFormIsland
       services={services.map((svc) => ({
         slug: svc.data.slug,
         name: svc.data.name,

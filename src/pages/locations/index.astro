@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import LeadFormIsland from '../../components/LeadFormIsland.astro';
 import { getCollection } from 'astro:content';
 
 const locationsCollection = await getCollection('locations');
@@ -52,7 +52,7 @@ const structuredData = {
           Greater Austin is our home base. Explore the cities below to see how we help homeowners connect with trusted specialists. Don’t see your town? Share your zip in the form and we’ll notify you when we expand.
         </p>
       </div>
-      <LeadFormPanel
+      <LeadFormIsland
         services={services.map((svc) => ({
           slug: svc.data.slug,
           name: svc.data.name,

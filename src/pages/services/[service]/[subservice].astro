@@ -1,6 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import LeadFormPanel from '../../../components/LeadFormPanel.tsx';
+import LeadFormIsland from '../../../components/LeadFormIsland.astro';
 import FAQList from '../../../components/FAQList.astro';
 import { getCollection } from 'astro:content';
 
@@ -87,7 +87,7 @@ const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/servic
           </ul>
         ) : null}
       </div>
-      <LeadFormPanel
+      <LeadFormIsland
         services={allServices}
         submitMode={submitMode}
         captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}

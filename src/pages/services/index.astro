@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import LeadFormIsland from '../../components/LeadFormIsland.astro';
 import { getCollection } from 'astro:content';
 
 const servicesCollection = await getCollection('services');
@@ -35,7 +35,7 @@ const structuredData = {
           From drought-ready landscapes to space-saving closet builds, our network pairs you with artisans who understand sustainability, aesthetics, and precision installation.
         </p>
       </div>
-      <LeadFormPanel
+      <LeadFormIsland
         services={services.map((svc) => ({
           slug: svc.slug,
           name: svc.name,
