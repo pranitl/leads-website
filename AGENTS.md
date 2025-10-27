@@ -63,3 +63,6 @@ Part of #[parent-issue-number]
 - Sub-issues reference parent with "Part of #X"
 - Always add both parent and sub-issues to the project
 - Use full URLs in parent tasklists for GitHub tracking
+
+## Git Commits
+For each thing in the todo list you have, ensure you commit often so that we are able to track work. Use standard commit messages which are detailed and start with best practices like docs: fix:, feat: bug: chore: etc.
