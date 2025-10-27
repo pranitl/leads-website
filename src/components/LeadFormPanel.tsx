@@ -252,9 +252,9 @@ export default function LeadFormPanel({
   }, [step]);
 
   const handleChange = (field: keyof LeadFormValues) => (event: Event) => {
-    const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+    const target = event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     let value: string | boolean;
-    if (target.type === 'checkbox') {
+    if (target instanceof HTMLInputElement && target.type === 'checkbox') {
       value = (target as HTMLInputElement).checked;
     } else {
       value = target.value;
@@ -418,7 +418,7 @@ export default function LeadFormPanel({
   };
 
   return (
-    <div class={`card w-full max-w-md space-y-6 ${className ?? ''}`} id="lead-form">
+    <div class={`card w-full max-w-md space-y-6 text-neutral-900 ${className ?? ''}`} id="lead-form">
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Step {step} of 2</p>
         <h2 class="mt-2 font-heading text-2xl font-semibold text-neutral-900">
@@ -442,6 +442,7 @@ export default function LeadFormPanel({
               class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               value={values.service}
               onInput={handleChange('service')}
+              onChange={handleChange('service')}
               required
             >
               <option value="">Select a service</option>
@@ -589,6 +590,7 @@ export default function LeadFormPanel({
                     class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                     value={values.subservice}
                     onInput={handleChange('subservice')}
+                    onChange={handleChange('subservice')}
                   >
                     <option value="">Choose an option</option>
                     {selectedService.subservices.map((item) => (
