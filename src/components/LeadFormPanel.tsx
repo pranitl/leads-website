@@ -77,9 +77,24 @@ declare global {
         options: {
           sitekey: string;
           callback: (token: string) => void;
+          // Additional optional Turnstile options (loosen typing to avoid TS errors)
+          'expired-callback'?: () => void;
+          'error-callback'?: () => void;
+          'refresh-expired'?: 'auto' | 'manual' | boolean;
+          retry?: 'auto' | 'never';
+          appearance?: 'always' | 'execute' | 'interaction-only' | 'invisible' | string;
+          execution?: 'render' | 'execute' | string;
+          theme?: 'auto' | 'dark' | 'light';
+          size?: 'normal' | 'compact' | 'invisible';
+          action?: string;
+          cData?: string;
+          'response-field'?: boolean;
+          'response-field-name'?: string;
         },
       ) => string;
       reset: (widgetId: string) => void;
+      execute: (widgetId: string) => void;
+      getResponse: (widgetId: string) => string;
     };
     grecaptcha?: {
       ready: (cb: () => void) => void;
@@ -178,7 +193,13 @@ export default function LeadFormPanel({
         if (!window.turnstile || !turnstileContainerRef.current) return;
         turnstileWidgetId.current = window.turnstile.render(turnstileContainerRef.current, {
           sitekey: captcha.siteKey!,
+          // Invisible widget; we will execute programmatically on submit
+          appearance: 'invisible',
+          retry: 'auto',
+          'refresh-expired': 'auto',
           callback: (token: string) => setCaptchaToken(token),
+          'expired-callback': () => setCaptchaToken(''),
+          'error-callback': () => setCaptchaToken(''),
         });
       });
     }
@@ -301,6 +322,47 @@ export default function LeadFormPanel({
   const submitLead = async () => {
     if (!validate(2)) return;
     setStatus('submitting');
+
+    // Ensure Turnstile token for invisible/non-interactive/preclearance modes
+    if (captcha?.provider === 'turnstile' && typeof window !== 'undefined' && window.turnstile && turnstileWidgetId.current) {
+      try {
+        // Helper to read current token from the widget (do not rely on stale state)
+        const getResp = () => {
+          try {
+            return window.turnstile!.getResponse(turnstileWidgetId.current!);
+          } catch {
+            return '';
+          }
+        };
+
+        let token = getResp();
+        if (!token) {
+          // Trigger token generation for invisible widgets
+          try {
+            window.turnstile!.execute(turnstileWidgetId.current!);
+          } catch {
+            // Some modes may auto-execute on render; ignore
+          }
+          const start = Date.now();
+          await new Promise<void>((resolve, reject) => {
+            const interval = setInterval(() => {
+              token = getResp();
+              if (token) {
+                clearInterval(interval);
+                setCaptchaToken(token);
+                resolve();
+              } else if (Date.now() - start > 6000) {
+                clearInterval(interval);
+                reject(new Error('CAPTCHA timeout'));
+              }
+            }, 100);
+          });
+        }
+      } catch {
+        setStatus('error');
+        return;
+      }
+    }
 
     const payload = {
       ...values,
@@ -622,7 +684,19 @@ export default function LeadFormPanel({
               </div>
               {errors.consent && <p class="text-xs text-danger">{errors.consent}</p>}
 
-              {captcha?.provider === 'turnstile' && <div class="hidden" ref={turnstileContainerRef}></div>}
+              {captcha?.provider === 'turnstile' && (
+                <div
+                  ref={turnstileContainerRef}
+                  style={{
+                    position: 'absolute',
+                    width: 0,
+                    height: 0,
+                    overflow: 'hidden',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
 
               {status === 'error' && (
                 <p class="rounded-lg border border-danger/20 bg-danger/5 px-3 py-2 text-sm text-danger">
