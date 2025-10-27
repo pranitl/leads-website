@@ -1,12 +1,15 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import LeadFormIsland from '../../../components/LeadFormIsland.astro';
+import LeadCaptureSection from '../../../components/LeadCaptureSection.astro';
 import FAQList from '../../../components/FAQList.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../../../lib/services';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
   const subservices = await getCollection('subservices');
+
+  const serviceOptions = toLeadFormServiceOptions(services);
 
   return subservices.map((sub) => {
     const parent = services.find((svc) => svc.data.slug === sub.data.service);
@@ -15,11 +18,7 @@ export async function getStaticPaths() {
       props: {
         parent,
         sub,
-        allServices: services.map((svc) => ({
-          slug: svc.data.slug,
-          name: svc.data.name,
-          subservices: svc.data.subservices ?? [],
-        })),
+        allServices: serviceOptions,
       },
     };
   });
@@ -29,15 +28,6 @@ const { parent, sub, allServices } = Astro.props;
 const subData = sub.data;
 const serviceName = parent?.data.name ?? 'Service';
 const parentSlug = parent?.data.slug ?? 'service';
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -61,40 +51,33 @@ const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/servic
 ---
 
 <Layout title={`${subData.title} | ${serviceName}`} description={subData.intro ?? `${subData.title} specialists`} structuredData={structuredData}>
-  <section class="border-b border-neutral-200 bg-neutral-50/70">
-    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{serviceName}</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">{subData.title}</h1>
-        <p class="max-w-2xl text-sm text-neutral-600">{subData.intro}</p>
-        <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
-          <img src={illustration} alt={`${subData.title} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
-        </div>
-        {subData.avgCost ? (
-          <div class="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
-            <span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-700">Typical investment</span>
-            ${subData.avgCost.min.toLocaleString()} - ${subData.avgCost.max.toLocaleString()}
-            {subData.avgCost.notes && <span class="text-xs text-neutral-500">({subData.avgCost.notes})</span>}
-          </div>
-        ) : null}
-        {subData.highlights?.length ? (
-          <ul class="grid gap-3 sm:grid-cols-2">
-            {subData.highlights.map((highlight) => (
-              <li class="rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
-                {highlight}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
-      <LeadFormIsland
-        services={allServices}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-        className="shadow-card"
-      />
+  <LeadCaptureSection
+    services={allServices}
+    eyebrow={serviceName}
+    title={subData.title}
+    description={subData.intro}
+    formClassName="shadow-card"
+  >
+    <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+      <img src={illustration} alt={`${subData.title} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
     </div>
-  </section>
+    {subData.avgCost ? (
+      <div class="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
+        <span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-700">Typical investment</span>
+        ${subData.avgCost.min.toLocaleString()} - ${subData.avgCost.max.toLocaleString()}
+        {subData.avgCost.notes && <span class="text-xs text-neutral-500">({subData.avgCost.notes})</span>}
+      </div>
+    ) : null}
+    {subData.highlights?.length ? (
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {subData.highlights.map((highlight) => (
+          <li class="rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
+            {highlight}
+          </li>
+        ))}
+      </ul>
+    ) : null}
+  </LeadCaptureSection>
 
   <section class="container space-y-12 py-16">
     <FAQList items={subData.faqs ?? parent?.data.faqs ?? []} />

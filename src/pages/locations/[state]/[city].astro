@@ -1,12 +1,15 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import LeadFormIsland from '../../../components/LeadFormIsland.astro';
+import LeadCaptureSection from '../../../components/LeadCaptureSection.astro';
 import FAQList from '../../../components/FAQList.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../../../lib/services';
 
 export async function getStaticPaths() {
   const locations = await getCollection('locations');
   const services = await getCollection('services');
+
+  const serviceOptions = toLeadFormServiceOptions(services);
 
   return locations.map((location) => {
     const [stateSegment, citySegment] = location.data.slug.split('/');
@@ -14,11 +17,7 @@ export async function getStaticPaths() {
       params: { state: stateSegment, city: citySegment },
       props: {
         location,
-        allServices: services.map((svc) => ({
-          slug: svc.data.slug,
-          name: svc.data.name,
-          subservices: svc.data.subservices ?? [],
-        })),
+        allServices: serviceOptions,
       },
     };
   });
@@ -26,15 +25,6 @@ export async function getStaticPaths() {
 
 const { location, allServices } = Astro.props;
 const data = location.data;
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -45,44 +35,37 @@ const structuredData = {
 ---
 
 <Layout title={`${data.city}, ${data.state} | Austin Home Renovation Hub`} description={data.intro} structuredData={structuredData}>
-  <section class="border-b border-neutral-200 bg-neutral-50/70">
-    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{data.state}</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">{data.city} specialists</h1>
-        <p class="max-w-2xl text-sm text-neutral-600">{data.intro}</p>
-        {data.popularServices?.length ? (
-          <div class="space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Popular services</p>
-            <ul class="space-y-2 text-sm text-neutral-600">
-              {data.popularServices.map((slug) => {
-                const [serviceSlug, subSlug] = slug.split('/');
-                const service = allServices.find((svc) => svc.slug === serviceSlug);
-                const sub = service?.subservices?.find((item: any) => item.slug === subSlug);
-                return (
-                  <li>
-                    <a class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700" href={sub ? `/services/${serviceSlug}/${subSlug}` : `/services/${serviceSlug}`}>
-                      <span class="inline-flex h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-                      {sub ? `${sub.name} (${service?.name})` : service?.name}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ) : null}
-        {data.neighborhoods?.length ? (
-          <p class="text-xs uppercase tracking-wide text-neutral-500">Neighborhoods: {data.neighborhoods.join(', ')}</p>
-        ) : null}
+  <LeadCaptureSection
+    services={allServices}
+    eyebrow={data.state}
+    title={`${data.city} specialists`}
+    description={data.intro}
+    formClassName="shadow-card"
+  >
+    {data.popularServices?.length ? (
+      <div class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Popular services</p>
+        <ul class="space-y-2 text-sm text-neutral-600">
+          {data.popularServices.map((slug) => {
+            const [serviceSlug, subSlug] = slug.split('/');
+            const service = allServices.find((svc) => svc.slug === serviceSlug);
+            const sub = service?.subservices?.find((item) => item.slug === subSlug);
+            return (
+              <li>
+                <a class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700" href={sub ? `/services/${serviceSlug}/${subSlug}` : `/services/${serviceSlug}`}>
+                  <span class="inline-flex h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+                  {sub ? `${sub.name} (${service?.name})` : service?.name}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      <LeadFormIsland
-        services={allServices}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-        className="shadow-card"
-      />
-    </div>
-  </section>
+    ) : null}
+    {data.neighborhoods?.length ? (
+      <p class="text-xs uppercase tracking-wide text-neutral-500">Neighborhoods: {data.neighborhoods.join(', ')}</p>
+    ) : null}
+  </LeadCaptureSection>
 
   <section class="container space-y-12 py-16">
     <FAQList

@@ -1,21 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LeadFormIsland from '../../components/LeadFormIsland.astro';
+import LeadCaptureSection from '../../components/LeadCaptureSection.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../../lib/services';
 
 const servicesCollection = await getCollection('services');
 const services = servicesCollection.map((entry) => ({
   ...entry.data,
 }));
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
+const leadFormServices = toLeadFormServiceOptions(servicesCollection);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -26,28 +19,13 @@ const structuredData = {
 ---
 
 <Layout title="Services | Austin Home Renovation Hub" description="Explore home renovation services, then request curated specialists for your project." structuredData={structuredData}>
-  <section class="border-b border-neutral-200 bg-neutral-50/70">
-    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Our roster</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">Specialists curated for modern outdoor and interior projects</h1>
-        <p class="max-w-2xl text-sm text-neutral-600">
-          From drought-ready landscapes to space-saving closet builds, our network pairs you with artisans who understand sustainability, aesthetics, and precision installation.
-        </p>
-      </div>
-      <LeadFormIsland
-        services={services.map((svc) => ({
-          slug: svc.slug,
-          name: svc.name,
-          summary: svc.summary,
-          subservices: svc.subservices ?? [],
-        }))}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-        className="shadow-card"
-      />
-    </div>
-  </section>
+  <LeadCaptureSection
+    services={leadFormServices}
+    eyebrow="Our roster"
+    title="Specialists curated for modern outdoor and interior projects"
+    description="From drought-ready landscapes to space-saving closet builds, our network pairs you with artisans who understand sustainability, aesthetics, and precision installation."
+    formClassName="shadow-card"
+  />
 
   <section class="container space-y-10 py-16">
     <div class="grid gap-6 md:grid-cols-2">

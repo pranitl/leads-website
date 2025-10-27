@@ -1,18 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LeadFormIsland from '../components/LeadFormIsland.astro';
+import LeadCaptureSection from '../components/LeadCaptureSection.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../lib/services';
 
-const services = await getCollection('services');
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
+const servicesCollection = await getCollection('services');
+const leadFormServices = toLeadFormServiceOptions(servicesCollection);
 ---
 
 <Layout title="Contact | Austin Home Renovation Hub" description="Reach our concierge team for partnerships, press, or project support.">
@@ -26,26 +19,24 @@ const siteKey =
     </div>
   </section>
 
-  <section class="container grid gap-12 py-16 lg:grid-cols-[1.1fr,0.9fr]">
-    <div class="space-y-8">
-      <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
-        <h2 class="font-heading text-2xl font-semibold text-neutral-900">General inquiries</h2>
-        <p class="mt-2 text-sm text-neutral-600">Email <a class="text-brand-600 hover:text-brand-700" href="mailto:hello@craftedniche.com">hello@craftedniche.com</a>. A concierge will respond within one business day.</p>
-      </div>
-      <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
-        <h2 class="font-heading text-2xl font-semibold text-neutral-900">Partnerships & media</h2>
-        <p class="mt-2 text-sm text-neutral-600">For suppliers, agencies, or press, email <a class="text-brand-600 hover:text-brand-700" href="mailto:partners@craftedniche.com">partners@craftedniche.com</a>.</p>
-      </div>
+  <LeadCaptureSection
+    services={leadFormServices}
+    sectionClass="bg-transparent"
+    containerClass="gap-12 py-16 lg:grid-cols-[1.1fr,0.9fr]"
+    leftColumnClass="space-y-8"
+    formClassName="shadow-card"
+  >
+    <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+      <h2 class="font-heading text-2xl font-semibold text-neutral-900">General inquiries</h2>
+      <p class="mt-2 text-sm text-neutral-600">
+        Email <a class="text-brand-600 hover:text-brand-700" href="mailto:hello@craftedniche.com">hello@craftedniche.com</a>. A concierge will respond within one business day.
+      </p>
     </div>
-    <LeadFormIsland
-      services={services.map((svc) => ({
-        slug: svc.data.slug,
-        name: svc.data.name,
-        subservices: svc.data.subservices ?? [],
-      }))}
-      submitMode={submitMode}
-      captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-      className="shadow-card"
-    />
-  </section>
+    <div class="rounded-2xl border border-neutral-200 bg-white/90 p-6 shadow-card">
+      <h2 class="font-heading text-2xl font-semibold text-neutral-900">Partnerships & media</h2>
+      <p class="mt-2 text-sm text-neutral-600">
+        For suppliers, agencies, or press, email <a class="text-brand-600 hover:text-brand-700" href="mailto:partners@craftedniche.com">partners@craftedniche.com</a>.
+      </p>
+    </div>
+  </LeadCaptureSection>
 </Layout>

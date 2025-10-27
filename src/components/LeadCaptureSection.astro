@@ -1,0 +1,54 @@
+---
+import LeadFormIsland from './LeadFormIsland.astro';
+import { getLeadFormConfig } from '../lib/leadFormConfig';
+import type { ServiceOption } from '../lib/leadFormTypes';
+
+interface Props {
+  services: ServiceOption[];
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  sectionClass?: string;
+  containerClass?: string;
+  leftColumnClass?: string;
+  formClassName?: string;
+  leadFormProps?: {
+    source?: string;
+    className?: string;
+  };
+}
+
+const {
+  services,
+  eyebrow,
+  title,
+  description,
+  sectionClass = 'border-b border-neutral-200 bg-neutral-50/70',
+  containerClass = '',
+  leftColumnClass = '',
+  formClassName = '',
+  leadFormProps,
+}: Props = Astro.props;
+
+const { submitMode, captcha } = getLeadFormConfig();
+const combinedFormClass = [formClassName, leadFormProps?.className].filter(Boolean).join(' ') || undefined;
+---
+
+<section class={`relative ${sectionClass}`}>
+  <slot name="background" />
+  <div class={`container relative grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start ${containerClass}`}>
+    <div class={`space-y-6 ${leftColumnClass}`}>
+      {eyebrow ? <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{eyebrow}</p> : null}
+      {title ? <h1 class="font-heading text-4xl font-semibold text-neutral-900">{title}</h1> : null}
+      {description ? <p class="max-w-2xl text-sm text-neutral-600">{description}</p> : null}
+      <slot />
+    </div>
+    <LeadFormIsland
+      services={services}
+      submitMode={submitMode}
+      captcha={captcha}
+      source={leadFormProps?.source}
+      className={combinedFormClass}
+    />
+  </div>
+</section>
