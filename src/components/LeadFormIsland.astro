@@ -1,16 +1,6 @@
 ---
 import LeadFormPanel from './LeadFormPanel.tsx';
-
-type Subservice = {
-  slug: string;
-  name: string;
-};
-
-type ServiceOption = {
-  slug: string;
-  name: string;
-  subservices?: Subservice[];
-};
+import type { ServiceOption } from '../lib/leadFormTypes';
 
 type CaptchaConfig =
   | {
