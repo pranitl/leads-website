@@ -14,6 +14,7 @@ type ServiceOption = {
 type LeadFormValues = {
   service: string;
   subservice: string;
+  otherProjectDetails: string;
   zip: string;
   name: string;
   email: string;
@@ -44,6 +45,7 @@ type Step = 1 | 2;
 const initialValues: LeadFormValues = {
   service: '',
   subservice: '',
+  otherProjectDetails: '',
   zip: '',
   name: '',
   email: '',
@@ -58,6 +60,7 @@ const initialValues: LeadFormValues = {
 const createEmptyErrors = (): LeadFormErrors => ({
   service: null,
   subservice: null,
+  otherProjectDetails: null,
   zip: null,
   name: null,
   email: null,
@@ -296,6 +299,9 @@ export default function LeadFormPanel({
       if (selectedService?.subservices?.length && !values.subservice) {
         nextErrors.subservice = 'Choose a sub-service';
       }
+      if (values.subservice === 'other' && !values.otherProjectDetails) {
+        nextErrors.otherProjectDetails = 'Please specify the project type';
+      }
       if (!values.consent) nextErrors.consent = 'Consent is required';
     }
 
@@ -304,7 +310,19 @@ export default function LeadFormPanel({
     const fieldsToInspect: Array<keyof LeadFormErrors> =
       currentStep === 1
         ? ['service', 'zip']
-        : ['service', 'zip', 'subservice', 'name', 'email', 'phone', 'address', 'timeline', 'budget', 'consent'];
+        : [
+            'service',
+            'zip',
+            'subservice',
+            'otherProjectDetails',
+            'name',
+            'email',
+            'phone',
+            'address',
+            'timeline',
+            'budget',
+            'consent',
+          ];
 
     return fieldsToInspect.every((field) => !nextErrors[field]);
   };
@@ -365,6 +383,7 @@ export default function LeadFormPanel({
 
     const payload = {
       ...values,
+      subservice: values.subservice === 'other' ? `Other: ${values.otherProjectDetails}` : values.subservice,
       phone: values.phone.replace(/[^\d]/g, ''),
       source,
       captchaToken,
@@ -602,10 +621,27 @@ export default function LeadFormPanel({
                         {item.name}
                       </option>
                     ))}
+                    <option value="other">Other</option>
                   </select>
                   {errors.subservice && <p class="text-xs text-danger">{errors.subservice}</p>}
                 </div>
               ) : null}
+
+              {selectedService?.subservices?.length && values.subservice === 'other' && (
+                <div class="space-y-1">
+                  <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-otherProjectDetails`}>
+                    Please specify project type
+                  </label>
+                  <input
+                    id={`${formId}-otherProjectDetails`}
+                    class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                    value={values.otherProjectDetails}
+                    onInput={handleChange('otherProjectDetails')}
+                    required
+                  />
+                  {errors.otherProjectDetails && <p class="text-xs text-danger">{errors.otherProjectDetails}</p>}
+                </div>
+              )}
 
               <fieldset class="space-y-2">
                 <legend class="text-sm font-medium text-brown-body">What is your timeline?</legend>
