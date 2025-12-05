@@ -1,38 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import LeadCaptureSection from '../../components/LeadCaptureSection.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../../lib/services';
+import { orderLocationsByPriority } from '../../lib/locations';
 
 const locationsCollection = await getCollection('locations');
-const services = await getCollection('services');
+const servicesCollection = await getCollection('services');
 
-const prioritySlugs = [
-  'texas/austin',
-  'texas/cedar-park',
-  'texas/round-rock',
-  'texas/georgetown',
-  'texas/leander',
-  'texas/dripping-springs',
-  'texas/bee-caves',
-];
-
-const priorityIndex = new Map(prioritySlugs.map((slug, index) => [slug, index]));
-
-const orderedLocations = [...locationsCollection].sort((a, b) => {
-  const aIndex = priorityIndex.has(a.data.slug) ? priorityIndex.get(a.data.slug)! : prioritySlugs.length;
-  const bIndex = priorityIndex.has(b.data.slug) ? priorityIndex.get(b.data.slug)! : prioritySlugs.length;
-  if (aIndex !== bIndex) return aIndex - bIndex;
-  return a.data.city.localeCompare(b.data.city);
-});
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
+const orderedLocations = orderLocationsByPriority(locationsCollection);
+const leadFormServices = toLeadFormServiceOptions(servicesCollection);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -43,27 +20,13 @@ const structuredData = {
 ---
 
 <Layout title="Locations | Austin Home Renovation Hub" description="Explore markets where our home renovation specialists are active." structuredData={structuredData}>
-  <section class="border-b border-neutral-200 bg-neutral-50/70">
-    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Service areas</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">Service areas we currently serve</h1>
-        <p class="max-w-2xl text-sm text-neutral-600">
-          Greater Austin is our home base. Explore the cities below to see how we help homeowners connect with trusted specialists. Don’t see your town? Share your zip in the form and we’ll notify you when we expand.
-        </p>
-      </div>
-      <LeadFormPanel
-        services={services.map((svc) => ({
-          slug: svc.data.slug,
-          name: svc.data.name,
-          subservices: svc.data.subservices ?? [],
-        }))}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-        className="shadow-card"
-      />
-    </div>
-  </section>
+  <LeadCaptureSection
+    services={leadFormServices}
+    eyebrow="Service areas"
+    title="Service areas we currently serve"
+    description="Greater Austin is our home base. Explore the cities below to see how we help homeowners connect with trusted specialists. Don’t see your town? Share your zip in the form and we’ll notify you when we expand."
+    formClassName="shadow-card"
+  />
   <section class="container space-y-8 py-16">
     <div class="grid gap-5 md:grid-cols-3 lg:grid-cols-4">
       {orderedLocations.map((entry) => (

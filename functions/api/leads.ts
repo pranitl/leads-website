@@ -85,10 +85,9 @@ export const onRequestPost: MyPagesFunction = async ({ request, env }) => {
       },
     };
 
-    // Prepare headers for n8n
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${env.N8N_BEARER_SECRET}`,
+      'X-API-Key': env.N8N_BEARER_SECRET,
     };
 
     // Add Cloudflare Access headers if configured

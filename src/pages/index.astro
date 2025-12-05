@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LeadFormPanel from '../components/LeadFormPanel.tsx';
+import LeadCaptureSection from '../components/LeadCaptureSection.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import TrustSignals from '../components/TrustSignals.astro';
 import InsightsPreview from '../components/InsightsPreview.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../lib/services';
+import { orderLocationsByPriority } from '../lib/locations';
 
 const servicesCollection = await getCollection('services');
 const services = servicesCollection.map((entry) => ({
@@ -16,39 +18,14 @@ const services = servicesCollection.map((entry) => ({
   icon: entry.data.icon,
   subservices: entry.data.subservices ?? [],
 }));
+const leadFormServices = toLeadFormServiceOptions(servicesCollection);
 
 const latestPosts = (await getCollection('posts'))
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
 
 const locationEntries = await getCollection('locations');
-const prioritySlugs = [
-  'texas/austin',
-  'texas/cedar-park',
-  'texas/round-rock',
-  'texas/georgetown',
-  'texas/leander',
-  'texas/dripping-springs',
-  'texas/bee-caves',
-];
-const priorityIndex = new Map(prioritySlugs.map((slug, index) => [slug, index]));
-const locations = [...locationEntries]
-  .sort((a, b) => {
-    const aIndex = priorityIndex.has(a.data.slug) ? priorityIndex.get(a.data.slug)! : prioritySlugs.length;
-    const bIndex = priorityIndex.has(b.data.slug) ? priorityIndex.get(b.data.slug)! : prioritySlugs.length;
-    if (aIndex !== bIndex) return aIndex - bIndex;
-    return a.data.city.localeCompare(b.data.city);
-  })
-  .slice(0, 6);
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
+const locations = orderLocationsByPriority(locationEntries).slice(0, 6);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -64,48 +41,56 @@ const structuredData = {
 ---
 
 <Layout title="Austin Home Renovation Hub | Premium Home Services" structuredData={structuredData}>
-  <section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white">
-    <div class="absolute right-0 top-0 h-full w-full bg-[url('/assets/background.svg')] bg-cover bg-right opacity-20"></div>
-    <div class="container relative grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <h1 class="font-heading text-4xl font-semibold leading-tight md:text-5xl">
-          Your concierge for niche landscaping and bespoke interior installs
-        </h1>
-        <p class="max-w-2xl text-base text-white/90">
-          Tired of contacting contractor after contractor with no response? Tell us once—our concierge team lines up vetted local pros who compete to earn your project.
-        </p>
-        <p class="max-w-2xl text-sm text-white/80">
-          Austin Home Renovation Hub connects homeowners with specialists in landscaping, outdoor kitchens, custom closets, home renovations, and more. Expect curated quotes within 24 hours.
-        </p>
-        <ul class="grid gap-4 sm:grid-cols-2">
-          <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
-            <p class="font-heading text-2xl font-semibold">150+</p>
-            <p class="text-sm text-white/80">Verified artisans across landscaping and interior build-outs.</p>
-          </li>
-          <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
-            <p class="font-heading text-2xl font-semibold">4.9 / 5</p>
-            <p class="text-sm text-white/80">Average homeowner satisfaction rating.</p>
-          </li>
-        </ul>
-        <div class="grid gap-4 sm:grid-cols-3 sm:items-end">
-          <img src="/images/placeholders/home-hero-1.svg" alt="Project planning sketch" class="h-36 w-full rounded-2xl border border-white/20 bg-white/10 object-cover shadow-lg shadow-black/20" loading="lazy" />
-          <img src="/images/placeholders/home-hero-2.svg" alt="Outdoor living concept" class="hidden h-40 w-full rounded-2xl border border-white/20 bg-white/10 object-cover shadow-lg shadow-black/20 sm:block" loading="lazy" />
-          <div class="rounded-2xl border border-white/20 bg-white/10 p-4 text-sm text-white/80 backdrop-blur">
-            <p class="font-heading text-xl font-semibold text-white">“They brought the right pros to us.”</p>
-            <p class="mt-2 text-xs text-white/70">— Homeowner in Austin</p>
-            <p class="mt-3 text-xs text-white/70">
-              Real stories coming soon. For now, expect concierge guidance and quotes without the chase.
-            </p>
-          </div>
-        </div>
-      </div>
-      <LeadFormPanel
-        services={services}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
+  <LeadCaptureSection
+    services={leadFormServices}
+    sectionClass="overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white"
+    leftColumnClass="text-white"
+  >
+    <div
+      slot="background"
+      class="absolute right-0 top-0 h-full w-full bg-[url('/assets/background.svg')] bg-cover bg-right opacity-20 pointer-events-none"
+    />
+    <h1 class="font-heading text-4xl font-semibold leading-tight md:text-5xl">
+      Your concierge for niche landscaping and bespoke interior installs
+    </h1>
+    <p class="max-w-2xl text-base text-white/90">
+      Tired of contacting contractor after contractor with no response? Tell us once—our concierge team lines up vetted local pros who compete to earn your project.
+    </p>
+    <p class="max-w-2xl text-sm text-white/80">
+      Austin Home Renovation Hub connects homeowners with specialists in landscaping, outdoor kitchens, custom closets, home renovations, and more. Expect curated quotes within 24 hours.
+    </p>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
+        <p class="font-heading text-2xl font-semibold">150+</p>
+        <p class="text-sm text-white/80">Verified artisans across landscaping and interior build-outs.</p>
+      </li>
+      <li class="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
+        <p class="font-heading text-2xl font-semibold">4.9 / 5</p>
+        <p class="text-sm text-white/80">Average homeowner satisfaction rating.</p>
+      </li>
+    </ul>
+    <div class="grid gap-4 sm:grid-cols-3 sm:items-end">
+      <img
+        src="/images/placeholders/home-hero-1.svg"
+        alt="Project planning sketch"
+        class="h-36 w-full rounded-2xl border border-white/20 bg-white/10 object-cover shadow-lg shadow-black/20"
+        loading="lazy"
       />
+      <img
+        src="/images/placeholders/home-hero-2.svg"
+        alt="Outdoor living concept"
+        class="hidden h-40 w-full rounded-2xl border border-white/20 bg-white/10 object-cover shadow-lg shadow-black/20 sm:block"
+        loading="lazy"
+      />
+      <div class="rounded-2xl border border-white/20 bg-white/10 p-4 text-sm text-white/80 backdrop-blur">
+        <p class="font-heading text-xl font-semibold text-white">“They brought the right pros to us.”</p>
+        <p class="mt-2 text-xs text-white/70">— Homeowner in Austin</p>
+        <p class="mt-3 text-xs text-white/70">
+          Real stories coming soon. For now, expect concierge guidance and quotes without the chase.
+        </p>
+      </div>
     </div>
-  </section>
+  </LeadCaptureSection>
 
   <section class="container space-y-16 py-16">
     <ServiceGrid services={services} />

@@ -1,0 +1,30 @@
+---
+import LeadFormPanel from './LeadFormPanel.tsx';
+import type { ServiceOption } from '../lib/leadFormTypes';
+
+type CaptchaConfig =
+  | {
+      provider: 'turnstile' | 'recaptcha';
+      siteKey?: string;
+    }
+  | undefined;
+
+interface Props {
+  services: ServiceOption[];
+  submitMode?: 'stub' | 'live';
+  source?: string;
+  captcha?: CaptchaConfig;
+  className?: string;
+}
+
+const { services, submitMode = 'stub', source, captcha, className }: Props = Astro.props;
+---
+
+<LeadFormPanel
+  client:load
+  services={services}
+  submitMode={submitMode}
+  source={source}
+  captcha={captcha}
+  className={className}
+/>

@@ -1,38 +1,28 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LeadFormPanel from '../../components/LeadFormPanel.tsx';
+import LeadCaptureSection from '../../components/LeadCaptureSection.astro';
 import FAQList from '../../components/FAQList.astro';
 import { getCollection } from 'astro:content';
+import { toLeadFormServiceOptions } from '../../lib/services';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
   const subservices = await getCollection('subservices');
+
+  const serviceOptions = toLeadFormServiceOptions(services);
 
   return services.map((service) => ({
     params: { service: service.data.slug },
     props: {
       service,
       subserviceEntries: subservices.filter((entry) => entry.data.service === service.data.slug),
-      allServices: services.map((entry) => ({
-        slug: entry.data.slug,
-        name: entry.data.name,
-        subservices: entry.data.subservices ?? [],
-      })),
+      allServices: serviceOptions,
     },
   }));
 }
 
 const { service, subserviceEntries, allServices } = Astro.props;
 const data = service.data;
-
-const submitMode = import.meta.env.PUBLIC_LEADS_MODE === 'live' ? 'live' : 'stub';
-const captchaProvider = (import.meta.env.PUBLIC_CAPTCHA_PROVIDER as 'turnstile' | 'recaptcha' | undefined) ?? undefined;
-const siteKey =
-  captchaProvider === 'turnstile'
-    ? import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-    : captchaProvider === 'recaptcha'
-      ? import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-      : undefined;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -53,33 +43,26 @@ const illustration = illustrationMap[data.slug] ?? '/images/placeholders/service
 ---
 
 <Layout title={`${data.name} | Austin Home Renovation Hub`} description={data.summary} structuredData={structuredData}>
-  <section class="border-b border-neutral-200 bg-neutral-50/70">
-    <div class="container grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-      <div class="space-y-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{data.name}</p>
-        <h1 class="font-heading text-4xl font-semibold text-neutral-900">{data.heroTitle ?? data.name}</h1>
-        <p class="max-w-2xl text-sm text-neutral-600">{data.heroCopy ?? data.summary}</p>
-        <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
-          <img src={illustration} alt={`${data.name} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
-        </div>
-        {data.benefits?.length ? (
-          <ul class="grid gap-3 sm:grid-cols-2">
-            {data.benefits.map((benefit) => (
-              <li class="rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
-      <LeadFormPanel
-        services={allServices}
-        submitMode={submitMode}
-        captcha={captchaProvider ? { provider: captchaProvider, siteKey } : undefined}
-        className="shadow-card"
-      />
+  <LeadCaptureSection
+    services={allServices}
+    eyebrow={data.name}
+    title={data.heroTitle ?? data.name}
+    description={data.heroCopy ?? data.summary}
+    formClassName="shadow-card"
+  >
+    <div class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+      <img src={illustration} alt={`${data.name} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
     </div>
-  </section>
+    {data.benefits?.length ? (
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {data.benefits.map((benefit) => (
+          <li class="rounded-2xl border border-neutral-200 bg-white/90 p-4 text-sm text-neutral-700 shadow-card">
+            {benefit}
+          </li>
+        ))}
+      </ul>
+    ) : null}
+  </LeadCaptureSection>
 
   <section class="container space-y-12 py-16">
     {data.subservices?.length ? (
