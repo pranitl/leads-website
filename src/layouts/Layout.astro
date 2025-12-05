@@ -10,6 +10,7 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site?.href ?? new URL('/', Astro.url).origin + '/';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -80,11 +81,7 @@ const navLinks = [
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    {canonical ? (
-      <link rel="canonical" href={canonical} />
-    ) : (
-      <link rel="canonical" href={Astro.url.href} />
-    )}
+    <link rel="canonical" href={canonicalUrl} />
     {ga4Id && (
       <>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
