@@ -18,10 +18,30 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['"Oswald"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Lato"', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // New rustic palette
+        cream: {
+          DEFAULT: '#F2E8D5',
+          light: '#FFFBF5',
+        },
+        brown: {
+          forest: '#5C4033',
+          dark: '#3D2B1F',
+          body: '#5D4E37',
+          muted: '#8B7355',
+        },
+        sage: {
+          DEFAULT: '#4A5D4A',
+          light: '#7A8B6E',
+        },
+        oxide: {
+          DEFAULT: '#BC4B38',
+          hover: '#A3402F',
+        },
+        // Keep existing brand colors for gradual migration
         brand: {
           50: '#F0F7F6',
           100: '#D6E7E4',
@@ -54,6 +74,11 @@ export default {
       },
       boxShadow: {
         card: '0 20px 45px -25px rgba(15, 23, 42, 0.35)',
+        hard: '4px 4px 0px #5C4033',
+        'hard-sm': '3px 3px 0px #5C4033',
+        'hard-hover': '2px 2px 0px #5C4033',
+        'hard-light': '3px 3px 0px #D4C4A8',
+        'hard-light-hover': '5px 5px 0px #D4C4A8',
       },
       borderRadius: {
         xl: '1rem',
