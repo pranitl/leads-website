@@ -34,27 +34,27 @@ const getIllustration = (slug: string) => illustrationMap[slug] ?? '/images/plac
 
 <section class="space-y-6">
   <div class="flex flex-col gap-3">
-    <h2 class="font-heading text-3xl font-semibold text-neutral-900">Specialized services we offer</h2>
-    <p class="max-w-2xl text-sm text-neutral-600">
+    <h2 class="font-heading text-3xl font-semibold text-brown-dark">Specialized services we offer</h2>
+    <p class="max-w-2xl text-sm text-brown-body">
       Built for homeowners who want boutique craftsmanship without the guesswork. Start with a category and we will pinpoint the exact sub-specialist your project needs.
     </p>
   </div>
   <div class="grid gap-5 md:grid-cols-2">
     {services.map((service) => (
-      <article class="group flex h-full flex-col gap-5 rounded-2xl border border-transparent bg-white/90 p-6 shadow-card transition hover:-translate-y-1 hover:border-brand-200">
+      <article class="group flex h-full flex-col gap-5 rounded-2xl border-2 border-brown-forest/20 bg-cream-light p-6 shadow-hard-light transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-light-hover">
         <div class="space-y-4">
           <div class="flex items-center gap-3">
-            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brown-forest text-cream">
               <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-current">
                 <path d={getIconPath(service.icon)} />
               </svg>
             </span>
             <div>
-              <h3 class="font-heading text-xl font-semibold text-neutral-900">{service.name}</h3>
-              <p class="text-sm text-neutral-600">{service.summary}</p>
+              <h3 class="font-heading text-xl font-semibold text-brown-dark">{service.name}</h3>
+              <p class="text-sm text-brown-body">{service.summary}</p>
             </div>
           </div>
-          <div class="overflow-hidden rounded-xl border border-neutral-100 bg-neutral-50">
+          <div class="overflow-hidden rounded-xl border-2 border-brown-forest/10 bg-cream">
             <img
               src={getIllustration(service.slug)}
               alt={`${service.name} illustration`}
@@ -63,23 +63,23 @@ const getIllustration = (slug: string) => illustrationMap[slug] ?? '/images/plac
             />
           </div>
           {service.subservices?.length ? (
-            <ul class="space-y-2 text-sm text-neutral-600">
+            <ul class="space-y-2 text-sm text-brown-body">
               {service.subservices.slice(0, 4).map((item) => (
                 <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+                  <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-oxide"></span>
                   <div>
-                    <p class="font-medium text-neutral-700">{item.name}</p>
-                    {item.summary && <p class="text-xs text-neutral-500">{item.summary}</p>}
+                    <p class="font-medium text-brown-dark">{item.name}</p>
+                    {item.summary && <p class="text-xs text-brown-muted">{item.summary}</p>}
                   </div>
                 </li>
               ))}
               {service.subservices.length > 4 && (
-                <li class="text-xs font-semibold uppercase tracking-wide text-brand-600">+ {service.subservices.length - 4} more specialties</li>
+                <li class="text-xs font-semibold uppercase tracking-wide text-oxide">+ {service.subservices.length - 4} more specialties</li>
               )}
             </ul>
           ) : null}
         </div>
-        <a class="mt-auto inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700" href={`/services/${service.slug}`}>
+        <a class="mt-auto inline-flex items-center text-sm font-semibold text-oxide hover:text-oxide-hover" href={`/services/${service.slug}`}>
           Explore service
           <svg viewBox="0 0 24 24" class="ml-1 h-4 w-4 fill-current" aria-hidden="true">
             <path d="M13 5a1 1 0 1 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L13 13.586V5Z" />
