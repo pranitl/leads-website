@@ -417,33 +417,28 @@ export default function LeadFormPanel({
   };
 
   return (
-    <div class={`card-rustic w-full max-w-md text-brown-dark ${className ?? ''}`} id="lead-form">
-      <div class="card-rustic-header flex items-center gap-2">
-        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm4-4H6v-2h10v2zm0-4H6V7h10v2z"/>
-        </svg>
-        <span>Get Your Free Project Estimate</span>
-      </div>
-      <div class="card-rustic-body">
-        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">Step {step} of 2</p>
-        <h2 class="mt-2 font-heading text-2xl font-semibold text-brown-dark">
+    <div class={`card w-full max-w-md space-y-6 text-neutral-900 ${className ?? ''}`} id="lead-form">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Step {step} of 2</p>
+        <h2 class="mt-2 font-heading text-2xl font-semibold text-neutral-900">
           {step === 1 ? 'Find vetted pros near you' : `Great! We've found 3 pros in ${displayZip || 'your area'}.`}
         </h2>
-        <p class="mt-2 text-sm text-brown-body">
+        <p class="mt-2 text-sm text-neutral-600">
           {step === 1
             ? 'Start with your project type and zip code. We’ll show you curated matches in the next step.'
             : 'Just tell us where to send your free quotes and we will introduce you within 24 hours.'}
         </p>
+      </div>
 
       {step === 1 ? (
         <form class="space-y-4" onSubmit={startQualification} noValidate>
           <div class="space-y-1">
-            <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-service`}>
+            <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-service`}>
               Service needed
             </label>
             <select
               id={`${formId}-service`}
-              class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+              class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               value={values.service}
               onInput={handleChange('service')}
               onChange={handleChange('service')}
@@ -460,7 +455,7 @@ export default function LeadFormPanel({
           </div>
 
           <div class="space-y-1">
-            <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-zip`}>
+            <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-zip`}>
               ZIP code
             </label>
             <input
@@ -468,7 +463,7 @@ export default function LeadFormPanel({
               inputmode="numeric"
               maxLength={5}
               pattern="\\d{5}"
-              class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+              class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               value={values.zip}
               onInput={handleChange('zip')}
               required
@@ -482,13 +477,13 @@ export default function LeadFormPanel({
         </form>
       ) : (
         <div class="space-y-4">
-          <div class="flex items-center justify-between rounded-lg bg-cream px-3 py-2 text-xs text-brown-body">
+          <div class="flex items-center justify-between rounded-lg bg-neutral-50 px-3 py-2 text-xs text-neutral-600">
             <span>
               {selectedService ? selectedService.name : 'Service'} · ZIP {displayZip}
             </span>
             <button
               type="button"
-              class="font-semibold text-oxide hover:text-oxide-hover"
+              class="font-semibold text-brand-600 hover:text-brand-700"
               onClick={() => {
                 setStep(1);
                 setStatus('idle');
@@ -521,12 +516,12 @@ export default function LeadFormPanel({
               }}
             >
               <div class="space-y-1">
-                <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-name`}>
+                <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-name`}>
                   Full name
                 </label>
                 <input
                   id={`${formId}-name`}
-                  class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                  class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   value={values.name}
                   onInput={handleChange('name')}
                   required
@@ -536,46 +531,46 @@ export default function LeadFormPanel({
 
               <div class="grid gap-4 sm:grid-cols-2">
                 <div class="space-y-1">
-                  <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-email`}>
+                  <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-email`}>
                     Email
                   </label>
                   <input
                     id={`${formId}-email`}
                     type="email"
-                    class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                    class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                     value={values.email}
                     onInput={handleChange('email')}
                     required
                   />
-                  <p class="text-xs text-brown-muted">We’ll email your match confirmation here.</p>
+                  <p class="text-xs text-neutral-500">We’ll email your match confirmation here.</p>
                   {errors.email && <p class="text-xs text-danger">{errors.email}</p>}
                 </div>
                 <div class="space-y-1">
-                  <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-phone`}>
+                  <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-phone`}>
                     Phone
                   </label>
                   <input
                     id={`${formId}-phone`}
                     inputMode="tel"
                     placeholder="555-555-1234"
-                    class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                    class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                     value={values.phone}
                     onInput={handleChange('phone')}
                     required
                   />
-                  <p class="text-xs text-brown-muted">So matched pros can send you a quote. We never spam.</p>
+                  <p class="text-xs text-neutral-500">So matched pros can send you a quote. We never spam.</p>
                   {errors.phone && <p class="text-xs text-danger">{errors.phone}</p>}
                 </div>
               </div>
 
               <div class="space-y-1">
-                <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-address`}>
+                <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-address`}>
                   Full address
                 </label>
                 <input
                   id={`${formId}-address`}
                   ref={addressInputRef}
-                  class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                  class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   value={values.address}
                   onInput={handleChange('address')}
                   placeholder="Street, city, state"
@@ -586,12 +581,12 @@ export default function LeadFormPanel({
 
               {selectedService?.subservices?.length ? (
                 <div class="space-y-1">
-                  <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-subservice`}>
+                  <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-subservice`}>
                     Specific project type (optional)
                   </label>
                   <select
                     id={`${formId}-subservice`}
-                    class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                    class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                     value={values.subservice}
                     onInput={handleChange('subservice')}
                     onChange={handleChange('subservice')}
@@ -608,7 +603,7 @@ export default function LeadFormPanel({
               ) : null}
 
               <fieldset class="space-y-2">
-                <legend class="text-sm font-medium text-brown-body">What is your timeline?</legend>
+                <legend class="text-sm font-medium text-neutral-700">What is your timeline?</legend>
                 <div class="grid gap-2 sm:grid-cols-3">
                   {[
                     { value: 'asap', label: 'As soon as possible' },
@@ -617,7 +612,7 @@ export default function LeadFormPanel({
                   ].map((option) => (
                     <label
                       key={option.value}
-                      class={`rounded-lg border px-3 py-2 text-xs font-semibold uppercase tracking-wide transition ${values.timeline === option.value ? 'border-brown-forest bg-cream text-brown-forest' : 'border-brown-forest/30 text-brown-muted hover:border-brown-forest'}`}
+                      class={`rounded-lg border px-3 py-2 text-xs font-semibold uppercase tracking-wide transition ${values.timeline === option.value ? 'border-brand-500 bg-brand-50 text-brand-700' : 'border-neutral-200 text-neutral-500 hover:border-brand-200'}`}
                     >
                       <input
                         type="radio"
@@ -635,7 +630,7 @@ export default function LeadFormPanel({
               </fieldset>
 
               <fieldset class="space-y-2">
-                <legend class="text-sm font-medium text-brown-body">What is your estimated budget?</legend>
+                <legend class="text-sm font-medium text-neutral-700">What is your estimated budget?</legend>
                 <div class="grid gap-2 sm:grid-cols-2">
                   {[
                     { value: '1000-3000', label: '$1,000 - $3,000' },
@@ -645,7 +640,7 @@ export default function LeadFormPanel({
                   ].map((option) => (
                     <label
                       key={option.value}
-                      class={`rounded-lg border px-3 py-2 text-xs font-semibold uppercase tracking-wide transition ${values.budget === option.value ? 'border-brown-forest bg-cream text-brown-forest' : 'border-brown-forest/30 text-brown-muted hover:border-brown-forest'}`}
+                      class={`rounded-lg border px-3 py-2 text-xs font-semibold uppercase tracking-wide transition ${values.budget === option.value ? 'border-brand-500 bg-brand-50 text-brand-700' : 'border-neutral-200 text-neutral-500 hover:border-brand-200'}`}
                     >
                       <input
                         type="radio"
@@ -663,13 +658,13 @@ export default function LeadFormPanel({
               </fieldset>
 
               <div class="space-y-1">
-                <label class="text-sm font-medium text-brown-body" htmlFor={`${formId}-details`}>
+                <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-details`}>
                   Add a short description (optional)
                 </label>
                 <textarea
                   id={`${formId}-details`}
                   rows={3}
-                  class="w-full rounded-lg border-2 border-brown-forest/30 bg-white px-3 py-2 text-sm focus:border-brown-forest focus:outline-none focus:ring-2 focus:ring-brown-forest/20"
+                  class="w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
                   value={values.details}
                   onInput={handleChange('details')}
                   placeholder="Share vision, materials, or inspiration links"
@@ -682,9 +677,9 @@ export default function LeadFormPanel({
                   type="checkbox"
                   checked={values.consent}
                   onInput={handleChange('consent')}
-                  class="mt-1 h-4 w-4 rounded border-brown-forest/30 text-oxide focus:ring-oxide"
+                  class="mt-1 h-4 w-4 rounded border-neutral-300 text-brand-600 focus:ring-brand-500"
                 />
-                <label class="text-xs text-brown-body" htmlFor={`${formId}-consent`}>
+                <label class="text-xs text-neutral-600" htmlFor={`${formId}-consent`}>
                   I agree to receive calls, texts, or emails about my project. Message and data rates may apply.
                 </label>
               </div>
@@ -709,8 +704,8 @@ export default function LeadFormPanel({
                 {status === 'submitting' ? 'Sending...' : 'Get My Free Quotes!'}
               </button>
 
-              <div class="flex items-center gap-2 rounded-lg border-2 border-brown-forest/20 bg-cream px-3 py-2 text-xs text-brown-body">
-                <svg viewBox="0 0 20 20" aria-hidden="true" class="h-4 w-4 fill-current text-brown-forest">
+              <div class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-xs text-neutral-600">
+                <svg viewBox="0 0 20 20" aria-hidden="true" class="h-4 w-4 fill-current text-brand-600">
                   <path d="M10 2a4 4 0 0 1 4 4v1h1a1 1 0 0 1 1 1v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a1 1 0 0 1 1-1h1V6a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v1h4V6a2 2 0 0 0-2-2Zm-4 7v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-5H6Z" />
                 </svg>
                 <span>Your information is 100% secure. We never sell your data.</span>
@@ -719,7 +714,6 @@ export default function LeadFormPanel({
           )}
         </div>
       )}
-      </div>
     </div>
   );
 }
