@@ -4,9 +4,29 @@
   "slug": "texas/dripping-springs",
   "intro": "Preserve the dark sky and open space. We find verified contractors for acreage-scale hardscapes, drought-tolerant landscaping, and outdoor kitchens.",
   "neighborhoods": ["Belterra", "Headwaters", "Caliterra"],
+  "neighborhoodDescription": "Known as the 'Gateway to the Hill Country', Dripping Springs is defined by larger acreage lots and dark-sky ordinances. Whether you're in a master-planned community like Belterra or on a private ranch, projects here need to respect the natural environment. Our pros are well-versed in low-impact development and acreage management.",
   "popularServices": [
     "landscaping/xeriscaping",
     "hardscaping/outdoor-kitchens",
     "closet-interior/garage-pantry"
-  ]
+  ],
+  "serviceAreaOverview": "Serving Dripping Springs, Driftwood, and the surrounding ranch lands.",
+  "climateChallenges": [
+    {
+      "title": "Dark Sky Compliance",
+      "description": "Outdoor lighting must meet strict local ordinances to preserve the night sky. The lighting specialists we recommend design down-lit, warm-spectrum systems that enhance safety without pollution."
+    },
+    {
+      "title": "Acreage Drainage",
+      "description": "Managing water runoff on large lots is critical to prevent erosion. We connect you with experts in berms, swales, and large-scale land grading."
+    },
+    {
+      "title": "Caliche & Rocky Soil",
+      "description": "Planting in white limestone clay (caliche) is tough. Our partners source native plants specifically adapted to alkaline soils and limited water availability."
+    }
+  ],
+  "marketInsights": {
+    "title": "Dripping Springs Specialist Focus",
+    "description": "Finding contractors willing to travel to acreage properties or who understand septic-safe landscaping can be tough. Our network is curated with rural-ready pros who specialize in large-format hardscaping, deer fencing, and sustainable land stewardship."
+  }
 }

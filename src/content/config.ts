@@ -90,7 +90,23 @@ const locations = defineCollection({
     slug: z.string(),
     intro: z.string().optional(),
     neighborhoods: z.array(z.string()).optional(),
+    neighborhoodDescription: z.string().optional(),
     popularServices: z.array(z.string()).optional(),
+    serviceAreaOverview: z.string().optional(),
+    climateChallenges: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+        }),
+      )
+      .optional(),
+    marketInsights: z
+      .object({
+        title: z.string().optional(),
+        description: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 

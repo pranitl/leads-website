@@ -4,9 +4,29 @@
   "slug": "texas/austin",
   "intro": "From Hyde Park bungalows to Westlake estates, we connect you with vetted pros for sustainable landscaping, hardscapes, and custom interiors.",
   "neighborhoods": ["Westlake", "Mueller", "Circle C Ranch", "Steiner Ranch"],
+  "neighborhoodDescription": "Austin's neighborhoods are as diverse as its landscape. Westlake and Steiner Ranch offer rugged hill country terrain requiring specialized engineering for pools and patios, while central areas like Mueller and Hyde Park demand creative space-saving solutions for historic or compact lots. We match you with pros familiar with your specific neighborhood's zoning, soil conditions, and architectural style.",
   "popularServices": [
     "landscaping/xeriscaping",
     "hardscaping/outdoor-kitchens",
     "closet-interior/custom-closets"
-  ]
+  ],
+  "serviceAreaOverview": "Serving the entire Greater Austin metro. Our network covers all central zip codes including 78704, 78702, and 78746, extending out to surrounding suburbs.",
+  "climateChallenges": [
+    {
+      "title": "Flash Flooding & Drainage",
+      "description": "Central Texas storms can drop inches of rain in hours. Our pros specialize in permeable hardscaping and proper grading to prevent water pooling near foundations."
+    },
+    {
+      "title": "Intense Heat & Drought",
+      "description": "With triple-digit summers, generic lawns struggle. We connect you with xeriscape specialists who use native plants that thrive with minimal irrigation."
+    },
+    {
+      "title": "Clay & Caliche Soil",
+      "description": "Austin's shifting soil can crack standard concrete. Our hardscape partners use engineered bases and flexible install methods to ensure longevity."
+    }
+  ],
+  "marketInsights": {
+    "title": "Why Austin homeowners use our network",
+    "description": "The Austin market is flooded with contractors, from franchise giants like California Closets to local favorites. While many are excellent, finding one that prioritizes sustainability and transparent pricing can be a challenge. We curate only the top-rated specialists who understand Austin's unique eco-system—filtering out the 'ghost' contractors and focusing on those with proven track records in local neighborhoods."
+  }
 }

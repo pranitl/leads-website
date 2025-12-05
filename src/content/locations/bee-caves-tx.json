@@ -4,9 +4,29 @@
   "slug": "texas/bee-caves",
   "intro": "Rugged hill country meets refined living. We match Bee Caves homeowners with specialists for elevated outdoor living and terrain-conscious hardscapes.",
   "neighborhoods": ["Spanish Oaks", "Falconhead", "The Galleria"],
+  "neighborhoodDescription": "From the gated estates of Spanish Oaks to the family-centric Falconhead community, Bee Caves offers a unique blend of luxury and nature. Projects here often require navigating strict HOA guidelines and challenging limestone terrain. Our pros are experienced in hillside engineering and designing deer-resistant landscapes that blend seamlessly with the Hill Country aesthetic.",
   "popularServices": [
     "hardscaping/outdoor-kitchens",
     "landscaping/sustainable-design",
     "closet-interior/custom-closets"
-  ]
+  ],
+  "serviceAreaOverview": "Covering Bee Caves, Lakeway, and the surrounding western hill country communities.",
+  "climateChallenges": [
+    {
+      "title": "Rocky Limestone Terrain",
+      "description": "Digging in Bee Caves often means hitting solid rock. The hardscape crews in our network use specialized heavy equipment to ensure proper footings for patios and retaining walls."
+    },
+    {
+      "title": "Hillside Erosion",
+      "description": "Steep slopes require careful drainage planning. We prioritize matching you with designers who use erosion control and terraced garden layouts to stabilize your property."
+    },
+    {
+      "title": "Deer Pressure",
+      "description": "Local wildlife is abundant. Our landscaping partners recommend deer-resistant native plantings and protective hardscape barriers to keep your garden thriving."
+    }
+  ],
+  "marketInsights": {
+    "title": "Bee Caves Home Services Market",
+    "description": "In Bee Caves, 'standard' solutions rarely work due to the terrain. While many Austin contractors service the area, we connect you with those who specifically specialize in Hill Country challenges—ensuring your retaining wall handles slope pressure and your outdoor kitchen withstands hilltop winds."
+  }
 }

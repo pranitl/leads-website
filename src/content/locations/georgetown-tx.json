@@ -4,9 +4,29 @@
   "slug": "texas/georgetown",
   "intro": "Honoring tradition while building for the future. Connect with craftsmen in Georgetown for timeless renovations, from historic homes to Wolf Ranch.",
   "neighborhoods": ["Sun City", "Berry Creek", "Wolf Ranch"],
+  "neighborhoodDescription": "Georgetown spans from the Victorian charm of the Town Square to the active adult community of Sun City. This diversity requires a broad skillset—from historic preservation in Old Town to accessible, low-maintenance landscaping in Sun City. We have specialists for every era of home.",
   "popularServices": [
     "hardscaping/permeable-hardscaping",
     "landscaping/native-planting",
     "closet-interior/sustainable-materials"
-  ]
+  ],
+  "serviceAreaOverview": "Serving Georgetown, Serenada, and Northern Williamson County.",
+  "climateChallenges": [
+    {
+      "title": "Heavy Clay Soil",
+      "description": "Georgetown's 'black gumbo' clay expands and contracts violently. We work with landscapers whose foundation-aware practices help maintain consistent soil moisture levels."
+    },
+    {
+      "title": "Heat & Sun Exposure",
+      "description": "With less tree canopy in newer developments, sun exposure is high. Our partners design pergolas and shade structures to make outdoor spaces usable year-round."
+    },
+    {
+      "title": "Accessibility Needs",
+      "description": "For aging-in-place, safety is key. We match you with designers who prioritize non-slip pavers, ramp integration, and accessible raised planters."
+    }
+  ],
+  "marketInsights": {
+    "title": "Georgetown Home Services",
+    "description": "Georgetown homeowners value reliability and longevity. Whether you are updating a historic property or customizing a new build in Wolf Ranch, finding pros who respect the local architectural heritage and HOA rules is vital. Our vetted team understands these nuances."
+  }
 }

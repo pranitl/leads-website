@@ -4,9 +4,29 @@
   "slug": "texas/leander",
   "intro": "Rapid growth demands quality. We match Leander homeowners with reliable pros for xeriscaping, outdoor living, and custom interior organization.",
   "neighborhoods": ["Crystal Falls", "Bryson", "Mason Hills"],
+  "neighborhoodDescription": "As one of the fastest-growing cities, Leander is full of new construction homes that often come with basic builder-grade landscapes and closets. Communities like Crystal Falls add rocky terrain to the mix. Our focus is helping you turn a 'blank slate' new build into a personalized home.",
   "popularServices": [
     "hardscaping/hardscaping",
     "landscaping/irrigation",
     "closet-interior/murphy-beds"
-  ]
+  ],
+  "serviceAreaOverview": "Serving Leander, Liberty Hill, and the North Lake Travis area.",
+  "climateChallenges": [
+    {
+      "title": "Rocky Excavation",
+      "description": "Western Leander lies on the Caprock, making digging difficult. Our pros use rock saws and specialized equipment for installing irrigation and fences."
+    },
+    {
+      "title": "New Construction Soil",
+      "description": "Builder sites are often stripped of topsoil. We find landscapers who focus on soil amendment and conditioning to ensure your new landscape can actually take root."
+    },
+    {
+      "title": "Erosion on Slopes",
+      "description": "Many new lots are graded steeply. Our partners design functional retaining walls and terracing to prevent soil washout and maximize usable yard space."
+    }
+  ],
+  "marketInsights": {
+    "title": "Navigating Leander's Growth",
+    "description": "With so much construction, it's hard to filter quality craftsmen from 'fly-by-night' crews chasing new builds. We vet our pros for long-term reliability and warranty support, ensuring your upgrades last longer than the builder's warranty."
+  }
 }

@@ -4,9 +4,29 @@
   "slug": "texas/round-rock",
   "intro": "Building community through better homes. Get matched with high-value pros for Round Rock’s landscapes, outdoor kitchens, and storage projects.",
   "neighborhoods": ["Forest Creek", "Teravista", "Paloma Lake"],
+  "neighborhoodDescription": "From the golf course views of Forest Creek to the master-planned amenities of Teravista, Round Rock offers diverse suburban living. Homeowners here often look to differentiate their homes with custom outdoor kitchens and upgraded interior storage. We help you break the 'cookie-cutter' mold.",
   "popularServices": [
     "landscaping/sustainable-design",
     "hardscaping/outdoor-kitchens",
     "closet-interior/garage-pantry"
-  ]
+  ],
+  "serviceAreaOverview": "Serving Round Rock, Hutto, and Pflugerville.",
+  "climateChallenges": [
+    {
+      "title": "Clay Soil Drainage",
+      "description": "Heavy clay soil is common here. We recommend verified drainage experts who implement French drains and proper grading to protect your foundation."
+    },
+    {
+      "title": "Summer Heat Stress",
+      "description": "Round Rock's open suburban layouts can bake in the sun. Our partners design shade solutions and select heat-hardy native plants to keep your yard cool."
+    },
+    {
+      "title": "Foundation Protection",
+      "description": "Water management is critical for slab foundations on clay. The landscaping designs created by our pros prioritize consistent moisture control around the home perimeter."
+    }
+  ],
+  "marketInsights": {
+    "title": "Round Rock Market",
+    "description": "Round Rock is a competitive market for home services. To get the best value, you need pros who understand local HOA strictness and permit requirements. We connect you with established local businesses that have a reputation for quality and code compliance."
+  }
 }
