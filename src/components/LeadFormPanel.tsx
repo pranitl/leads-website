@@ -193,8 +193,7 @@ export default function LeadFormPanel({
         if (!window.turnstile || !turnstileContainerRef.current) return;
         turnstileWidgetId.current = window.turnstile.render(turnstileContainerRef.current, {
           sitekey: captcha.siteKey!,
-          // Invisible widget; we will execute programmatically on submit
-          appearance: 'invisible',
+          appearance: 'always',
           retry: 'auto',
           'refresh-expired': 'auto',
           callback: (token: string) => setCaptchaToken(token),
@@ -224,7 +223,7 @@ export default function LeadFormPanel({
         });
       });
     }
-  }, [captcha?.provider, captcha?.siteKey]);
+  }, [captcha?.provider, captcha?.siteKey, step]);
 
   useEffect(() => {
     if (step !== 2 || !googleMapsKey || typeof window === 'undefined') return;
@@ -690,12 +689,7 @@ export default function LeadFormPanel({
                 <div
                   ref={turnstileContainerRef}
                   style={{
-                    position: 'absolute',
-                    width: 0,
-                    height: 0,
-                    overflow: 'hidden',
-                    opacity: 0,
-                    pointerEvents: 'none',
+                    marginTop: '1rem',
                   }}
                 />
               )}
