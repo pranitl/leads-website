@@ -6,7 +6,7 @@ This document lists all placeholder images that need to be replaced with real ph
 
 ## Placeholder Naming Convention
 
-All placeholder files are prefixed with `REPLACE-` to make them easy to find. When you have the real photo ready, replace the `.svg` file with a `.jpg` or `.webp` and update the file references in the code.
+We use `.webp` format for all primary images. The `REPLACE-` prefix has been deprecated in favor of direct descriptive naming.
 
 ---
 
@@ -14,18 +14,18 @@ All placeholder files are prefixed with `REPLACE-` to make them easy to find. Wh
 
 ### Homepage Hero Section
 
-| Placeholder File | Replace With | Specifications | Used In |
-|------------------|--------------|----------------|---------|
-| `REPLACE-stone-patio-firepit.svg` | Photo of a completed stone patio with fire pit | 600x400px minimum, warm golden-hour lighting, Austin-style design | Homepage hero (left image) |
-| `REPLACE-custom-closet-interior.svg` | Photo of a custom closet organization system | 600x480px minimum, clean white/wood tones, well-organized | Homepage hero (middle image) |
+| Filename | Subject | Specifications | Used In |
+|----------|---------|----------------|---------|
+| `stone-patio-firepit.webp` | Photo of a completed stone patio with fire pit | 600x400px minimum, warm golden-hour lighting, Austin-style design | Homepage hero (left image) |
+| `custom-closet-interior.webp` | Photo of a custom closet organization system | 600x480px minimum, clean white/wood tones, well-organized | Homepage hero (middle image) |
 
 ### Service Category Pages
 
-| Placeholder File | Replace With | Specifications | Used In |
-|------------------|--------------|----------------|---------|
-| `REPLACE-xeriscaping-landscape.svg` | Xeriscaping/native Texas plants landscape | 640x360px minimum, drought-tolerant plants, natural stone | Landscaping service pages |
-| `REPLACE-hardscape-retaining-wall.svg` | Stone retaining wall or paver patio | 640x360px minimum, professional installation, clean lines | Hardscaping service pages |
-| `REPLACE-custom-closet-interior.svg` | Walk-in closet with custom shelving | 640x360px minimum, organized, modern design | Closet/Interior service pages |
+| Filename | Subject | Specifications | Used In |
+|----------|---------|----------------|---------|
+| `xeriscaping-landscape.webp` | Xeriscaping/native Texas plants landscape | 640x360px minimum, drought-tolerant plants, natural stone | Landscaping service pages |
+| `hardscape-retaining-wall.webp` | Stone retaining wall or paver patio | 640x360px minimum, professional installation, clean lines | Hardscaping service pages |
+| `custom-closet-interior.webp` | Walk-in closet with custom shelving | 640x360px minimum, organized, modern design | Closet/Interior service pages |
 
 ---
 

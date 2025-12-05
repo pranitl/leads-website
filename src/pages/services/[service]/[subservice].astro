@@ -42,12 +42,12 @@ const structuredData = {
 };
 
 const illustrationMap: Record<string, string> = {
-  landscaping: '/images/placeholders/REPLACE-xeriscaping-landscape.svg',
-  hardscaping: '/images/placeholders/REPLACE-hardscape-retaining-wall.svg',
-  'closet-interior': '/images/placeholders/REPLACE-custom-closet-interior.svg',
+  landscaping: '/images/placeholders/xeriscaping-landscape.webp',
+  hardscaping: '/images/placeholders/hardscape-retaining-wall.webp',
+  'closet-interior': '/images/placeholders/custom-closet-interior.webp',
 };
 
-const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/REPLACE-xeriscaping-landscape.svg';
+const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/xeriscaping-landscape.webp';
 ---
 
 <Layout title={`${subData.title} | ${serviceName}`} description={subData.intro ?? `${subData.title} specialists`} structuredData={structuredData}>
