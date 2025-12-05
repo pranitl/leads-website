@@ -1,6 +1,8 @@
 .factory/*
 .mcp.json
 .env
+.env.prod
+.dev.vars
 node_modules
 .astro
 dist
@@ -11,3 +13,4 @@ examples/
 *.DS_Store
 .DS_Store*
 screens/
+.wrangler
