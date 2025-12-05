@@ -2,16 +2,26 @@
   "service": "hardscaping",
   "slug": "outdoor-kitchens",
   "title": "Outdoor Kitchens & Fire Features",
-  "intro": "Signature cooking suites, pizza ovens, and custom fire lounges built to withstand the elements.",
-  "avgCost": { "min": 15000, "max": 78000, "notes": "Pricing reflects utilities, appliances, masonry, and custom millwork." },
+  "intro": "Extend your living room outside. Custom masonry islands and fire pits that make your backyard the neighborhood gathering spot.",
   "highlights": [
-    "Appliance packages from Lynx, Wolf, and Blaze",
-    "Code-compliant gas, electric, and water routing",
-    "Integrated seating, lighting, and storage"
+    "Built-in grills, pizza ovens, and beverage centers",
+    "Durable granite, concrete, or stone countertops",
+    "Wood-burning and gas fire pits with seating walls",
+    "Overhead structures (pergolas) for shade and fan mounting"
   ],
+  "avgCost": {
+    "min": 15000,
+    "max": 60000,
+    "notes": "Simple grill islands start lower; full kitchens with plumbing and electrical run higher."
+  },
   "faqs": [
     {
-      "q": "Will you coordinate permits and inspections?",
-      "a": "Absolutely. We manage permit drawings, utility coordination, and final inspections for gas and electrical scopes."}
+      "q": "Does the team handle the gas and electrical lines?",
+      "a": "Yes, verified teams include licensed trade partners to safely run gas, water, and electrical to your new outdoor island."
+    },
+    {
+      "q": "Can you build a fire pit on my existing patio?",
+      "a": "Often yes, but the crew may need to cut into the patio to run gas lines or ensure proper heat shielding."
+    }
   ]
 }

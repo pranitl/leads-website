@@ -1,16 +1,27 @@
 {
   "service": "landscaping",
   "slug": "sustainable-design",
-  "title": "Sustainable Landscape Master Planning",
-  "intro": "Comprehensive outdoor strategies aligning aesthetics, resource efficiency, and long-term maintenance.",
+  "title": "Sustainable Landscape Design",
+  "intro": "Holistic master planning that considers drainage, shade, ecology, and lifestyle. A roadmap for your perfect outdoor sanctuary.",
   "highlights": [
-    "Phasing roadmaps with budget tiers",
-    "Material carbon footprint benchmarking",
-    "Coordination with architects and pool designers"
+    "Full-property master plans (front and back yard)",
+    "Rainwater harvesting and passive water management",
+    "Phased installation plans to spread budget over time",
+    "HOA-compliant designs that still prioritize sustainability"
   ],
+  "avgCost": {
+    "min": 1500,
+    "max": 5000,
+    "notes": "Design-only fees. Often credited back if you proceed with installation through the same team."
+  },
   "faqs": [
     {
-      "q": "Do you collaborate with architects?",
-      "a": "We regularly partner with residential architects and builders to integrate landscapes with ongoing remodel or new-build schedules."}
+      "q": "What do I get with a design package?",
+      "a": "Typically, you receive a scaled site plan, plant palette with photos, material suggestions, and sometimes 3D perspective views."
+    },
+    {
+      "q": "Can I implement the design in phases?",
+      "a": "Yes! A master plan is perfect for this. Pros can design the whole property and then build it out zone by zone as your budget allows."
+    }
   ]
 }

@@ -1,17 +1,27 @@
 {
   "service": "landscaping",
   "slug": "native-planting",
-  "title": "Organic & Native Plant Landscaping",
-  "intro": "Layered planting schemes using native species, soil amendments, and organic maintenance plans that thrive without chemicals.",
-  "avgCost": { "min": 6000, "max": 28000, "notes": "Includes soil prep, planting, mulch, and seasonal follow-up visits." },
+  "title": "Organic & Native Planting",
+  "intro": "Restore local ecology with plants that belong here. Pollinator-friendly gardens that require less water and zero chemical fertilizers.",
   "highlights": [
-    "Locally sourced natives and adaptive species",
-    "Organic fertilizers and integrated pest management",
-    "Seasonal refresh plans and pollinator habitat design"
+    "Butterfly and pollinator gardens (Milkweed, Lantana, Salvia)",
+    "Shade-tolerant native groundcovers for staying green under oaks",
+    "Seasonal color installation using adaptive species",
+    "Soil microorganism restoration with organic compost teas"
   ],
+  "avgCost": {
+    "min": 1500,
+    "max": 8000,
+    "notes": "Planting projects vary by container size (1-gallon vs 15-gallon) and quantity."
+  },
   "faqs": [
     {
-      "q": "Do you offer maintenance services?",
-      "a": "Yes. Our organic care teams handle pruning, soil health, and seasonal color updates to keep native landscapes thriving."}
+      "q": "Will native plants look messy/weedy?",
+      "a": "Native gardens can be wild or manicured. Teams use intentional grouping and edging to ensure your landscape looks maintained and purposeful."
+    },
+    {
+      "q": "Do pros use chemical fertilizers?",
+      "a": "Our partners prioritize organic methods, focusing on building healthy soil biology rather than temporary synthetic boosts."
+    }
   ]
 }

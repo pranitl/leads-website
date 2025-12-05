@@ -1,17 +1,27 @@
 {
   "service": "hardscaping",
   "slug": "permeable-hardscaping",
-  "title": "Permeable & Sustainable Hardscaping",
-  "intro": "Stormwater-conscious walkways, patios, and drive lanes using permeable pavers, grid systems, and bioswales.",
-  "avgCost": { "min": 9000, "max": 42000, "notes": "Cost varies with excavation depth, base prep, and material selection." },
+  "title": "Permeable Pavers & Drainage",
+  "intro": "Solve standing water issues and meet City of Austin impervious cover limits with smart, drainage-focused paving.",
   "highlights": [
-    "Designs that meet local LID and stormwater requirements",
-    "Geo-grid systems, rain gardens, and french drains",
-    "Maintenance plans to keep infiltration rates high"
+    "Interlocking permeable pavers with rapid infiltration layers",
+    "Gravel-grid driveway systems (TrueGrid, etc.)",
+    "French drains and dry creek beds integrated into design",
+    "Erosion control for sloped driveways and walkways"
   ],
+  "avgCost": {
+    "min": 18,
+    "max": 35,
+    "notes": "Cost per square foot. Permeable systems require deeper base aggregate layers than standard patios."
+  },
   "faqs": [
     {
-      "q": "Can permeable pavers handle vehicle loads?",
-      "a": "Yes, when engineered with the correct base and grid structure. We design to the load requirements of passenger vehicles and light trucks."}
+      "q": "Does this count against my impervious cover limit?",
+      "a": "Typically, properly installed permeable systems are calculated at a different ratio (often 50-100% permeable credits) depending on your specific municipality's code."
+    },
+    {
+      "q": "Will weeds grow through the pavers?",
+      "a": "Installers use specialized joint aggregate that discourages weed growth while still allowing water to pass through."
+    }
   ]
 }

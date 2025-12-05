@@ -1,17 +1,27 @@
 {
   "service": "landscaping",
   "slug": "irrigation",
-  "title": "Irrigation System Installation & Repair",
-  "intro": "Water-smart irrigation upgrades that keep turf, beds, and edible gardens thriving while cutting utility spend.",
-  "avgCost": { "min": 2500, "max": 18000, "notes": "Depends on zones, smart controllers, and trenching complexity." },
+  "title": "Irrigation Installation & Repair",
+  "intro": "Stop wasting water on driveway runoff. Smart irrigation systems designed for deep root watering and compliance with Austin watering restrictions.",
   "highlights": [
-    "Wi-Fi connected controllers with weather automation",
-    "Drip conversions and MP rotator retrofits",
-    "Backflow prevention, audits, and seasonal maintenance"
+    "Drip irrigation conversion for flower beds and foundations",
+    "Smart Wi-Fi controllers (Rachio, Hunter) with weather sensing",
+    "Pressure regulation to prevent misting and evaporation",
+    "Annual backflow testing and system audits"
   ],
+  "avgCost": {
+    "min": 800,
+    "max": 5000,
+    "notes": "Repairs can be under $1k; full new efficiency systems for standard lots range higher."
+  },
   "faqs": [
     {
-      "q": "Do you service existing irrigation issues?",
-      "a": "Yes. Technicians can perform leak detection, valve rebuilds, and head optimization alongside full new installs."}
+      "q": "Why is my water bill so high?",
+      "a": "Often it's due to unseen leaks or inefficient spray heads that mist water into the air. A system audit can identify these waste points immediately."
+    },
+    {
+      "q": "Is drip irrigation better than sprinklers?",
+      "a": "For planting beds, yes. Installers use drip to deliver water directly to the roots with 90%+ efficiency. Rotors are still best for large turf areas."
+    }
   ]
 }

@@ -3,13 +3,96 @@
   "slug": "closet-interior",
   "icon": "layout",
   "summary": "Precision storage for every square foot. Find top-rated installers for custom closets, murphy beds, and built-in organization.",
-  "heroTitle": "Smart interiors that maximize every cubic inch",
-  "heroCopy": "Designers and installers who prioritize craftsmanship, healthy materials, and seamless project timelines.",
+  "heroTitle": "Stress-free, high-clarity closet projects for Austin homeowners",
+  "heroCopy": "Connect with designers and installers who prioritize craftsmanship, healthy materials, and seamless project timelines. We combine professional organizing principles with custom carpentry.",
   "benefits": [
     "Concept-to-install support with 3D renderings and finish samples",
     "Specialists in eco-certified boards, hardware, and low-VOC finishes",
     "Installation crews experienced with condos, high-rise logistics, and HOA coordination"
   ],
+  "whatsIncluded": [
+    "Custom Walk-in & Reach-in Closets",
+    "Integrated Murphy Wall Beds",
+    "Garage Cabinetry & Slat Walls",
+    "Pantry & Laundry Room Organization",
+    "Home Office Built-ins",
+    "Mudrooms & Entryway Drop Zones",
+    "Sustainable Material Upgrades"
+  ],
+  "commonProblems": [
+    {
+      "problem": "Tiny closets with wasted space",
+      "solution": "Designers maximize vertical height and use smart corner units to often double your usable storage capacity without changing the footprint."
+    },
+    {
+      "problem": "Flimsy builder-grade wire shelving",
+      "solution": "Pros replace sagging wire racks with sturdy, adjustable millwork that protects your clothing and looks permanent."
+    },
+    {
+      "problem": "Clutter causing daily stress",
+      "solution": "Designs start with an inventory of your specific habits and items, ensuring every shoe, bag, and hanger has a dedicated home."
+    },
+    {
+      "problem": "Chemical smells from new furniture",
+      "solution": "Our network prioritizes eco-certified, low-VOC materials (NAF/ULEF) that are safe for your family and improve indoor air quality."
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Discovery & Measurements",
+      "description": "A specialist visits your home to precisely measure your space and discuss your routine, wardrobe inventory, and style preferences."
+    },
+    {
+      "step": 2,
+      "title": "3D Design & Material Selection",
+      "description": "Review fully interactive 3D renderings of your new space and choose from a curated library of durable, sustainable finishes."
+    },
+    {
+      "step": 3,
+      "title": "Fabrication & Prep",
+      "description": "Your system is precision-manufactured. You'll receive a simple checklist to help you clear the area before installation day."
+    },
+    {
+      "step": 4,
+      "title": "White-Glove Installation",
+      "description": "Vetted crews protect your floors, install with precision, and clean up completely, often in just 1-2 days."
+    },
+    {
+      "step": 5,
+      "title": "The Walkthrough",
+      "description": "Installers verify every drawer, hinge, and shelf with you to ensure perfection before signing off on the project."
+    }
+  ],
+  "whyChooseUs": [
+    {
+      "title": "Sustainability & Health First",
+      "description": "We verify that partners use safe materials, prioritizing FSC-certified wood and low-emission finishes standard."
+    },
+    {
+      "title": "Organizer-Minded Design",
+      "description": "Matching you with pros who don’t just build boxes; they design systems based on professional organizing principles."
+    },
+    {
+      "title": "Transparent, tiered pricing",
+      "description": "No hidden fees. We help you navigate clear packages—from essential functional upgrades to premium luxury suites."
+    },
+    {
+      "title": "Local Specialists",
+      "description": "Installers who know Austin homes, from downtown high-rise logistics to spacious hill country estates."
+    }
+  ],
+  "serviceArea": {
+    "text": "Our network serves the greater Austin area.",
+    "areas": [
+      "Austin (Central & Metro)",
+      "Westlake & Rollingwood",
+      "Bee Caves & Lakeway",
+      "Cedar Park & Leander",
+      "Dripping Springs & Driftwood",
+      "Round Rock & Georgetown"
+    ]
+  },
   "subservices": [
     { "name": "Custom Closet Systems", "slug": "custom-closets", "summary": "Walk-in, reach-in, and boutique closets built to your wardrobe." },
     { "name": "Integrated Murphy Beds", "slug": "murphy-beds", "summary": "Guest-ready wall beds with desks, shelves, and lighting." },
@@ -18,12 +101,24 @@
   ],
   "faqs": [
     {
-      "q": "Can you integrate with existing builder closets?",
-      "a": "Yes. Our network includes retrofit specialists who demo builder-grade wire systems and replace them with custom millwork while protecting flooring and finishes."
+      "q": "Can pros integrate with existing builder closets?",
+      "a": "Yes. Specialists typically demo builder-grade wire systems, patch/paint as needed, and install custom millwork that maximizes the existing footprint."
     },
     {
-      "q": "Do you offer design-only packages?",
-      "a": "We provide design-only engagements with annotated plans, material schedules, and installer handoff kits if you already have a preferred contractor."
+      "q": "How long does installation take?",
+      "a": "Most reaches-in and standard walk-in closets are installed in a single day. Larger projects like garages or whole-home systems may take 2-3 days."
+    },
+    {
+      "q": "Are eco-friendly materials available?",
+      "a": "Absolutely. It is a core requirement for our network. Partners offer low-VOC and NAF (No Added Formaldehyde) board options."
+    },
+    {
+      "q": "Do I need to empty my closet before installation?",
+      "a": "Yes, the space needs to be clear. If you need assistance, we can connect you with professional organizers who can help purge and pack."
+    },
+    {
+      "q": "Are design-only packages available?",
+      "a": "Yes, we can arrange design-only engagements with annotated plans and material lists if you already have a preferred contractor."
     }
   ]
 }

@@ -1,17 +1,27 @@
 {
   "service": "closet-interior",
   "slug": "custom-closets",
-  "title": "Custom Closet Design & Installation",
-  "intro": "Premium millwork, lighting, and hardware that turns wardrobes into curated experiences.",
-  "avgCost": { "min": 3500, "max": 22000, "notes": "Variables include linear footage, finishes, lighting, and accessories." },
+  "title": "Custom Walk-In & Reach-In Closets",
+  "intro": "Maximize every inch of your wardrobe with precision-designed shelving, drawers, and hanging systems tailored to your daily routine.",
   "highlights": [
-    "3D visualizations with finish boards",
-    "Integrated lighting, glass displays, and shoe walls",
-    "White-glove install teams that protect existing finishes"
+    "Floor-mounting or wall-hung systems for any budget",
+    "Corner shelves and double-hang rods to double capacity",
+    "Jewelry drawers, hamper tilt-outs, and shoe shrines",
+    "Boutique lighting and glass-front cabinetry options"
   ],
+  "avgCost": {
+    "min": 2500,
+    "max": 15000,
+    "notes": "Typical range for a standard master walk-in. Small reach-ins start lower; luxury boutiques go higher."
+  },
   "faqs": [
     {
-      "q": "Do you work with interior designers?",
-      "a": "Yes. We can collaborate with your designer or provide our own design lead to ensure cohesive styling."}
+      "q": "How long does installation take?",
+      "a": "Most custom closet projects are installed in just one day. Larger walk-ins or multi-room projects may take 2-3 days."
+    },
+    {
+      "q": "Can designers plan around my specific wardrobe?",
+      "a": "Yes. Pros inventory your shoes, long dresses, suits, and accessories to ensure the design fits your actual items perfectly."
+    }
   ]
 }

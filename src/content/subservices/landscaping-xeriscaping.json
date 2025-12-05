@@ -1,18 +1,27 @@
 {
   "service": "landscaping",
   "slug": "xeriscaping",
-  "title": "Xeriscaping & Drought-Resistant Landscaping",
-  "intro": "Design water-resilient yards using native plants, hydrozones, and modern drip systems that keep landscapes thriving through long dry spells.",
-  "avgCost": { "min": 8000, "max": 35000, "notes": "Ranges based on lot size, grading, and irrigation retrofits." },
+  "title": "Xeriscaping & Drought-Resistant Design",
+  "intro": "Beautiful, low-maintenance landscapes that save water. Trade your thirsty lawn for a vibrant, texture-rich design.",
   "highlights": [
-    "Site audits that map sun, soil, and slope for plant placement",
-    "Plant palettes curated for pollinators, texture, and minimal maintenance",
-    "Rainwater harvesting integrations and soil moisture sensors"
+    "Lawn removal and replacement with river rock, mulch, or decomposed granite",
+    "Succulent and cactus gardens that thrive in heat",
+    "Cold-hardy plant selections to survive winter freezes",
+    "Weed-barrier fabric installation for lower maintenance"
   ],
+  "avgCost": {
+    "min": 4000,
+    "max": 20000,
+    "notes": "Cost depends heavily on total square footage of turf removal and density of new plantings."
+  },
   "faqs": [
     {
-      "q": "Will xeriscaping hurt my curb appeal?",
-      "a": "No. Our designers balance sculptural plantings, boulders, and permeable materials to create high-impact visuals that stay lush with minimal water usage."
+      "q": "Is xeriscaping just for modern houses?",
+      "a": "No, pros can design xeriscapes in various styles—from modern minimal with steel edging to cottage-style with abundant flowering sages."
+    },
+    {
+      "q": "Will my yard get hotter without grass?",
+      "a": "Hardscapes can retain heat, which is why designers balance rock with mulch and canopy trees to shade the ground and keep ambient temperatures down."
     }
   ]
 }

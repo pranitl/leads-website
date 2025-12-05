@@ -10,6 +10,89 @@
     "Sustainable material sourcing with transparent pricing guidance",
     "Personalized matches delivered within 24 hours so you can compare quotes quickly"
   ],
+  "whatsIncluded": [
+    "Xeriscaping & Drought-Tolerant Design",
+    "Native Plant Installation",
+    "Sod Installation (Zoysia, Bermuda, St. Augustine)",
+    "Smart Irrigation Systems & Repair",
+    "Garden Bed Installation & Mulching",
+    "Tree & Shrub Planting",
+    "Seasonal Color & Maintenance Plans"
+  ],
+  "commonProblems": [
+    {
+      "problem": "High water bills",
+      "solution": "Pros design xeriscapes and install smart irrigation systems that can reduce outdoor water usage by 30-50%."
+    },
+    {
+      "problem": "Plants dying in summer heat",
+      "solution": "Specialists use native plant palettes specifically chosen to survive and thrive in intense Texas summers and sudden freezes."
+    },
+    {
+      "problem": "Muddy, shaded areas where grass won't grow",
+      "solution": "Designers replace struggling lawns with shade-tolerant groundcovers, gravel paths, or native woodland gardens."
+    },
+    {
+      "problem": "Deer eating everything",
+      "solution": "Our network specializes in deer-resistant planting plans using unpalatable texture and scent strategies (like sage, rosemary, and yucca)."
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Vision & Site Analysis",
+      "description": "Designers assess sun exposure, soil quality, and existing vegetation to understand what will thrive in your specific microclimate."
+    },
+    {
+      "step": 2,
+      "title": "Design & Plant Selection",
+      "description": "Design collaboration on a plan that balances color, texture, and maintenance needs, selecting from locally-grown native stock."
+    },
+    {
+      "step": 3,
+      "title": "Site Preparation",
+      "description": "Removal of old sod, soil amendment with high-quality compost, and grading to ensure healthy root establishment."
+    },
+    {
+      "step": 4,
+      "title": "Installation & Irrigation",
+      "description": "Precise planting and setting up drip lines or high-efficiency rotors to deliver water exactly where needed."
+    },
+    {
+      "step": 5,
+      "title": "Walkthrough & Care Guide",
+      "description": "Pros explain how to care for your new landscape and adjust your watering schedule for establishment vs. long-term."
+    }
+  ],
+  "whyChooseUs": [
+    {
+      "title": "Native & Adaptive Focus",
+      "description": "Pros prioritize plants that belong here. They establish faster, need less water, and support local pollinators."
+    },
+    {
+      "title": "Water Stewardship",
+      "description": "Designs consider water conservation, from rainwater harvesting potential to smart controller programming."
+    },
+    {
+      "title": "Transparent Pricing",
+      "description": "Get clear, itemized quotes. We help you understand where your budget goes—plants vs. labor vs. infrastructure."
+    },
+    {
+      "title": "Vetted Local Pros",
+      "description": "Our network consists of verified, insured landscape professionals with a track record of successful Austin projects."
+    }
+  ],
+  "serviceArea": {
+    "text": "Available throughout the Austin metro area.",
+    "areas": [
+      "Central Austin",
+      "North Austin & Domains",
+      "South Austin & Oak Hill",
+      "Westlake & Rollingwood",
+      "Cedar Park, Leander & Round Rock",
+      "Dripping Springs & Driftwood"
+    ]
+  },
   "subservices": [
     { "name": "Xeriscaping & Drought-Resistant Design", "slug": "xeriscaping", "summary": "Low-water landscapes optimized for the Southwest climate." },
     { "name": "Irrigation Installation & Repair", "slug": "irrigation", "summary": "Smart irrigation systems tuned for efficiency and compliance." },
@@ -18,8 +101,20 @@
   ],
   "faqs": [
     {
+      "q": "How much water will I save with xeriscaping?",
+      "a": "Many homeowners see a reduction of 50-75% in outdoor water use after converting a traditional lawn to a well-designed xeriscape with drip irrigation."
+    },
+    {
+      "q": "Does 'native landscaping' mean just cactus and rocks?",
+      "a": "Not at all! Native landscaping includes lush flowering perennials, vibrant shrubs, ornamental grasses, and shade trees. It can be colorful and full of life."
+    },
+    {
       "q": "How fast can I get matched with a landscaping specialist?",
       "a": "Most projects receive introductions to 2-3 vetted landscape teams within 24 hours. Larger design-build scopes may include a discovery call first to align budgets and timelines."
+    },
+    {
+      "q": "Do partners offer maintenance services?",
+      "a": "Yes, many of our network partners offer ongoing maintenance, including seasonal cleanups, pruning, and irrigation checks to keep your landscape healthy."
     }
   ]
 }

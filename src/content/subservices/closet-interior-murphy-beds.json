@@ -1,17 +1,27 @@
 {
   "service": "closet-interior",
   "slug": "murphy-beds",
-  "title": "Murphy Bed Integration Services",
-  "intro": "Space-saving wall beds that transition seamlessly between guest-ready suites and day-to-day living.",
-  "avgCost": { "min": 4200, "max": 16000, "notes": "Higher tiers include custom cabinetry, desks, and integrated lighting." },
+  "title": "Integrated Murphy Beds",
+  "intro": "Transform a home office or den into a comfortable guest room instantly. Modern wall beds that blend seamlessly with custom cabinetry.",
   "highlights": [
-    "Counterbalanced systems for effortless lifting",
-    "Cabinetry that conceals bedding and lighting",
-    "UL-listed hardware with extended warranties"
+    "Seamless look that hides the bed completely when closed",
+    "Integrated desks and library shelving options",
+    "Spring-balanced mechanisms for effortless one-handed operation",
+    "Designed for standard mattresses (no thin foam pads required)"
   ],
+  "avgCost": {
+    "min": 3500,
+    "max": 8500,
+    "notes": "Price depends on mattress size (Queen/Full), cabinetry finish, and side-pier additions (desks/shelves)."
+  },
   "faqs": [
     {
-      "q": "Can Murphy beds be installed in condos?",
-      "a": "Yes. We assess wall structure, coordinate elevator bookings, and handle HOA requirements common to mid/high-rise properties."}
+      "q": "Can I use my own mattress?",
+      "a": "Yes, these wall beds accommodate standard coil or foam mattresses up to 11-12 inches thick."
+    },
+    {
+      "q": "Do I need to bolt it to the floor?",
+      "a": "No, systems attach securely to the wall studs, preserving your flooring."
+    }
   ]
 }

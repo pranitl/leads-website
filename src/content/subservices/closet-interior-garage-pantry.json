@@ -1,17 +1,27 @@
 {
   "service": "closet-interior",
   "slug": "garage-pantry",
-  "title": "Garage & Pantry Organization",
-  "intro": "Robust storage zones tailored for gear, appliances, and bulk inventory with durable finishes and climate-aware planning.",
-  "avgCost": { "min": 2800, "max": 12000, "notes": "Dependent on square footage, specialty racks, and epoxy flooring." },
+  "title": "Garage, Pantry & Mudrooms",
+  "intro": "Heavy-duty storage for garages and chef-worthy organization for pantries. Keep utility spaces tidy and functional.",
   "highlights": [
-    "High-load shelving and slat walls",
-    "Pull-out pantries and appliance garages",
-    "Floor coatings and dehumidification recommendations"
+    "Industrial-strength garage cabinets and workbenches",
+    "Slat wall systems for bikes, tools, and ladders",
+    "Pantry shelves designed for small appliances and bulk goods",
+    "Mudroom lockers and drop zones for busy families"
   ],
+  "avgCost": {
+    "min": 2000,
+    "max": 12000,
+    "notes": "Garage systems vary by linear footage. Pantries can range from simple wire upgrades to full cabinetry."
+  },
   "faqs": [
     {
-      "q": "Can you integrate EV charging or air systems?",
-      "a": "We coordinate with licensed electricians and HVAC techs to route power and ventilation as part of the installation."}
+      "q": "Are garage cabinets weather-resistant?",
+      "a": "Yes, partners use materials specifically treated to withstand temperature fluctuations and humidity found in Texas garages."
+    },
+    {
+      "q": "Can pros organize a small pantry?",
+      "a": "Absolutely. Designers use corner shelves, door racks, and vertical dividers to triple the usable space in small reach-in pantries."
+    }
   ]
 }

@@ -3,13 +3,96 @@
   "slug": "hardscaping",
   "icon": "stone",
   "summary": "Permanent upgrades for outdoor living. We match you with experts for stone patios, retaining walls, and custom outdoor kitchens.",
-  "heroTitle": "Build the outdoor room your home deserves",
-  "heroCopy": "From paver installs to structural retaining walls, we match you with crews who blend craftsmanship, drainage planning, and lighting for year-round use.",
+  "heroTitle": "Engineered for Austin’s terrain: Beautiful, durable outdoor living",
+  "heroCopy": "From drainage-first patios to structural retaining walls, we match you with crews who prioritize longevity, proper engineering, and year-round usability.",
   "benefits": [
     "Specialists in patios, seat walls, steps, and structural retaining walls",
     "Permeable and traditional paver systems with drainage planning",
-    "Introductions to vetted crews within 24 hours so projects move fast"
+    "Introductions to verified crews who understand Austin's unique soil conditions"
   ],
+  "whatsIncluded": [
+    "Stone & Paver Patios",
+    "Structural Retaining Walls",
+    "Outdoor Kitchens & BBQ Islands",
+    "Fire Pits & Outdoor Fireplaces",
+    "Pool Decks & Coping",
+    "Pergolas & Shade Structures",
+    "Site Grading & Drainage Systems"
+  ],
+  "commonProblems": [
+    {
+      "problem": "Backyard flooding and standing water",
+      "solution": "Specialists integrate proper grading and drainage solutions (french drains, swales) into every hardscape design to protect your home's foundation."
+    },
+    {
+      "problem": "Cracked or heaving patios",
+      "solution": "Our partners prioritize base preparation—typically the cause of failure—using proper compaction and depth to resist shifting Texas clay soils."
+    },
+    {
+      "problem": "Unusable space in summer heat",
+      "solution": "Designers plan for year-round comfort using heat-dissipating pavers, strategic shade structures, and airflow considerations."
+    },
+    {
+      "problem": "HOA and Permit Rejections",
+      "solution": "Pros handle the technical details, including engineering letters for walls and permeable coverage calculations for city review."
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Site & Drainage Assessment",
+      "description": "A contractor rigorously analyzes your property's slope, soil type, and water flow patterns before discussing aesthetics."
+    },
+    {
+      "step": 2,
+      "title": "Design & Engineering",
+      "description": "Receive detailed plans that balance beauty with structural requirements, including any necessary engineering for walls over 4ft."
+    },
+    {
+      "step": 3,
+      "title": "Material Selection",
+      "description": "Choose from durable, locally-sourced limestone, modern pavers, or cool-touch materials perfect for pool areas."
+    },
+    {
+      "step": 4,
+      "title": "Foundation & Prep",
+      "description": "The invisible work matters most. Crews excavate and compact base layers to industry standards to prevent future settling."
+    },
+    {
+      "step": 5,
+      "title": "Precision Installation",
+      "description": "Skilled masons and installers build your project, keeping sites tidy and communicating daily progress."
+    }
+  ],
+  "whyChooseUs": [
+    {
+      "title": "Drainage-First Philosophy",
+      "description": "Our network believes no hardscape should be built without solving water issues first. Beauty must be backed by function."
+    },
+    {
+      "title": "Engineered for Longevity",
+      "description": "Verified builders don’t cut corners on base depth or rebar. Structures are designed to last decades, not just until the warranty expires."
+    },
+    {
+      "title": "Turnkey Project Management",
+      "description": "From permits and engineering to final cleanup, partners manage the headaches so you can focus on the result."
+    },
+    {
+      "title": "Climate-Resilient Design",
+      "description": "We connect you with experts who select materials and designs specifically tested for Central Texas heat, freeze cycles, and drought conditions."
+    }
+  ],
+  "serviceArea": {
+    "text": "Serving Austin and the Hill Country, with specialized crews for rocky terrain.",
+    "areas": [
+      "Austin (All Neighborhoods)",
+      "Westlake & Bee Caves",
+      "Lakeway & Spicewood",
+      "Dripping Springs",
+      "Cedar Park & Leander",
+      "Georgetown & Round Rock"
+    ]
+  },
   "subservices": [
     { "name": "Hardscaping Specialists", "slug": "hardscaping", "summary": "Retaining walls, paver patios, and custom steps engineered to last." },
     { "name": "Outdoor Kitchens & Fire Features", "slug": "outdoor-kitchens", "summary": "Chef-grade cooking zones, pizza ovens, and fire pits." },
@@ -18,8 +101,20 @@
   ],
   "faqs": [
     {
-      "q": "Do you coordinate permits or HOA approvals?",
-      "a": "Yes. We prep submittal packages with structural notes, product cut sheets, and finish samples so your project clears reviews faster."
+      "q": "Do pros coordinate permits or HOA approvals?",
+      "a": "Yes. They prep submittal packages with structural notes, product cut sheets, and finish samples. For retaining walls over 4 feet, they coordinate structural engineering."
+    },
+    {
+      "q": "What is 'permeable' hardscaping and do I need it?",
+      "a": "Permeable pavers allow water to drain through joints into the ground, reducing runoff. This is often required by the City of Austin for properties near their impervious cover limits."
+    },
+    {
+      "q": "How long does a typical patio project take?",
+      "a": "A standard patio (300-500 sq ft) typically takes 1-2 weeks from demo to completion. Complex projects with walls and kitchens may take 3-5 weeks."
+    },
+    {
+      "q": "What kind of warranty is offered?",
+      "a": "Most of our matched partners offer a 2-5 year warranty on workmanship and hardscape integrity, significantly above the industry standard."
     }
   ]
 }

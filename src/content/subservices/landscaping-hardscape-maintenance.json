@@ -1,17 +1,27 @@
 {
   "service": "hardscaping",
   "slug": "hardscape-maintenance",
-  "title": "Hardscape Maintenance & Power Washing",
-  "intro": "Seasonal cleaning, joint resetting, and sealing to extend the life of stone, concrete, and composite hardscapes.",
-  "avgCost": { "min": 450, "max": 2500, "notes": "Service bundles priced per square foot and soil condition." },
+  "title": "Hardscape Maintenance & Restoration",
+  "intro": "Protect your investment. Professional cleaning, sealing, and repair for stone and paver surfaces.",
   "highlights": [
-    "Soft-wash and steam cleaning options",
-    "Joint sand reconditioning and polymeric sealing",
-    "Annual inspection reports with repair recommendations"
+    "Deep cleaning and pressure washing for removing mold/mildew",
+    "Polymeric sand replacement to restabilize pavers",
+    "Sealant application to protect against stains and fading",
+    "Repair of sunken or shifting paver sections"
   ],
+  "avgCost": {
+    "min": 500,
+    "max": 3500,
+    "notes": "Simple clean-and-seal jobs are lower; larger repairs or restoration projects scale with area."
+  },
   "faqs": [
     {
-      "q": "Can you repair failing retaining walls?",
-      "a": "Yes. We inspect structural integrity and coordinate reinforcement or rebuilds when needed."}
+      "q": "How often should I seal my patio?",
+      "a": "Pros recommend resealing every 2-3 years to protect the color and prevent deep staining from leaves or food."
+    },
+    {
+      "q": "Can you fix just a few loose pavers?",
+      "a": "Yes, specialists handle spot repairs to fix trip hazards without needing to replace the entire patio."
+    }
   ]
 }

@@ -1,16 +1,27 @@
 {
   "service": "closet-interior",
   "slug": "sustainable-materials",
-  "title": "Eco-Friendly Closet & Built-In Materials",
-  "intro": "Design packages prioritizing recycled content, FSC woods, low-VOC finishes, and verified supply chains.",
+  "title": "Sustainable Material Packages",
+  "intro": "Breathe easier with storage built from eco-certified materials. Ideal for nurseries, allergy sufferers, and green homes.",
   "highlights": [
-    "Material transparency reports for every component",
-    "Options for rapidly renewable veneers and bamboo",
-    "Formaldehyde-free substrates and Greenguard-certified finishes"
+    "NAF (No Added Formaldehyde) and ULEF (Ultra Low Emitting Formaldehyde) boards",
+    "FSC-certified wood veneers and recycled-content cores",
+    "Water-based, low-VOC finishes and glues",
+    "Hardware from manufacturers with closed-loop recycling"
   ],
+  "avgCost": {
+    "min": 3000,
+    "max": 18000,
+    "notes": "Eco-grade materials typically add 15-20% to the project cost compared to standard melamine."
+  },
   "faqs": [
     {
-      "q": "Will sustainable materials increase lead time?",
-      "a": "Lead times can extend by 2-3 weeks depending on supplier stock, but we plan schedules upfront and provide alternates if timing is critical."}
+      "q": "Do these materials look different?",
+      "a": "No, they look and feel just as premium as standard high-end finishes. The difference is in the air quality and sourcing."
+    },
+    {
+      "q": "Is this LEED compliant?",
+      "a": "Yes, sustainable packages available through our network can contribute points towards LEED certification for home remodels."
+    }
   ]
 }

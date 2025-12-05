@@ -10,6 +10,38 @@ const services = defineCollection({
     heroTitle: z.string().optional(),
     heroCopy: z.string().optional(),
     benefits: z.array(z.string()).optional(),
+    whatsIncluded: z.array(z.string()).optional(),
+    commonProblems: z
+      .array(
+        z.object({
+          problem: z.string(),
+          solution: z.string(),
+        }),
+      )
+      .optional(),
+    process: z
+      .array(
+        z.object({
+          step: z.number(),
+          title: z.string(),
+          description: z.string(),
+        }),
+      )
+      .optional(),
+    whyChooseUs: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+        }),
+      )
+      .optional(),
+    serviceArea: z
+      .object({
+        text: z.string(),
+        areas: z.array(z.string()).optional(),
+      })
+      .optional(),
     subservices: z
       .array(
         z.object({
