@@ -4,6 +4,7 @@ import preact from '@astrojs/preact';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
+  site: 'https://austinhomereno.com',
   integrations: [
     preact(),
     tailwind({
