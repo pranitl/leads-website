@@ -11,10 +11,7 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    critters({
-      preload: 'media',
-      pruneSource: true,
-    }),
+    critters(),
   ],
   experimental: {
     contentIntellisense: true,
