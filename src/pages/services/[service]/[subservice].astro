@@ -29,17 +29,72 @@ const subData = sub.data;
 const serviceName = parent?.data.name ?? 'Service';
 const parentSlug = parent?.data.slug ?? 'service';
 
-const structuredData = {
+const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: subData.title,
+  serviceType: subData.title,
+  description: subData.intro,
   provider: {
     '@type': 'Organization',
     name: 'Austin Home Renovation Hub',
   },
-  areaServed: 'United States',
-  description: subData.intro,
+  areaServed: {
+    '@type': 'Place',
+    name: 'Austin, Texas, United States',
+  },
 };
+
+const faqItems = subData.faqs ?? parent?.data.faqs ?? [];
+
+const faqSchema =
+  faqItems && faqItems.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
+        })),
+      }
+    : null;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL('/', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: new URL('/services', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: serviceName,
+      item: new URL(`/services/${parentSlug}`, Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: subData.title,
+      item: Astro.url.href,
+    },
+  ],
+};
+
+const structuredData = [serviceSchema, faqSchema, breadcrumbSchema].filter(Boolean);
 
 const illustrationMap: Record<string, string> = {
   landscaping: '/images/placeholders/xeriscaping-landscape.webp',

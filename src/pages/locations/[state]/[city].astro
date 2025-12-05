@@ -26,12 +26,84 @@ export async function getStaticPaths() {
 const { location, allServices } = Astro.props;
 const data = location.data;
 
-const structuredData = {
+const citySchema = {
   '@context': 'https://schema.org',
   '@type': 'City',
   name: `${data.city}, ${data.state}`,
   description: data.intro,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: data.city,
+    addressRegion: data.state,
+    addressCountry: 'US',
+  },
 };
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Home renovation services in ${data.city}, ${data.state}`,
+  description: data.intro,
+  provider: {
+    '@type': 'Organization',
+    name: 'Austin Home Renovation Hub',
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: `${data.city}, ${data.state}, United States`,
+  },
+};
+
+const faqItems = [
+  {
+    q: 'How quickly will I hear from specialists?',
+    a: 'We introduce you to 2-3 vetted teams serving ' + data.city + ' within 24 hours of receiving your form.',
+  },
+  {
+    q: 'Do you work with HOA or city permitting?',
+    a: 'Yes. Our concierge team coordinates with HOAs and city reviewers to keep your project compliant in ' + data.state + '.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL('/', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Locations',
+      item: new URL('/locations', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: data.city,
+      item: Astro.url.href,
+    },
+  ],
+};
+
+const structuredData = [citySchema, serviceSchema, faqSchema, breadcrumbSchema];
 ---
 
 <Layout title={`${data.city} Home Renovation & Landscaping Pros | Austin Reno Hub`} description={data.intro} structuredData={structuredData}>
@@ -82,17 +154,6 @@ const structuredData = {
   </LeadCaptureSection>
 
   <section class="container space-y-12 py-16">
-    <FAQList
-      items={[
-        {
-          q: 'How quickly will I hear from specialists?',
-          a: 'We introduce you to 2-3 vetted teams serving ' + data.city + ' within 24 hours of receiving your form.',
-        },
-        {
-          q: 'Do you work with HOA or city permitting?',
-          a: 'Yes. Our concierge team coordinates with HOAs and city reviewers to keep your project compliant in ' + data.state + '.',
-        },
-      ]}
-    />
+    <FAQList items={faqItems} />
   </section>
 </Layout>

@@ -1,8 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Terms & Conditions',
+  url: new URL('/terms', Astro.url).href,
+};
 ---
 
-<Layout title="Terms & Conditions | Austin Home Renovation Hub" description="Usage terms for Austin Home Renovation Hub.">
+<Layout title="Terms & Conditions | Austin Home Renovation Hub" description="Usage terms for Austin Home Renovation Hub." structuredData={structuredData}>
   <section class="container space-y-6 py-16">
     <h1 class="font-heading text-4xl font-semibold text-brown-dark">Terms & Conditions</h1>
     <p class="max-w-2xl text-sm text-brown-body">

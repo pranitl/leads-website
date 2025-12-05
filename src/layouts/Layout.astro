@@ -9,6 +9,53 @@ const {
   pageClass,
 } = Astro.props;
 
+const siteUrl = Astro.site?.href ?? new URL('/', Astro.url).origin + '/';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Austin Home Renovation Hub',
+  url: siteUrl,
+  logo: new URL('/favicon.svg', siteUrl).toString(),
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hello@austinhomereno.com',
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: 'partnerships',
+      email: 'partners@austinhomereno.com',
+    },
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Austin Home Renovation Hub',
+  url: siteUrl,
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: Astro.url.href,
+};
+
+const baseSchemas = [organizationSchema, websiteSchema, webPageSchema];
+
+const pageSchemas = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+
+const allSchemas = [...baseSchemas, ...pageSchemas];
+
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const gaInlineScript = ga4Id
   ? `window.dataLayer = window.dataLayer || [];
@@ -44,8 +91,8 @@ const navLinks = [
         <script is:inline set:html={gaInlineScript}></script>
       </>
     )}
-    {structuredData && (
-      <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+    {allSchemas.length > 0 && (
+      <script type="application/ld+json" is:inline>{JSON.stringify(allSchemas)}</script>
     )}
   </head>
   <body class:list={[pageClass]}>

@@ -3,12 +3,11 @@ import Layout from '../layouts/Layout.astro';
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Austin Home Renovation Hub',
-  description: 'Premium contractor network and concierge service for niche home projects.',
+  '@type': 'AboutPage',
+  name: 'About Austin Home Renovation Hub',
+  url: new URL('/about', Astro.url).href,
 };
 ---
-
 <Layout title="About Our Premium Contractor Network | Austin Reno Hub" description="Austin's premier concierge for finding vetted landscaping, hardscaping, and interior specialists. We match homeowners with top-rated local pros." structuredData={structuredData}>
   <section class="border-b border-brown-forest/10 bg-cream">
     <div class="container space-y-6 py-16">

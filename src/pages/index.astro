@@ -26,21 +26,8 @@ const latestPosts = (await getCollection('posts'))
 
 const locationEntries = await getCollection('locations');
 const locations = orderLocationsByPriority(locationEntries).slice(0, 6);
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Austin Home Renovation Hub',
-  url: Astro.site?.href ?? 'https://example.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${Astro.site?.href ?? 'https://example.com'}/services?query={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
-};
 ---
-
-<Layout title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros" structuredData={structuredData}>
+<Layout title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros">
   <LeadCaptureSection
     services={leadFormServices}
     sectionClass="overflow-hidden bg-cream border-b border-brown-forest/10"

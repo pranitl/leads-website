@@ -6,9 +6,15 @@ import { toLeadFormServiceOptions } from '../lib/services';
 
 const servicesCollection = await getCollection('services');
 const leadFormServices = toLeadFormServiceOptions(servicesCollection);
----
 
-<Layout title="Contact | Austin Home Renovation Hub" description="Reach our concierge team for partnerships, press, or project support.">
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Austin Home Renovation Hub',
+  url: new URL('/contact', Astro.url).href,
+};
+---
+<Layout title="Contact | Austin Home Renovation Hub" description="Reach our concierge team for partnerships, press, or project support." structuredData={structuredData}>
   <section class="border-b border-brown-forest/10 bg-cream">
     <div class="container space-y-6 py-16">
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">Contact</p>
