@@ -57,6 +57,18 @@ The closet market in Austin is split between national design/build franchises (C
 - **Thin sustainability story:**
   - On the pages reviewed, there is almost no mention of low-VOC materials, sustainably sourced boards, hardware longevity, or demolition/waste handling – an opportunity in Austin where eco-consciousness is high.
 
+#### What Google reviews reveal about complaints
+
+- **Homebuilt Closet and Garage:** Reviews are almost uniformly 5-star; homeowners praise communication, pricing, and follow-through, and we see effectively no recurring complaints beyond ordinary project complexity.
+- **California Closets – Austin:** Negative reviews cluster around design oversights (e.g., outlets or access points blocked by cabinetry), installs that take longer than promised with multiple handoffs between crews, and a few instances of frustrating phone/office interactions; customers generally like the end product but remember friction in coordination.
+- **Closets by Design – Austin:** Complaints focus on rushed first-visit design/sales that lock people into layouts that don’t actually add usable space, plus occasional install quality issues (sharp edges, mis-measured pieces, or fixes that required a second visit); some reviewers also feel expectations around "more space" weren’t met.
+- **Closet Factory (Austin):** Most reviews are positive, but low-star reviews call out missed or rescheduled appointments, designs that don’t fully account for door swings / access, and multi-step fixes on more complex cabinetry (e.g., mirrors, laundry rooms) that erode trust even when the final result is acceptable.
+- **Inspired Closets by Maxwell’s:** A small number of recent 1–3 star reviews describe ordering or cabinet-spec errors discovered right before install, rescheduled dates, and one case of a cabinet edge overhang that felt unsafe or permanent; the common thread is operations not living up to a strong design pitch.
+- **More Space Place:** With only a handful of lower-star reviews against a large 5-star base, minor complaints tend to be around communication or small punch-list items rather than systemic quality issues.
+- **Moxie Space Professional Organizing:** Sentiment is overwhelmingly positive; the one notable critical review describes feeling out of the loop during a large organizing day (items moved or discarded without enough consultation) and ending up more disoriented afterward, which suggests that deep organizing work can backfire if expectations and decision-making boundaries aren’t explicit.
+- **Domestic Concepts & One Day Doors & Closets:** Available Austin-area reviews are uniformly 4–5 star with no clear complaint pattern beyond normal scheduling constraints.
+- **The Tailored Closet:** We weren’t able to reliably match an Austin-specific Google Places listing, so there’s not enough reviews signal to draw meaningful complaint themes.
+
 #### Keyword landscape & missed opportunities (based on visible on-site copy)
 
 - **Heavily targeted / saturated phrases:**
@@ -142,6 +154,14 @@ This segment is dominated by full-service design/build firms (Southern Love, G�
   - There is little segmentation for small urban yards vs. acreage, pool-centric backyards vs. kid-focused yards, or multi-phase projects that grow over time.
   - 512 Outdoor’s site is effectively non-functional at the time of review, which removes them as a serious online competitor but still leaves search volume available.
 
+#### What Google reviews reveal about complaints
+
+- **Southern Love Landscaping & Design, Cobos Landscape Solutions, Cutters Landscaping, South Austin Landscaping & Construction, Saucedo Landscaping Services, 512 Outdoor:** Across these brands, recent Google reviews are almost uniformly 4–5 stars; where issues appear they’re typically one-off punch-list items (e.g., needing a small adjustment on irrigation or finishes) that crews come back to handle, rather than systemic failings.
+- **G’s Landscaping & More:** Despite a strong 4.5+ average, there is a meaningful tail of 1–3 star reviews from HOA and residential clients describing rushed or inconsistent maintenance work (missed areas, weed control issues), communication gaps around pricing or schedule changes, and a sense that quality varies with which crew shows up.
+- **Urban Oasis Contracting:** Complaints are rare relative to the 90+ 5-star base, but when they show up they’re specific: at least one homeowner reports irrigation and sprinkler work that later had to be redone by a dedicated irrigation company, another describes a stone walkway that never matched expectations after multiple attempts, and one long-form review praises landscaping but warns against using the team for non-core add-ons like fence staining.
+- **Strata Landscape:** Most reviews come from GCs and commercial/residential clients praising quality and reliability, but a few 1-star reviews complain about unsafe or aggressive driving in branded trucks and one resident at a condo-style property describes crews "lounging" and skipping parts of the maintenance scope; the operational risk is less about design and more about how field crews behave on recurring contracts.
+- **Austin Native Landscaping (hardscaping work):** A single detailed 1-star review describes a backyard remodel that made drainage worse (near-flooding at the house), combined with slow follow-up and the homeowner ultimately hiring another firm to rework grading; this reinforces that many of the serious complaints in this segment are about water management and warranty behavior, not aesthetics.
+
 #### Keyword landscape & missed opportunities (based on visible on-site copy)
 
 - **Heavily targeted / saturated phrases:**
@@ -224,6 +244,14 @@ This niche is anchored by mission-driven, sustainability-first firms (Maas Verde
   - Some players (ECOSystems) focus primarily on commercial maintenance but still rank for sustainable terms, creating potential confusion.
 - **Patchy content and brand continuity:**
   - Fertile Ground’s public site is currently just a "Launching Soon" page, and several well-known names (Maas Verde, Yarrow, Native Son, Symbiosis) have limited or fragmented web presences compared to their reputations.
+
+#### What Google reviews reveal about complaints
+
+- **Thrive Landscape And Design LLC, Go Native Natural & Sustainable, Earthwise Industries, Austin Permaculture Guild, Native Son Gardens, Symbiosis (where reviews exist):** Public reviews for these mission-driven firms are almost entirely 5-star; we see effectively no consistent complaint pattern beyond normal waitlists and project backlog for high-touch ecological work.
+- **Transformed Landscaping Co.:** While most reviews rave about communication, pricing, and design, a small cluster of 1–2 star reviews call out irrigation and drainage problems (sprinkler zones leaking or failing after installation), desert-style installs where weed cloth and thin granite coverage were visible, and one large project where stonework, steps, and grading felt unsafe or off-level; critics also describe frustrating dispute resolution where accountability was unclear.
+- **Fertile Ground Gardens:** Almost all feedback is enthusiastic about native planting and maintenance quality; one older 1-star review, however, complains about over-pruning/over-trimming, a perception of overcharging, and difficulty getting responses when trying to cancel ongoing service, underscoring the importance of clear maintenance scopes and communication.
+- **Yarrow Landscaping Design + Build:** Reviews are overwhelmingly positive about design, communication, and all-female ownership; a single, very detailed 1-star review from several years ago describes contract/estimate mismatches, change-order surprises partway through, half-day crews that stretched the schedule, and an email-heavy (rather than in-person) approach to rectifying issues – effectively a warning about process and expectation-setting on multi-month projects.
+- **Ecosystems Landscape Services:** Compared with most players in this niche, Ecosystems’ review profile is highly polarized: a significant number of 1–2 star reviews from HOA and multifamily residents complain about inconsistent mowing and weed control, lawn damage from equipment, debris and leaves blown onto neighboring properties, very early-morning or disruptive work, unsafe or aggressive driving in company trucks, and slow or absent responses to complaints, even as some community managers praise their pricing and scale.
 
 #### Keyword landscape & missed opportunities (based on visible on-site copy)
 
