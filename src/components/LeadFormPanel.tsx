@@ -193,7 +193,7 @@ export default function LeadFormPanel({
         if (!window.turnstile || !turnstileContainerRef.current) return;
         turnstileWidgetId.current = window.turnstile.render(turnstileContainerRef.current, {
           sitekey: captcha.siteKey!,
-          appearance: 'always',
+          appearance: 'interaction-only',
           retry: 'auto',
           'refresh-expired': 'auto',
           callback: (token: string) => setCaptchaToken(token),
