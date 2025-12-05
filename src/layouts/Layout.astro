@@ -50,16 +50,16 @@ const navLinks = [
   </head>
   <body class:list={[pageClass]}>
     <div class="flex min-h-screen flex-col">
-      <header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
+      <header class="sticky top-0 z-40 border-b border-brown-forest/10 bg-cream-light/95 backdrop-blur">
         <div class="container flex items-center justify-between gap-6 py-4">
-          <a href="/" class="flex items-center gap-2 font-heading text-xl font-semibold text-brand-700">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700 shadow-card">AR</span>
-            Austin Home Renovation Hub
+          <a href="/" class="flex items-center gap-2 font-heading text-xl font-semibold text-brown-dark">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brown-forest text-cream shadow-hard-sm">AR</span>
+            Austin Reno Hub
           </a>
           <nav class="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
               <a
-                class="rounded-lg px-4 py-2 text-sm font-medium text-neutral-700 transition hover:text-brand-600"
+                class="rounded-lg px-4 py-2 text-sm font-medium text-brown-body transition hover:text-oxide"
                 href={link.href}
               >
                 {link.label}
@@ -78,38 +78,38 @@ const navLinks = [
         <slot />
       </main>
 
-      <footer class="border-t border-neutral-200 bg-white py-12">
+      <footer class="border-t border-brown-forest/10 bg-cream py-12">
         <div class="container grid gap-10 md:grid-cols-[2fr,1fr,1fr]">
           <div class="space-y-4">
-            <a href="/" class="flex items-center gap-3 font-heading text-lg font-semibold text-brand-700">
-              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700 shadow-card">AR</span>
-              Austin Home Renovation Hub
+            <a href="/" class="flex items-center gap-3 font-heading text-lg font-semibold text-brown-dark">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brown-forest text-cream shadow-hard-sm">AR</span>
+              Austin Reno Hub
             </a>
-            <p class="max-w-md text-sm text-neutral-600">
+            <p class="max-w-md text-sm text-brown-body">
               We match homeowners with specialized landscaping and interior buildout pros who understand modern, sustainable design. Submit your project and our team connects you within minutes.
             </p>
           </div>
           <div class="space-y-3">
-            <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-500">Company</h3>
-            <ul class="space-y-2 text-sm text-neutral-600">
-              <li><a class="hover:text-brand-600" href="/about">About</a></li>
-              <li><a class="hover:text-brand-600" href="/contact">Contact</a></li>
-              <li><a class="hover:text-brand-600" href="/locations">Service Areas</a></li>
-              <li><a class="hover:text-brand-600" href="/privacy">Privacy</a></li>
-              <li><a class="hover:text-brand-600" href="/terms">Terms</a></li>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-brown-muted">Company</h3>
+            <ul class="space-y-2 text-sm text-brown-body">
+              <li><a class="hover:text-oxide" href="/about">About</a></li>
+              <li><a class="hover:text-oxide" href="/contact">Contact</a></li>
+              <li><a class="hover:text-oxide" href="/locations">Service Areas</a></li>
+              <li><a class="hover:text-oxide" href="/privacy">Privacy</a></li>
+              <li><a class="hover:text-oxide" href="/terms">Terms</a></li>
             </ul>
           </div>
           <div class="space-y-3">
-            <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-500">Services</h3>
-            <ul class="space-y-2 text-sm text-neutral-600">
-              <li><a class="hover:text-brand-600" href="/services/landscaping">Landscaping</a></li>
-              <li><a class="hover:text-brand-600" href="/services/hardscaping">Hardscaping</a></li>
-              <li><a class="hover:text-brand-600" href="/services/closet-interior">Custom Closets</a></li>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-brown-muted">Services</h3>
+            <ul class="space-y-2 text-sm text-brown-body">
+              <li><a class="hover:text-oxide" href="/services/landscaping">Landscaping</a></li>
+              <li><a class="hover:text-oxide" href="/services/hardscaping">Hardscaping</a></li>
+              <li><a class="hover:text-oxide" href="/services/closet-interior">Custom Closets</a></li>
             </ul>
           </div>
         </div>
-        <div class="container mt-10 border-t border-neutral-200 pt-6 text-xs text-neutral-500">
-          © {new Date().getFullYear()} Austin Home Renovation Hub. All rights reserved.
+        <div class="container mt-10 border-t border-brown-forest/10 pt-6 text-xs text-brown-muted">
+          © {new Date().getFullYear()} Austin Reno Hub. All rights reserved.
         </div>
       </footer>
     </div>
