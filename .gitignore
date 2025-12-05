@@ -14,3 +14,5 @@ examples/
 .DS_Store*
 screens/
 .wrangler
+playwright-report/
+test-results/
