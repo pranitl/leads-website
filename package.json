@@ -6,9 +6,11 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "wrangler pages dev -- astro dev",
+    "dev:astro": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev dist",
+    "preview:astro": "astro preview",
     "astro": "astro",
     "screenshot": "node screenshot-pages.mjs"
   },
@@ -26,6 +28,7 @@
     "autoprefixer": "^10.4.21",
     "playwright": "^1.48.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.15",
+    "wrangler": "^4.53.0"
   }
 }
