@@ -40,20 +40,27 @@ const structuredData = {
     eyebrow={data.state}
     title={`${data.city} specialists`}
     description={data.intro}
-    formClassName="shadow-card"
   >
+    <!-- Trust badge for local area -->
+    <div class="inline-flex items-center gap-2 rounded-full border-2 border-brown-forest/20 bg-cream px-4 py-2 shadow-hard-sm">
+      <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current text-oxide" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      <span class="text-xs font-semibold uppercase tracking-wide text-brown-forest">Serving {data.city} & Surrounding Areas</span>
+    </div>
+
     {data.popularServices?.length ? (
       <div class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">Popular services</p>
-        <ul class="space-y-2 text-sm text-neutral-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brown-muted">Popular services in {data.city}</p>
+        <ul class="space-y-2 text-sm text-brown-body">
           {data.popularServices.map((slug) => {
             const [serviceSlug, subSlug] = slug.split('/');
             const service = allServices.find((svc) => svc.slug === serviceSlug);
             const sub = service?.subservices?.find((item) => item.slug === subSlug);
             return (
               <li>
-                <a class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700" href={sub ? `/services/${serviceSlug}/${subSlug}` : `/services/${serviceSlug}`}>
-                  <span class="inline-flex h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+                <a class="inline-flex items-center gap-2 text-oxide hover:text-oxide-hover" href={sub ? `/services/${serviceSlug}/${subSlug}` : `/services/${serviceSlug}`}>
+                  <span class="inline-flex h-1.5 w-1.5 rounded-full bg-oxide"></span>
                   {sub ? `${sub.name} (${service?.name})` : service?.name}
                 </a>
               </li>
@@ -63,7 +70,14 @@ const structuredData = {
       </div>
     ) : null}
     {data.neighborhoods?.length ? (
-      <p class="text-xs uppercase tracking-wide text-neutral-500">Neighborhoods: {data.neighborhoods.join(', ')}</p>
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brown-muted">Key neighborhoods</p>
+        <div class="flex flex-wrap gap-2">
+          {data.neighborhoods.map((neighborhood) => (
+            <span class="rounded-full border border-brown-forest/20 bg-cream px-3 py-1 text-xs font-medium text-brown-body">{neighborhood}</span>
+          ))}
+        </div>
+      </div>
     ) : null}
   </LeadCaptureSection>
 
