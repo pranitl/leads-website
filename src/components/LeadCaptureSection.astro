@@ -23,7 +23,7 @@ const {
   eyebrow,
   title,
   description,
-  sectionClass = 'border-b border-neutral-200 bg-neutral-50/70',
+  sectionClass = 'border-b border-brown-forest/10 bg-cream',
   containerClass = '',
   leftColumnClass = '',
   formClassName = '',
@@ -38,9 +38,9 @@ const combinedFormClass = [formClassName, leadFormProps?.className].filter(Boole
   <slot name="background" />
   <div class={`container relative grid gap-10 py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start ${containerClass}`}>
     <div class={`space-y-6 ${leftColumnClass}`}>
-      {eyebrow ? <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">{eyebrow}</p> : null}
-      {title ? <h1 class="font-heading text-4xl font-semibold text-neutral-900">{title}</h1> : null}
-      {description ? <p class="max-w-2xl text-sm text-neutral-600">{description}</p> : null}
+      {eyebrow ? <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">{eyebrow}</p> : null}
+      {title ? <h1 class="font-heading text-4xl font-semibold text-brown-dark">{title}</h1> : null}
+      {description ? <p class="max-w-2xl text-sm text-brown-body">{description}</p> : null}
       <slot />
     </div>
     <LeadFormIsland
