@@ -582,7 +582,7 @@ export default function LeadFormPanel({
               {selectedService?.subservices?.length ? (
                 <div class="space-y-1">
                   <label class="text-sm font-medium text-neutral-700" htmlFor={`${formId}-subservice`}>
-                    Specific project type (optional)
+                    Specific project type
                   </label>
                   <select
                     id={`${formId}-subservice`}
