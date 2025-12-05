@@ -27,7 +27,10 @@ const latestPosts = (await getCollection('posts'))
 const locationEntries = await getCollection('locations');
 const locations = orderLocationsByPriority(locationEntries).slice(0, 6);
 ---
-<Layout title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros">
+<Layout
+  title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros"
+  description="Connect with vetted local experts for landscaping, hardscaping, and custom interior projects across Austin and Central Texas."
+>
   <LeadCaptureSection
     services={leadFormServices}
     sectionClass="overflow-hidden bg-cream border-b border-brown-forest/10"
