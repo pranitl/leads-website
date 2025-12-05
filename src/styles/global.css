@@ -68,6 +68,13 @@
   }
 }
 
+@layer utilities {
+  .defer-visible {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px 600px;
+  }
+}
+
 /* Prose customization for blog content */
 .prose-brown {
   --tw-prose-body: #5D4E37;

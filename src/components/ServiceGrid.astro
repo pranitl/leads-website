@@ -1,4 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import landscapingIllustration from '../assets/images/placeholders/xeriscaping-landscape.webp';
+import hardscapeIllustration from '../assets/images/placeholders/hardscape-retaining-wall.webp';
+import closetIllustration from '../assets/images/placeholders/custom-closet-interior.webp';
+
 type Service = {
   name: string;
   slug: string;
@@ -23,16 +29,16 @@ const getIconPath = (identifier?: string) => {
   return iconMap[identifier] ?? iconMap.sprout;
 };
 
-const illustrationMap: Record<string, string> = {
-  landscaping: '/images/placeholders/xeriscaping-landscape.webp',
-  hardscaping: '/images/placeholders/hardscape-retaining-wall.webp',
-  'closet-interior': '/images/placeholders/custom-closet-interior.webp',
+const illustrationMap: Record<string, ImageMetadata> = {
+  landscaping: landscapingIllustration,
+  hardscaping: hardscapeIllustration,
+  'closet-interior': closetIllustration,
 };
 
-const getIllustration = (slug: string) => illustrationMap[slug] ?? '/images/placeholders/xeriscaping-landscape.webp';
+const getIllustration = (slug: string) => illustrationMap[slug] ?? landscapingIllustration;
 ---
 
-<section class="space-y-6">
+<section class="space-y-6 defer-visible">
   <div class="flex flex-col gap-3">
     <h2 class="font-heading text-3xl font-semibold text-brown-dark">Specialized services we offer</h2>
     <p class="max-w-2xl text-sm text-brown-body">
@@ -55,11 +61,14 @@ const getIllustration = (slug: string) => illustrationMap[slug] ?? '/images/plac
             </div>
           </div>
           <div class="overflow-hidden rounded-xl border-2 border-brown-forest/10 bg-cream">
-            <img
+            <Image
               src={getIllustration(service.slug)}
               alt={`${service.name} illustration`}
+              widths={[320, 480, 640, 768]}
+              sizes="(min-width: 768px) 45vw, 100vw"
               class="h-36 w-full object-cover"
               loading="lazy"
+              decoding="async"
             />
           </div>
           {service.subservices?.length ? (

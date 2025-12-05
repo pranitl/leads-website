@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Layout from '../../../layouts/Layout.astro';
 import LeadCaptureSection from '../../../components/LeadCaptureSection.astro';
 import FAQList from '../../../components/FAQList.astro';
 import { getCollection } from 'astro:content';
 import { toLeadFormServiceOptions } from '../../../lib/services';
+import landscapingIllustration from '../../../assets/images/placeholders/xeriscaping-landscape.webp';
+import hardscapeIllustration from '../../../assets/images/placeholders/hardscape-retaining-wall.webp';
+import closetIllustration from '../../../assets/images/placeholders/custom-closet-interior.webp';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -96,13 +101,13 @@ const breadcrumbSchema = {
 
 const structuredData = [serviceSchema, faqSchema, breadcrumbSchema].filter(Boolean);
 
-const illustrationMap: Record<string, string> = {
-  landscaping: '/images/placeholders/xeriscaping-landscape.webp',
-  hardscaping: '/images/placeholders/hardscape-retaining-wall.webp',
-  'closet-interior': '/images/placeholders/custom-closet-interior.webp',
+const illustrationMap: Record<string, ImageMetadata> = {
+  landscaping: landscapingIllustration,
+  hardscaping: hardscapeIllustration,
+  'closet-interior': closetIllustration,
 };
 
-const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/xeriscaping-landscape.webp';
+const illustration = illustrationMap[parentSlug] ?? landscapingIllustration;
 ---
 
 <Layout title={`${subData.title} | ${serviceName}`} description={subData.intro ?? `${subData.title} specialists`} structuredData={structuredData}>
@@ -113,7 +118,15 @@ const illustration = illustrationMap[parentSlug] ?? '/images/placeholders/xerisc
     description={subData.intro}
   >
     <div class="overflow-hidden rounded-2xl border-2 border-brown-forest/20 bg-cream-light">
-      <img src={illustration} alt={`${subData.title} inspiration`} class="h-48 w-full object-cover" loading="lazy" />
+      <Image
+        src={illustration}
+        alt={`${subData.title} inspiration`}
+        widths={[480, 640, 768, 960, 1200]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        class="h-48 w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
     {subData.avgCost ? (
       <div class="flex flex-wrap items-center gap-3 rounded-2xl border-2 border-brown-forest/20 bg-cream-light p-4 text-sm text-brown-body shadow-hard-light">
