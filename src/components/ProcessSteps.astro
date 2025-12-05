@@ -1,4 +1,13 @@
 ---
+interface StepItem {
+  title: string;
+  copy: string;
+}
+
+export interface Props {
+  steps?: StepItem[];
+}
+
 const {
   steps = [
     {
@@ -27,7 +36,7 @@ const {
       </p>
     </div>
     <div class="space-y-6 bg-white/10 p-8 lg:p-12">
-      {steps.map((step, index) => (
+      {steps.map((step: StepItem, index: number) => (
         <div class="flex gap-4">
           <div class="flex flex-col items-center">
             <span class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brown-forest bg-cream text-brown-forest font-heading text-base font-semibold">

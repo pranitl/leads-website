@@ -40,7 +40,7 @@ const navLinks = [
     )}
     {ga4Id && (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
         <script is:inline set:html={gaInlineScript}></script>
       </>
     )}

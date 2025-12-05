@@ -15,11 +15,13 @@
     "screenshot": "node screenshot-pages.mjs"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/preact": "^4.1.1",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.15.1",
     "preact": "^10.27.2",
     "preact-render-to-string": "^6.6.3",
+    "typescript": "^5.9.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
