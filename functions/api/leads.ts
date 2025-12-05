@@ -6,22 +6,6 @@ interface Env {
   CF_ACCESS_CLIENT_SECRET?: string;
 }
 
-interface LeadSubmissionRequest {
-  service: string;
-  zip: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  timeline: 'asap' | '1-2-weeks' | 'flexible';
-  budget: '1000-3000' | '3000-5000' | '5000-plus' | 'unsure';
-  details?: string;
-  consent: boolean;
-  source: string;
-  captchaToken: string;
-  subservice?: string;
-}
-
 type MyPagesFunction = (context: {
   request: Request;
   env: Env;

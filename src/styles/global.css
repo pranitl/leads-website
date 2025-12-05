@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Lato:wght@400;700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,15 +14,15 @@
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-900 font-body antialiased;
+    @apply bg-cream text-brown-dark font-body antialiased;
   }
 
   a {
-    @apply text-accent-blue transition-colors duration-200;
+    @apply text-oxide transition-colors duration-200;
   }
 
   a:hover {
-    @apply text-accent-blue/80;
+    @apply text-oxide-hover;
   }
 }
 
@@ -32,14 +32,60 @@
   }
 
   .btn-cta {
-    @apply btn bg-accent-gold text-neutral-900 shadow-card hover:bg-accent-gold/90 focus-visible:ring-accent-gold;
+    @apply inline-flex items-center justify-center gap-2 
+           rounded-lg bg-oxide px-6 py-3.5 
+           text-sm font-bold uppercase tracking-wide text-cream
+           shadow-hard-sm transition-all duration-150
+           hover:translate-y-[1px] hover:shadow-hard-hover hover:bg-oxide-hover
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oxide focus-visible:ring-offset-2;
   }
 
   .btn-outline {
-    @apply btn border-neutral-200 bg-white text-neutral-900 hover:border-accent-blue hover:text-accent-blue;
+    @apply btn border-2 border-brown-forest bg-cream-light text-brown-dark hover:border-oxide hover:text-oxide;
   }
 
   .card {
     @apply rounded-xl border border-neutral-200 bg-white/90 p-6 shadow-card backdrop-blur;
   }
+
+  .card-rustic {
+    @apply rounded-lg border-[3px] border-brown-forest bg-white shadow-hard overflow-hidden;
+  }
+
+  .card-rustic-header {
+    @apply bg-brown-forest px-6 py-4 font-heading text-sm font-semibold 
+           uppercase tracking-widest text-cream;
+  }
+
+  .card-rustic-body {
+    @apply p-6 space-y-4;
+  }
+
+  .polaroid-frame {
+    @apply bg-white border-[3px] border-brown-forest p-2 pb-6 shadow-hard-sm;
+  }
+
+  .stat-card-rustic {
+    @apply rounded-lg border-2 border-brown-forest bg-cream-light p-4 text-center shadow-hard-sm;
+  }
+}
+
+/* Prose customization for blog content */
+.prose-brown {
+  --tw-prose-body: #5D4E37;
+  --tw-prose-headings: #3D2B1F;
+  --tw-prose-lead: #5D4E37;
+  --tw-prose-links: #BC4B38;
+  --tw-prose-bold: #3D2B1F;
+  --tw-prose-counters: #8B7355;
+  --tw-prose-bullets: #BC4B38;
+  --tw-prose-hr: #5C4033;
+  --tw-prose-quotes: #3D2B1F;
+  --tw-prose-quote-borders: #5C4033;
+  --tw-prose-captions: #8B7355;
+  --tw-prose-code: #3D2B1F;
+  --tw-prose-pre-code: #F2E8D5;
+  --tw-prose-pre-bg: #5C4033;
+  --tw-prose-th-borders: #5C4033;
+  --tw-prose-td-borders: rgba(92, 64, 51, 0.2);
 }

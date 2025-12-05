@@ -27,11 +27,21 @@ const structuredData = {
 ---
 
 <Layout title={`${post.data.title} | Austin Home Renovation Hub`} description={post.data.excerpt} structuredData={structuredData}>
-  <article class="prose prose-slate mx-auto max-w-3xl py-16">
-    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Insights</p>
-    <h1 class="font-heading text-4xl font-semibold text-neutral-900">{post.data.title}</h1>
-    <p class="text-sm text-neutral-500">Published {new Date(post.data.publishedAt).toLocaleDateString()}</p>
-    <div class="mt-8">
+  <article class="container max-w-3xl py-16">
+    <div class="mb-8 space-y-4">
+      <a href="/blog" class="inline-flex items-center text-sm font-semibold text-oxide hover:text-oxide-hover">
+        <svg viewBox="0 0 24 24" class="mr-1 h-4 w-4 fill-current" aria-hidden="true">
+          <path d="M19 12a1 1 0 0 0-1-1H7.414l3.293-3.293a1 1 0 1 0-1.414-1.414l-5 5a1 1 0 0 0 0 1.414l5 5a1 1 0 0 0 1.414-1.414L7.414 13H18a1 1 0 0 0 1-1Z" />
+        </svg>
+        Back to Insights
+      </a>
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">Insights</p>
+      <h1 class="font-heading text-4xl font-semibold text-brown-dark">{post.data.title}</h1>
+      <span class="inline-flex items-center rounded-full border border-brown-forest/20 bg-cream px-3 py-1 text-xs font-semibold text-brown-muted">
+        Published {new Date(post.data.publishedAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
+      </span>
+    </div>
+    <div class="prose prose-brown max-w-none prose-headings:font-heading prose-headings:text-brown-dark prose-p:text-brown-body prose-a:text-oxide prose-a:no-underline hover:prose-a:text-oxide-hover prose-strong:text-brown-dark prose-li:text-brown-body">
       <Content />
     </div>
   </article>

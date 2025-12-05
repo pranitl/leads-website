@@ -1,26 +1,42 @@
 ---
+interface StatItem {
+  label: string;
+  value: string;
+  detail: string;
+}
+
+export interface Props {
+  subheading?: string;
+  heading?: string;
+  description?: string;
+  stats?: StatItem[];
+}
+
 const {
+  subheading = 'Why homeowners choose us',
+  heading = 'Premium artisans, vetted process, concierge follow-through',
+  description = 'Every specialist in our network is reference-checked, insured, and aligned with sustainable building practices.',
   stats = [
-    { label: 'Qualified specialists', value: '150+', detail: 'Landscape designers, irrigation techs, and interior fabricators.' },
-    { label: 'Avg. match time', value: '<24h', detail: 'Concierge outreach within one business day.' },
-    { label: 'Satisfaction score', value: '4.9/5', detail: 'Post-project homeowner feedback across markets.' }
+    { label: 'Active specialists', value: '50+', detail: 'Landscape designers, irrigation techs, and interior fabricators.' },
+    { label: 'Response time', value: '<24h', detail: 'Direct introductions to available pros.' },
+    { label: 'Service coverage', value: 'Austin Metro', detail: 'Full coverage of Cedar Park, Leander, Dripping Springs & more.' }
   ],
 } = Astro.props;
 ---
 
-<section class="rounded-3xl border border-neutral-200 bg-white/90 p-6 shadow-card lg:p-10">
+<section class="rounded-3xl border-2 border-brown-forest/20 bg-cream-light p-6 shadow-hard-sm lg:p-10">
   <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
     <div class="max-w-xl space-y-3">
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Why homeowners choose us</p>
-      <h2 class="font-heading text-3xl font-semibold text-neutral-900">Premium artisans, vetted process, concierge follow-through</h2>
-      <p class="text-sm text-neutral-600">Every specialist in our network is reference-checked, insured, and aligned with sustainable building practices.</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">{subheading}</p>
+      <h2 class="font-heading text-3xl font-semibold text-brown-dark">{heading}</h2>
+      <p class="text-sm text-brown-body">{description}</p>
     </div>
     <div class="grid w-full gap-4 sm:grid-cols-3">
-      {stats.map((stat) => (
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50/70 p-4 text-center">
-          <p class="font-heading text-2xl font-semibold text-brand-700">{stat.value}</p>
-          <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500">{stat.label}</p>
-          <p class="mt-2 text-xs text-neutral-600">{stat.detail}</p>
+      {stats.map((stat: StatItem) => (
+        <div class="stat-card-rustic">
+          <p class="font-heading text-2xl font-semibold text-brown-forest">{stat.value}</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-brown-muted">{stat.label}</p>
+          <p class="mt-2 text-xs text-brown-body">{stat.detail}</p>
         </div>
       ))}
     </div>
