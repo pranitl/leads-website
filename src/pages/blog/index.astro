@@ -3,9 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('posts')).sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
----
 
-<Layout title="Insights | Austin Home Renovation Hub" description="Guides on cost planning, sustainable materials, and lead gen tactics for home renovation services.">
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Insights',
+  url: new URL('/blog', Astro.url).href,
+};
+---
+<Layout title="Insights | Austin Home Renovation Hub" description="Guides on cost planning, sustainable materials, and lead gen tactics for home renovation services." structuredData={structuredData}>
   <section class="border-b border-brown-forest/10 bg-cream">
     <div class="container space-y-6 py-16">
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brown-forest">Insights</p>

@@ -24,14 +24,64 @@ export async function getStaticPaths() {
 const { service, subserviceEntries, allServices } = Astro.props;
 const data = service.data;
 
-const structuredData = {
+const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: data.name,
   serviceType: data.name,
   description: data.summary,
-  areaServed: 'United States',
+  provider: {
+    '@type': 'Organization',
+    name: 'Austin Home Renovation Hub',
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: 'Austin, Texas, United States',
+  },
 };
+
+const faqSchema =
+  data.faqs && data.faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faqs.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
+        })),
+      }
+    : null;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL('/', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: new URL('/services', Astro.url).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: data.name,
+      item: Astro.url.href,
+    },
+  ],
+};
+
+const structuredData = [serviceSchema, faqSchema, breadcrumbSchema].filter(Boolean);
 
 const illustrationMap: Record<string, string> = {
   landscaping: '/images/placeholders/xeriscaping-landscape.webp',

@@ -15,7 +15,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Service areas',
-  url: `${Astro.url.origin}/locations`,
+  url: new URL('/locations', Astro.url).href,
 };
 ---
 

@@ -9,6 +9,54 @@ const {
   pageClass,
 } = Astro.props;
 
+const siteUrl = Astro.site?.href ?? new URL('/', Astro.url).origin + '/';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Austin Home Renovation Hub',
+  url: siteUrl,
+  logo: new URL('/favicon.svg', siteUrl).toString(),
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hello@austinhomereno.com',
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: 'partnerships',
+      email: 'partners@austinhomereno.com',
+    },
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Austin Home Renovation Hub',
+  url: siteUrl,
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: Astro.url.href,
+};
+
+const baseSchemas = [organizationSchema, websiteSchema, webPageSchema];
+
+const pageSchemas = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+
+const allSchemas = [...baseSchemas, ...pageSchemas];
+
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const gaInlineScript = ga4Id
   ? `window.dataLayer = window.dataLayer || [];
@@ -30,22 +78,24 @@ const navLinks = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Lato:wght@400;700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    {canonical ? (
-      <link rel="canonical" href={canonical} />
-    ) : (
-      <link rel="canonical" href={Astro.url.href} />
-    )}
+    <link rel="canonical" href={canonicalUrl} />
     {ga4Id && (
       <>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
         <script is:inline set:html={gaInlineScript}></script>
       </>
     )}
-    {structuredData && (
-      <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+    {allSchemas.length > 0 && (
+      <script type="application/ld+json" is:inline>{JSON.stringify(allSchemas)}</script>
     )}
   </head>
   <body class:list={[pageClass]}>

@@ -14,7 +14,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Niche home services',
-  url: `${Astro.url.origin}/services`,
+  url: new URL('/services', Astro.url).href,
 };
 
 const iconMap: Record<string, string> = {

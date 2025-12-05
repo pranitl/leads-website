@@ -1,8 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy Policy',
+  url: new URL('/privacy', Astro.url).href,
+};
 ---
 
-<Layout title="Privacy Policy | Austin Home Renovation Hub" description="How Austin Home Renovation Hub handles data and privacy.">
+<Layout title="Privacy Policy | Austin Home Renovation Hub" description="How Austin Home Renovation Hub handles data and privacy." structuredData={structuredData}>
   <section class="container space-y-6 py-16">
     <h1 class="font-heading text-4xl font-semibold text-brown-dark">Privacy Policy</h1>
     <p class="max-w-2xl text-sm text-brown-body">

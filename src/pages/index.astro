@@ -26,21 +26,11 @@ const latestPosts = (await getCollection('posts'))
 
 const locationEntries = await getCollection('locations');
 const locations = orderLocationsByPriority(locationEntries).slice(0, 6);
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Austin Home Renovation Hub',
-  url: Astro.site?.href ?? 'https://example.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${Astro.site?.href ?? 'https://example.com'}/services?query={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
-};
 ---
-
-<Layout title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros" structuredData={structuredData}>
+<Layout
+  title="Austin Home Renovation Hub | Vetted Landscaping & Hardscaping Pros"
+  description="Connect with vetted local experts for landscaping, hardscaping, and custom interior projects across Austin and Central Texas."
+>
   <LeadCaptureSection
     services={leadFormServices}
     sectionClass="overflow-hidden bg-cream border-b border-brown-forest/10"
@@ -78,7 +68,7 @@ const structuredData = {
         src="/images/placeholders/stone-patio-firepit.webp"
         alt="Stone patio with fire pit - example project"
         class="h-64 w-full rounded-2xl border-2 border-brown-forest/20 bg-cream-light object-cover shadow-lg shadow-black/20"
-        loading="lazy"
+        fetchpriority="high"
       />
       <img
         src="/images/placeholders/custom-closet-interior.webp"
