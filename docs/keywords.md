@@ -799,3 +799,98 @@ Strategic, high-intent keywords for closets & interiors, hardscaping, and sustai
 18. landscape and hardscape design build round rock tx
 19. kid friendly backyard design contractors round rock
 20. closet design consultation round rock tx
+
+---
+
+## Targeting Strategy: Difficulty, Commercial Value & Page Mapping
+
+This section organizes the keyword themes above by **ranking difficulty**, **commercial value**, and **primary target page type**. Any city variant of a pattern (Austin, Bee Caves, Cedar Park, Dripping Springs, Georgetown, Leander, Round Rock) inherits the same treatment.
+
+### Heuristics
+
+- **Difficulty to rank**
+  - **High** – short, generic service + city terms that competitors also chase (e.g. `custom closets austin tx`, `landscapers round rock tx`, `hardscaping contractors cedar park`).
+  - **Medium** – service + city + modifier (e.g. `paver patio cost round rock estimate`, `xeriscape landscaping packages georgetown prices`).
+  - **Low** – long-tail and problem-based phrases (e.g. `tiny walk in closet no storage austin`, `backyard flooding in heavy rain cedar park`).
+- **Commercial value**
+  - **High** – clear hire/buy intent: `company`, `contractor`, `install`, `repair`, `near me`, `cost`, `quote`, `packages`, `bids`, `financing`, `same day`, `emergency`.
+  - **Medium** – problem and solution phrasing strongly tied to projects.
+  - **Low** – idea hunting / early research with no clear project framing.
+- **Target page types**
+  - **Service root**: `/services/closet-interior`, `/services/hardscaping`, `/services/landscaping`.
+  - **Subservice**:
+    - Closets: `/services/closet-interior/custom-closets`, `/services/closet-interior/garage-pantry`, `/services/closet-interior/murphy-beds`, `/services/closet-interior/sustainable-materials`.
+    - Hardscaping: `/services/hardscaping/hardscaping`, `/services/hardscaping/outdoor-kitchens`, `/services/hardscaping/permeable-hardscaping`, `/services/hardscaping/hardscape-maintenance`.
+    - Landscaping: `/services/landscaping/xeriscaping`, `/services/landscaping/irrigation`, `/services/landscaping/native-planting`, `/services/landscaping/sustainable-design`.
+  - **Location pages**: `/locations/texas/{city}`.
+  - **Blog / guides**: `/blog/...` problem–solution content supporting the above.
+
+### Closets & Interior Installations
+
+| Keyword family / example                                                                 | Difficulty | Commercial value | Primary target page(s)                                                                                   |
+|------------------------------------------------------------------------------------------|-----------:|------------------|----------------------------------------------------------------------------------------------------------|
+| `custom closet systems {city} tx`, `custom closets {city} tx`                           | High       | High             | `/services/closet-interior/custom-closets` + relevant `/locations/texas/{city}`                         |
+| `walk in closet designer {city}`, `closet installers {city and westlake}`               | High       | High             | `/services/closet-interior/custom-closets`                                                               |
+| `best custom closet companies austin tx`, `custom closet company {city} near me`        | High       | High             | `/services/closet-interior` (root)                                                                      |
+| `closet design studio near me austin`, `closet design consultation {city}`              | Medium     | High             | `/services/closet-interior/custom-closets`                                                               |
+| `custom closet cost {city} estimate`                                                    | Medium     | High             | `/services/closet-interior/custom-closets` + pricing-supporting blog content                            |
+| `builder grade closets not enough storage {city}`, `builder grade wire closet...`       | Low        | High             | `/services/closet-interior/custom-closets` + `/blog/builder-grade-closet-upgrades-{city}`               |
+| `tiny walk in closet no storage {city}`, `small bedroom no closet solutions {city}`     | Low        | Medium–High      | `/services/closet-interior/custom-closets` + small-space guide blog posts                               |
+| `kids closets always messy storage solutions {city}`                                    | Low        | Medium–High      | `/services/closet-interior/custom-closets`                                                               |
+| `garage storage cabinets and slat wall {city}`, `garage organization systems {city}`    | Medium     | High             | `/services/closet-interior/garage-pantry`                                                               |
+| `pantry shelving installer {city}`, `pantry organization systems bee caves`             | Medium     | High             | `/services/closet-interior/garage-pantry`                                                               |
+| `murphy bed with desk installer austin`, `murphy bed installers {city} pricing`         | Medium     | High             | `/services/closet-interior/murphy-beds`                                                                 |
+| `emergency closet repair {city}`, `emergency closet shelving repair {city}`             | Low–Med    | High             | `/services/closet-interior/custom-closets` + `/locations/texas/{city}`                                  |
+| `whole home organization packages {city}`, `closet and garage makeover packages {city}` | Medium     | High             | `/services/closet-interior` (root)                                                                      |
+| `closet smells musty need non toxic materials {city}`                                   | Low        | Medium–High      | `/services/closet-interior/sustainable-materials`                                                       |
+| `closet needs eco friendly materials {city}`, `sustainable closet materials georgetown` | Low        | Medium–High      | `/services/closet-interior/sustainable-materials`                                                       |
+
+### Hardscaping & Outdoor Living
+
+| Keyword family / example                                                                 | Difficulty | Commercial value | Primary target page(s)                                                          |
+|------------------------------------------------------------------------------------------|-----------:|------------------|-------------------------------------------------------------------------------|
+| `hardscaping contractors {city} tx`, `hardscaping companies {city and georgetown}`       | High       | High             | `/services/hardscaping/hardscaping` + `/locations/texas/{city}`              |
+| `paver patio builder {city}`, `paver patio installer austin`                             | High       | High             | `/services/hardscaping/hardscaping`                                          |
+| `paver patio cost {city} estimate`, `paver patio cost per square foot austin`            | Medium     | High             | `/services/hardscaping/hardscaping` + `/blog/paver-patio-cost-{city}`        |
+| `retaining wall builder {city}`, `retaining wall contractor {city} reviews`             | High       | High             | `/services/hardscaping/hardscaping`                                          |
+| `permeable paver driveway georgetown`, `permeable paver patio austin drainage`          | Medium     | High             | `/services/hardscaping/permeable-hardscaping`                                |
+| `outdoor kitchen builders {city}`, `outdoor kitchen contractor {city} quotes`           | High       | High             | `/services/hardscaping/outdoor-kitchens`                                     |
+| `stone patio and fire pit builder bee caves`, `patio and fire pit packages {city}`      | Medium     | High             | `/services/hardscaping/hardscaping`                                          |
+| `poolside hardscaping company bee caves`, `pool hardscaping {city}`                     | Medium     | High             | `/services/hardscaping/hardscaping`                                          |
+| `driveway and walkway bids {city}`, `stone driveway installers bee caves and westlake`  | Medium     | High             | `/services/hardscaping/hardscaping`                                          |
+| `deck and patio contractors bee caves`, `backyard renovation contractors {city}`        | Medium     | High             | `/services/hardscaping/hardscaping`                                          |
+| Problem: `backyard flooding in heavy rain {city}`, `water pooling near patio doors...`  | Low–Med    | High             | `/services/hardscaping/permeable-hardscaping` + `/services/landscaping/xeriscaping` + blog |
+| Problem: `hillside erosion problems {city}`, `eroding slope behind house {city}`        | Low–Med    | High             | `/services/hardscaping/hardscaping` + `/services/landscaping/sustainable-design` |
+| Emergency: `emergency retaining wall repair {city}`, `backyard retaining wall collapse` | Low–Med    | High             | `/services/hardscaping/hardscaping` + `/locations/texas/{city}`              |
+| Emergency: `emergency driveway washout repair {city}`, `driveway washout repair...`     | Low–Med    | High             | `/services/hardscaping/hardscaping`                                          |
+| `patio cover and pergola builders {city}`                                               | Medium     | High             | `/services/hardscaping/hardscaping`                                          |
+| Lifestyle: `dog friendly backyard design {city}`, `kid friendly backyard design...`     | Low–Med    | Medium–High      | `/services/hardscaping/hardscaping` + `/services/landscaping/xeriscaping`    |
+
+### Landscaping (Xeriscape, Native, Sustainable)
+
+| Keyword family / example                                                                  | Difficulty | Commercial value | Primary target page(s)                                          |
+|-------------------------------------------------------------------------------------------|-----------:|------------------|-----------------------------------------------------------------|
+| `landscapers {city} tx`, `best landscapers {city} tx`                                     | High       | High             | `/services/landscaping` + `/locations/texas/{city}`             |
+| `landscape design {city} native plants`, `native landscaping {city and georgetown}`       | Medium     | High             | `/services/landscaping/native-planting`                         |
+| `xeriscape landscaping company {city}`, `xeriscape landscaping packages {city} prices`    | Medium     | High             | `/services/landscaping/xeriscaping`                             |
+| `sustainable landscaping design austin`, `sustainable landscaping {city and suburbs}`     | Medium     | High             | `/services/landscaping/sustainable-design`                      |
+| `native landscape design firm {city}`                                                     | Medium     | High             | `/services/landscaping/native-planting`                         |
+| `sustainable landscape architect {city} consultations`                                    | Medium     | High             | `/services/landscaping/sustainable-design`                      |
+| `sprinkler system installation {city}`, `sprinkler and drip irrigation installers {...}`  | High       | High             | `/services/landscaping/irrigation`                              |
+| `sprinkler repair company {city} same day`, `emergency sprinkler repair {city}`           | Medium     | High             | `/services/landscaping/irrigation` + `/locations/texas/{city}`  |
+| Problem: `lawn dying in texas heat {city} xeriscape help`, `weeds taking over lawn...`    | Low–Med    | Medium–High      | `/services/landscaping/xeriscaping` + `/blog/no-mow-yard-{city}`|
+| Problem: `shady yard nothing grows landscaping {city}`                                    | Low        | Medium–High      | `/services/landscaping/native-planting`                         |
+| Problem: `deer eating landscaping bee caves solutions`, `deer pressure dripping springs`  | Low        | Medium–High      | `/services/landscaping/native-planting`                         |
+| `organic lawn replacement cedar park`, `organic lawn replacement with natives austin`    | Low–Med    | Medium–High      | `/services/landscaping/xeriscaping`                             |
+| `rain garden design georgetown`, `rainwater friendly landscape design dripping springs`   | Low–Med    | Medium–High      | `/services/landscaping/sustainable-design` + `/services/hardscaping/permeable-hardscaping` |
+| `low maintenance landscaping for retirees georgetown`                                     | Low        | Medium–High      | `/services/landscaping/sustainable-design`                      |
+| `landscape maintenance for native yards {city}`                                           | Medium     | High             | `/services/landscaping/native-planting` (maintenance section)   |
+
+### How to use this mapping
+
+- For any specific keyword in the city sections above, match it to the closest **keyword family** here to infer:
+  - **Difficulty to rank** (High / Medium / Low).
+  - **Commercial value** (High / Medium / Low).
+  - **Primary page** (service, subservice, location, and supporting blog topic).
+- Prioritize content and on-page optimization for **Medium-difficulty / High-value** families first (e.g., `*cost*`, `*packages*`, `*company*`, and drainage/xeriscape problem terms), then layer in content that can gradually win **High-difficulty** generics.
+
