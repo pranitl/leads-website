@@ -6,9 +6,9 @@
   "heroTitle": "Stress-free, high-clarity closet projects for Austin homeowners",
   "heroCopy": "Connect with designers and installers who prioritize craftsmanship, healthy materials, and seamless project timelines. We combine professional organizing principles with custom carpentry.",
   "benefits": [
-    "Concept-to-install support with 3D renderings and finish samples",
-    "Specialists in eco-certified boards, hardware, and low-VOC finishes",
-    "Installation crews experienced with condos, high-rise logistics, and HOA coordination"
+    "Design visualization options including 3D renderings",
+    "Various material choices including sustainable options (FSC-certified wood, NAF boards, low-VOC finishes)",
+    "Installation crews experienced with condos, high-rise logistics"
   ],
   "whatsIncluded": [
     "Custom Walk-in & Reach-in Closets",
@@ -17,7 +17,7 @@
     "Pantry & Laundry Room Organization",
     "Home Office Built-ins",
     "Mudrooms & Entryway Drop Zones",
-    "Sustainable Material Upgrades"
+    "Sustainable Material Options (discuss with providers)"
   ],
   "commonProblems": [
     {
@@ -45,8 +45,8 @@
     },
     {
       "step": 2,
-      "title": "3D Design & Material Selection",
-      "description": "Review fully interactive 3D renderings of your new space and choose from a curated library of durable, sustainable finishes."
+      "title": "Design & Material Selection",
+      "description": "Many professionals offer 3D renderings and material samples. Discuss visualization options with your chosen provider."
     },
     {
       "step": 3,
@@ -66,16 +66,16 @@
   ],
   "whyChooseUs": [
     {
-      "title": "Sustainability & Health First",
-      "description": "We verify that partners use safe materials, prioritizing FSC-certified wood and low-emission finishes standard."
+      "title": "Material Quality Options",
+      "description": "Connect with professionals who offer various material choices including sustainable options. Discuss specifics with your chosen provider."
     },
     {
       "title": "Organizer-Minded Design",
       "description": "Matching you with pros who don’t just build boxes; they design systems based on professional organizing principles."
     },
     {
-      "title": "Transparent, tiered pricing",
-      "description": "No hidden fees. We help you navigate clear packages—from essential functional upgrades to premium luxury suites."
+      "title": "Custom Pricing Solutions",
+      "description": "Each professional sets their own rates. They'll provide clear quotes based on your specific project needs and scope."
     },
     {
       "title": "Local Specialists",
@@ -96,8 +96,7 @@
   "subservices": [
     { "name": "Custom Closet Systems", "slug": "custom-closets", "summary": "Walk-in, reach-in, and boutique closets built to your wardrobe." },
     { "name": "Integrated Murphy Beds", "slug": "murphy-beds", "summary": "Guest-ready wall beds with desks, shelves, and lighting." },
-    { "name": "Garage & Pantry Organization", "slug": "garage-pantry", "summary": "High-load shelving, slat walls, and climate-aware storage." },
-    { "name": "Sustainable Material Packages", "slug": "sustainable-materials", "summary": "FSC, recycled, and formaldehyde-free millwork with traceability." }
+    { "name": "Garage & Pantry Organization", "slug": "garage-pantry", "summary": "High-load shelving, slat walls, and climate-aware storage." }
   ],
   "faqs": [
     {
@@ -109,8 +108,16 @@
       "a": "Most reaches-in and standard walk-in closets are installed in a single day. Larger projects like garages or whole-home systems may take 2-3 days."
     },
     {
-      "q": "Are eco-friendly materials available?",
-      "a": "Absolutely. It is a core requirement for our network. Partners offer low-VOC and NAF (No Added Formaldehyde) board options."
+      "q": "Are sustainable materials available?",
+      "a": "Many professionals offer eco-friendly material options including NAF (No Added Formaldehyde) boards, FSC-certified wood, water-based low-VOC finishes, and recycled-content materials. Discuss these options with your chosen provider. Sustainable materials typically add 15-20% to project costs."
+    },
+    {
+      "q": "Do sustainable materials look different from standard options?",
+      "a": "No, sustainable materials look and feel just as premium as standard high-end finishes. The difference is in improved air quality and eco-friendly sourcing rather than appearance."
+    },
+    {
+      "q": "Can sustainable materials contribute to LEED certification?",
+      "a": "Yes, many sustainable material options available from professionals can contribute points toward LEED certification for home remodels. Discuss your green building goals with your chosen provider."
     },
     {
       "q": "Do I need to empty my closet before installation?",
